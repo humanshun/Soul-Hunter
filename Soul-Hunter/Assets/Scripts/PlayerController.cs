@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded = false;  // プレイヤーが地面にいるかどうかを判定するためのフラグ
     private bool isJumping = false;   // プレイヤーがジャンプしているかどうかを判定するフラグ
+    private Animator animator;
+    private AnimationClip JumpAnimation;
 
     void Start()
     {
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && isCharging)
         {
             isCharging = false;
+            // JumpAnimation.SetBool(true);
             Jump();
         }
     }
