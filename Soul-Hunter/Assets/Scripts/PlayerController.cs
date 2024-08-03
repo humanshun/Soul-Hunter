@@ -1,27 +1,27 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;     // 移動速度
-    public float maxJumpForce = 10f; // 最大ジャンプ力
-    public float chargeTime = 1f;    // 最大ジャンプ力に達するまでの時間
-    public float minJumpForce = 2f;  // 最小ジャンプ力
-    public string groundTag = "Ground"; // 地面のタグ
+    public float moveSpeed = 0f;          //　移動速度
+    public float maxJumpForce = 0f;       //　最大ジャンプ力
+    public float chargeTime = 0f;         //　最大ジャンプ力に達するまでの時間
+    public float minJumpForce = 0f;       //　最小ジャンプ力
+    public string groundTag = "Ground";   //　地面のタグ
+    public Transform groundCheck;         //　地面判定用の子オブジェクト
+    public float groundCheckRadius = 0f;  //　地面判定用の半径
 
-    public Transform groundCheck;     // 地面判定用の子オブジェクト
-    public float groundCheckRadius = 0.2f; // 地面判定用の半径
-
-    private bool isCharging = false;
-    private float jumpCharge = 0f;
+    private bool isCharging = false;      //　チャージしているかどうか
+    private float jumpCharge = 0f;        //　チャージ時間
     private Rigidbody2D rb;
-    private bool isGrounded = false;  // プレイヤーが地面にいるかどうかを判定するためのフラグ
-    private bool isJumping = false;   // プレイヤーがジャンプしているかどうかを判定するフラグ
+    private bool isGrounded = false;      // プレイヤーが地面にいるかどうか
+    private bool isJumping = false;       // プレイヤーがジャンプしているかどうか
     private Animator animator;
-    private AnimationClip JumpAnimation;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         Flip();
     }
 
+    //　動き
     void Move()
     {
         if (isJumping) // ジャンプ中のみ移動
@@ -40,13 +41,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //　溜めジャンプ
     void HandleJump()
     {
         // 地面にいるかどうかを判定
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask(groundTag));
 
         // スペースキーが押され始めた
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             isCharging = true;
             jumpCharge = 0f;
@@ -59,14 +61,15 @@ public class PlayerController : MonoBehaviour
         }
 
         // スペースキーが離された
-        if (Input.GetKeyUp(KeyCode.Space) && isCharging)
+        if (Input.GetKeyUp(KeyCode.Space) && isCharging && isGrounded)
         {
             isCharging = false;
-            // JumpAnimation.SetBool(true);
+            animator.SetBool("IsJumping",true);
             Jump();
         }
     }
 
+    //　ジャンプ
     void Jump()
     {
         float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, jumpCharge / chargeTime);
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
         isJumping = true; // ジャンプ中フラグを設定
     }
 
+    //　プレイヤーの方向
     void Flip()
     {
         // プレイヤーの移動方向に応じて向きを反転
@@ -86,15 +90,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //　着地
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(groundTag))
         {
             isGrounded = true;
             isJumping = false;
+            animator.SetBool("IsFall", true);
+            StartCoroutine(StopAnimationCoroutine());
         }
     }
 
+    //　着地して0.2秒後にアニメーションをIdleにする
+    IEnumerator StopAnimationCoroutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        animator.SetBool("IsJumping",false);
+        animator.SetBool("IsFall", false);
+    }
+
+    //　地面から離れた
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(groundTag))
@@ -103,7 +119,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Gizmosで地面判定の半径を視覚化する
+    //　Gizmosで地面判定の半径を視覚化する
     void OnDrawGizmos()
     {
         if (groundCheck != null)
