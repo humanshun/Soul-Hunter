@@ -52,11 +52,13 @@ public class PlayerMovement : MonoBehaviour
         {
             isCharging = true;
             jumpCharge = 0f;
+            animator.SetBool("IsFall", true);
         }
 
         //スペースキーが押されている間
         if (Input.GetKey(KeyCode.Space) && isCharging)
         {
+            animator.SetBool("IsFall", true);
             jumpCharge += Time.deltaTime;
         }
 
@@ -64,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && isCharging && isGrounded)
         {
             isCharging = false;
+            animator.SetBool("IsFall", false);
             animator.SetBool("IsJumping",true);
             Jump();
         }

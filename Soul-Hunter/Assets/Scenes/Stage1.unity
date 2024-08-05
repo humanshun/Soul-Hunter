@@ -1245,6 +1245,9 @@ MonoBehaviour:
   speed: 2
   pointA: {fileID: 692456534}
   pointB: {fileID: 770800147}
+  jumpForce: 10
+  jumpInterval: 4
+  jumpNextInterval: 1
 --- !u!1 &978646448
 GameObject:
   m_ObjectHideFlags: 0
