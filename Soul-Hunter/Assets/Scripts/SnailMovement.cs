@@ -1,38 +1,24 @@
 using UnityEngine;
 
-public class SnailMovement : MonoBehaviour
+public class SnailMovement : WormMovement
 {
-    public float speed = 2.0f; //移動速度
-    public Transform pointA;   //折り返し地点A
-    public Transform pointB;   //折り返し地点B
+    // 追加のカスタムコードをここに記述します
 
-    private Rigidbody2D rb;
-    private Vector2 direction; //移動方向
-
-    void Start()
+    protected override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        direction = Vector2.left; //最初の移動方向を左に設定
+        base.Start();
+        // 必要に応じて開始時の初期化を追加
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        rb.velocity = direction * speed; //rbの横方向に向きと速度を設定
+        base.FixedUpdate();
+        // 必要に応じてフレームごとの処理を追加
     }
 
-    void OnTriggerEnter2D(Collider2D other) //Triggerに当たった時のメソッド
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform == pointA || other.transform == pointB)
-        {
-            direction *= -1; //移動方向を逆にする
-            Flip(); //向きを反転
-        }
-    }
-
-    void Flip() //向きを反転させるメソッド
-    {
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
+        base.OnTriggerEnter2D(other);
+        // 必要に応じてトリガーに当たったときの処理を追加
     }
 }
