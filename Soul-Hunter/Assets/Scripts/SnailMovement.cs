@@ -4,16 +4,18 @@ public class SnailMovement : WormMovement
 {
     protected override void Start()
     {
+        // 基底クラスのStartメソッドを呼び出す
         base.Start();
     }
-
-    protected override void FixedUpdate()
+    protected override void Move()
     {
-        base.FixedUpdate();
+        // 基底クラスのMoveメソッドを呼び出す
+        base.Move();
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other)
+    protected override void CheckDirection()
     {
-        base.OnTriggerEnter2D(other);
+        // 基底クラスのCheckDirectionメソッドを呼び出す
+        base.CheckDirection();
     }
 }
