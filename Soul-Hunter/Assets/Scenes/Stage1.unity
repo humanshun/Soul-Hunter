@@ -608,7 +608,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4546587588851607527, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.37
+      value: 7.24
       objectReference: {fileID: 0}
     - target: {fileID: 4546587588851607527, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1123,7 +1123,7 @@ Transform:
   m_GameObject: {fileID: 887026588}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.13, y: -3.17, z: 0}
+  m_LocalPosition: {x: 11.13, y: -2.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1242,12 +1242,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0170633edd90674c816a821433b3231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 7
   pointA: {fileID: 692456534}
   pointB: {fileID: 770800147}
   jumpForce: 10
-  jumpInterval: 4
-  jumpNextInterval: 1
+  minJumpInterval: 3
+  maxJumpInterval: 6
 --- !u!1 &978646448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,8 +1857,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515466143}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.1, y: -3.66, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -1.1000004, y: -3.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
