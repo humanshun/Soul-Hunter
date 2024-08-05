@@ -17,7 +17,7 @@ public class WormMovement : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        rb.velocity = direction * speed; //rbの横方向に向きと速度を設定
+        rb.AddForce(direction * speed); //rbの横方向に向きと速度を設定
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other) //Triggerに当たった時のメソッド
