@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SnailMovement : WormMovement
+public class SnailMovement : BaseEnemyMovement
 {
     protected override void Start()
     {

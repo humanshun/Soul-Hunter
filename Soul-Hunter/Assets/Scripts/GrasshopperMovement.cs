@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GrasshopperMovement : WormMovement
+public class GrasshopperMovement : BaseEnemyMovement
 {
     private Animator anim;
     public float jumpForce = 5.0f; // ジャンプ力

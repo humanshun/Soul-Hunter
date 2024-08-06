@@ -503,7 +503,6 @@ GameObject:
   - component: {fileID: 231834479}
   - component: {fileID: 231834475}
   - component: {fileID: 231834478}
-  - component: {fileID: 231834477}
   - component: {fileID: 231834480}
   m_Layer: 0
   m_Name: Player
@@ -573,58 +572,14 @@ Transform:
   m_GameObject: {fileID: 231834474}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.35, y: -5.24, z: 0}
+  m_LocalPosition: {x: -13.32, y: -6.22, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1798730380}
   - {fileID: 2003089605}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &231834477
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231834474}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: d31b9188a7af9ac45a337bebfd6d0073, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.043549538, y: -0.020963669}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.6, y: 9.6}
-    newSize: {x: 9.6, y: 9.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.114496, y: 3.632225}
-  m_EdgeRadius: 0
 --- !u!50 &231834478
 Rigidbody2D:
   serializedVersion: 4
@@ -669,6 +624,7 @@ MonoBehaviour:
   chargeTime: 1
   minJumpForce: 10
   groundTag: Ground
+  enemyTag: Enemy
   groundCheck: {fileID: 2003089605}
   groundCheckRadius: 0.2
 --- !u!95 &231834480
@@ -764,7 +720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 334215642}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: GrasshopperCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1826,13 +1782,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987226930}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.18189235, w: 0.98331845}
-  m_LocalPosition: {x: 0.73, y: -0.2, z: -0.018499196}
+  m_LocalRotation: {x: 0, y: 0, z: 0.052335896, w: 0.9986295}
+  m_LocalPosition: {x: 0.6, y: -2.02, z: -0.018499196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 803608495}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20.96}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6}
 --- !u!70 &987226932
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1866,7 +1822,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 3, y: 5.78}
+  m_Size: {x: 3, y: 9.09}
   m_Direction: 0
 --- !u!1 &1010889150
 GameObject:
@@ -2098,7 +2054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1055637243}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: WormCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2275,7 +2231,7 @@ Transform:
   m_GameObject: {fileID: 1227988529}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.6298409, y: -6.531907, z: -0.015605375}
+  m_LocalPosition: {x: 4.09, y: -6.531907, z: -0.015605375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2533,7 +2489,7 @@ GameObject:
   - component: {fileID: 1422172478}
   - component: {fileID: 1422172479}
   m_Layer: 0
-  m_Name: Body
+  m_Name: GrasshopperBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2788,7 +2744,7 @@ GameObject:
   - component: {fileID: 1515466144}
   - component: {fileID: 1515466145}
   m_Layer: 0
-  m_Name: Foot
+  m_Name: GrasshopperFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3110,8 +3066,8 @@ GameObject:
   - component: {fileID: 1603373357}
   - component: {fileID: 1603373358}
   m_Layer: 0
-  m_Name: Head
-  m_TagString: Untagged
+  m_Name: WormHead
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3125,7 +3081,7 @@ Transform:
   m_GameObject: {fileID: 1603373356}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.85, y: 0.27, z: 0}
+  m_LocalPosition: {x: -0.85, y: 0.304, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3164,7 +3120,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.25, y: 1.69}
+  m_Size: {x: 0.98, y: 1.57}
   m_Direction: 0
 --- !u!1 &1610652602
 GameObject:
@@ -3581,6 +3537,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1798730379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1798730380}
+  - component: {fileID: 1798730381}
+  m_Layer: 0
+  m_Name: PlayerCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1798730380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798730379}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 231834476}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!70 &1798730381
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798730379}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d31b9188a7af9ac45a337bebfd6d0073, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 3.5, y: 6.5}
+  m_Direction: 0
 --- !u!1001 &1807079001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4313,13 +4336,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054769429}
-  - component: {fileID: 2054769432}
+  - component: {fileID: 2054769434}
+  - component: {fileID: 2054769435}
   - component: {fileID: 2054769431}
   - component: {fileID: 2054769430}
   - component: {fileID: 2054769433}
   m_Layer: 0
   m_Name: Enemy_Worm
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4419,21 +4443,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2054769432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054769427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009f9e3e148b0254fa7b3a6e187b3007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  pointA: {fileID: 260899001}
-  pointB: {fileID: 2080134232}
 --- !u!95 &2054769433
 Animator:
   serializedVersion: 5
@@ -4455,6 +4464,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2054769434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054769427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1275af72a9462a3499b1d2f3e9b575e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  pointA: {fileID: 260899001}
+  pointB: {fileID: 2080134232}
+--- !u!114 &2054769435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054769427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62744f1918a6bfd4387adbaed8726efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 5
 --- !u!1 &2062476580
 GameObject:
   m_ObjectHideFlags: 0
@@ -4533,8 +4570,8 @@ GameObject:
   - component: {fileID: 2064954998}
   - component: {fileID: 2064954999}
   m_Layer: 0
-  m_Name: Body
-  m_TagString: Untagged
+  m_Name: WormBody
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4677,7 +4714,7 @@ GameObject:
   - component: {fileID: 2337938577705108695}
   - component: {fileID: 4713246557014913091}
   m_Layer: 0
-  m_Name: Shell
+  m_Name: SnailShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4858,7 +4895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5328464948591121057}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: SnailCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4928,8 +4965,8 @@ GameObject:
   - component: {fileID: 229521768430959057}
   - component: {fileID: 763719018281780583}
   m_Layer: 0
-  m_Name: Head
-  m_TagString: Untagged
+  m_Name: SnailHead
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5162,7 +5199,7 @@ GameObject:
   - component: {fileID: 2882206692702367055}
   - component: {fileID: 5925956754609638672}
   m_Layer: 0
-  m_Name: Body
+  m_Name: SnailBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

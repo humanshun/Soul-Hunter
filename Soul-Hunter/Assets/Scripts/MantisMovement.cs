@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MantisMovement : WormMovement
+public class MantisMovement : BaseEnemyMovement
 {
     public Animator animator;
     public Collider2D targetArea;
@@ -19,7 +19,7 @@ public class MantisMovement : WormMovement
         base.Move(); // 通常の移動処理を行う
     }
     
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (!isAttacking && targetArea != null && targetArea.IsTouching(other) && other.gameObject.CompareTag("Player"))
         {
