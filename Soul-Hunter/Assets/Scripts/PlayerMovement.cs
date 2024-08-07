@@ -104,6 +104,19 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsFall", true);
             StartCoroutine(StopAnimationCoroutine());
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, maxJumpForce);
+        }
     }
 
     //着地して0.2秒後にアニメーションをIdleにする

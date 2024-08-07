@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WormHPManager : BaseEnemyHP
+public class GrasshopperHPManager : BaseEnemyHP
 {
     protected override void Start()
     {
         base.Start();
     }
+
     // void Update()
     // {
     //     Debug.Log(currentHP);
