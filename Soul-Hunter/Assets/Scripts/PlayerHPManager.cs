@@ -1,28 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class BaseEnemyHP : MonoBehaviour
+public class PlayerHPManager : MonoBehaviour
 {
     public int maxHP = 0;
-    protected int currentHP;
-
+    private int currentHP;
     public float invincibilityDuration = 5f; // 無敵時間の長さ（秒）
-    protected bool isInvincible = false; // 無敵状態を管理するフラグ
-
-    protected virtual void Start()
+    private bool isInvincible = false; // 無敵状態を管理するフラグ
+    void Start()
     {
         currentHP = maxHP;
     }
-    public virtual void OnTriggerEnter2D(Collider2D other)
+    // void Update()
+    // {
+    //     Debug.Log("現在のHP : " + currentHP);
+    // }
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("PlayerFoot"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(1);
         }
     }
-
-    public virtual void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         if (!isInvincible)
         {
@@ -38,13 +40,12 @@ public class BaseEnemyHP : MonoBehaviour
             }
         }
     }
-
-    protected virtual void Die()
+    void Die()
     {
-        Destroy(gameObject);
+        GM.Instance.Life--;
     }
 
-    protected IEnumerator BecomeInvincible()
+    IEnumerator BecomeInvincible()
     {
         isInvincible = true;
         yield return new WaitForSeconds(invincibilityDuration);

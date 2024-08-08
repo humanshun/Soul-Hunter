@@ -104,11 +104,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsFall", true);
             StartCoroutine(StopAnimationCoroutine());
         }
-
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
