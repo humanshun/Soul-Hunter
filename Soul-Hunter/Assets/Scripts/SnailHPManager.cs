@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SnailHPManager : BaseEnemyHP
 {
+    public GameObject ShellPrefab;
     protected override void Start()
     {
         base.Start();
@@ -17,5 +18,10 @@ public class SnailHPManager : BaseEnemyHP
     protected override void Die()
     {
         base.Die();
+        DestroyObject();
+    }
+    void DestroyObject()
+    {
+        Instantiate(ShellPrefab, transform.position, transform.rotation);
     }
 }

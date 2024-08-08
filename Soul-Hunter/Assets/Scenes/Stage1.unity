@@ -2836,6 +2836,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5841106218094152610, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
+      propertyPath: ShellPrefab
+      value: 
+      objectReference: {fileID: 8739832933168337572, guid: 7d8056b2f9f80f042a08e9f6256af6af, type: 3}
     - target: {fileID: 6741036457607388154, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
       propertyPath: pointA
       value: 
@@ -2844,6 +2848,10 @@ PrefabInstance:
       propertyPath: pointB
       value: 
       objectReference: {fileID: 405763960}
+    - target: {fileID: 6741036457607388154, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
+      propertyPath: ShellPrefab
+      value: 
+      objectReference: {fileID: 8739832933168337572, guid: 7d8056b2f9f80f042a08e9f6256af6af, type: 3}
     - target: {fileID: 8538041510477444407, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
       propertyPath: m_Name
       value: Enemy_Snail
@@ -3642,6 +3650,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5841106218094152610, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
+      propertyPath: ShellPrefab
+      value: 
+      objectReference: {fileID: 8739832933168337572, guid: 7d8056b2f9f80f042a08e9f6256af6af, type: 3}
     - target: {fileID: 6741036457607388154, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
       propertyPath: pointA
       value: 
@@ -3650,6 +3662,10 @@ PrefabInstance:
       propertyPath: pointB
       value: 
       objectReference: {fileID: 683901674}
+    - target: {fileID: 6741036457607388154, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
+      propertyPath: ShellPrefab
+      value: 
+      objectReference: {fileID: 8739832933168337572, guid: 7d8056b2f9f80f042a08e9f6256af6af, type: 3}
     - target: {fileID: 8538041510477444407, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
       propertyPath: m_Name
       value: Enemy_Snail (1)
@@ -4565,6 +4581,101 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+--- !u!1 &2118647003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118647006}
+  - component: {fileID: 2118647005}
+  - component: {fileID: 2118647004}
+  m_Layer: 0
+  m_Name: Enemy_Snail_Shell
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!58 &2118647004
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118647003}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.77
+--- !u!50 &2118647005
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118647003}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!4 &2118647006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118647003}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2127939196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4639,3 +4750,4 @@ SceneRoots:
   - {fileID: 1943534180}
   - {fileID: 978646452}
   - {fileID: 1428866424}
+  - {fileID: 2118647006}
