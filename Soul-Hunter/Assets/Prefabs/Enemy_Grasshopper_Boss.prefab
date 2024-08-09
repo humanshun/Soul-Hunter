@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 5833482792949385438}
   - component: {fileID: 8959619320647538974}
   m_Layer: 0
-  m_Name: Enemy_Grasshopper
+  m_Name: Enemy_Grasshopper_Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   speed: 7
   pointA: {fileID: 0}
   pointB: {fileID: 0}
-  jumpForce: 10
+  jumpForce: 15
   minJumpInterval: 3
   maxJumpInterval: 6
 --- !u!114 &3396286082559764497

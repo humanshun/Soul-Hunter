@@ -38,7 +38,7 @@ public class GrasshopperMovement : BaseEnemyMovement
         yield return new WaitForSeconds(randomInterval); // ジャンプ間隔待つ
         anim.SetBool("IsIdle", false);
         anim.SetBool("IsPreparation", true);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         anim.SetBool("IsPreparation", false);
         anim.SetBool("IsJump", true);
         Jump(); // ジャンプ

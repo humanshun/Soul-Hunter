@@ -7,7 +7,7 @@ public class GM : MonoBehaviour
 {
 
     [SerializeField] private static int life = 3;
-    [SerializeField] private string gameOverScene;
+    [SerializeField] private string gameOverScene = "GameOver";
     [SerializeField] private string currentStage;
 
     // シングルトンインスタンス
