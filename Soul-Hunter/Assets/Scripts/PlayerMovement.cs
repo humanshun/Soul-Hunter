@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = false;      //プレイヤーが地面にいるかどうか
     private bool isJumping = false;       //プレイヤーがジャンプしているかどうか
     private Animator animator;
+    private bool doubleJump = false;
+    public int jumpCount = 0;
 
     void Start()
     {
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleJump();
+        DoubleJump();
         Move();
         Flip();
     }
@@ -70,6 +73,36 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsFall", false);
             animator.SetBool("IsJumping",true);
             Jump();
+            jumpCount++;
+        }
+    }
+    void DoubleJump()
+    {
+        if (jumpCount == 1 && isJumping == true && doubleJump == true)
+        {
+            //スペースキーが押され始めた
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isCharging = true;
+                jumpCharge = 0f;
+                animator.SetBool("IsFall", true);
+            }
+            //スペースキーが押されている間
+            if (Input.GetKey(KeyCode.Space) && isCharging)
+            {
+                animator.SetBool("IsFall", true);
+                jumpCharge += Time.deltaTime;
+            }
+
+            //スペースキーが離された
+            if (Input.GetKeyUp(KeyCode.Space) && isCharging)
+            {
+                isCharging = false;
+                animator.SetBool("IsFall", false);
+                animator.SetBool("IsJumping",true);
+                Jump();
+                jumpCount++;
+            }
         }
     }
 
@@ -101,8 +134,23 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
             isJumping = false;
+            jumpCount = 0;
             animator.SetBool("IsFall", true);
             StartCoroutine(StopAnimationCoroutine());
+        }
+
+        // if (Input.GetKeyDown(KeyCode.S))
+        // {
+        //     Destroy(collision.gameObject);
+        //     doubleJump = true;
+        // }
+    }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (Input.GetKeyDown(KeyCode.S) && collision.gameObject.CompareTag("JumpAbilities"))
+        {
+            Destroy(collision.gameObject);
+            doubleJump = true;
         }
     }
 
@@ -112,14 +160,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, maxJumpForce);
         }
-    }
-
-    //着地して0.2秒後にアニメーションをIdleにする
-    IEnumerator StopAnimationCoroutine()
-    {
-        yield return new WaitForSeconds(0.2f);
-        animator.SetBool("IsJumping",false);
-        animator.SetBool("IsFall", false);
     }
 
     //地面から離れた
@@ -139,5 +179,12 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
+    }
+    //着地して0.2秒後にアニメーションをIdleにする
+    IEnumerator StopAnimationCoroutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        animator.SetBool("IsJumping",false);
+        animator.SetBool("IsFall", false);
     }
 }

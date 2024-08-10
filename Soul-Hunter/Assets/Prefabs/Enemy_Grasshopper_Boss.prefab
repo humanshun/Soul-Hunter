@@ -236,6 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 3
   invincibilityDuration: 5
+  hpSlider: {fileID: 0}
+  clearJugeManager: {fileID: 0}
+  DeathGrasshopperPrefab: {fileID: 0}
 --- !u!212 &6604914363086686190
 SpriteRenderer:
   m_ObjectHideFlags: 0
