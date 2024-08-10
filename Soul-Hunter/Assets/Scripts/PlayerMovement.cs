@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 0f;          //移動速度
-    public float maxJumpForce = 0f;       //最大ジャンプ力
-    public float chargeTime = 0f;         //最大ジャンプ力に達するまでの時間
-    public float minJumpForce = 0f;       //最小ジャンプ力
-    public string groundTag = "Ground";   //地面のタグ
-    public Transform groundCheck;         //地面判定用の子オブジェクト
-    public float groundCheckRadius = 0f;  //地面判定用の半径
+    [SerializeField] private float moveSpeed = 0f;          //移動速度
+    [SerializeField] private float maxJumpForce = 0f;       //最大ジャンプ力
+    [SerializeField] private float chargeTime = 0f;         //最大ジャンプ力に達するまでの時間
+    [SerializeField] private float minJumpForce = 0f;       //最小ジャンプ力
+    [SerializeField] private string groundTag = "Ground";   //地面のタグ
+    [SerializeField] private Transform groundCheck;         //地面判定用の子オブジェクト
+    [SerializeField] private float groundCheckRadius = 0f;  //地面判定用の半径
 
     private bool isCharging = false;      //チャージしているかどうか
     private float jumpCharge = 0f;        //チャージ時間
@@ -18,8 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = false;      //プレイヤーが地面にいるかどうか
     private bool isJumping = false;       //プレイヤーがジャンプしているかどうか
     private Animator animator;
-    private bool doubleJump = false;
-    public int jumpCount = 0;
+    // private static bool doubleJump = false;
+    public bool doubleJump = false;
+    [SerializeField] private int jumpCount = 0;
 
     void Start()
     {
@@ -159,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             rb.velocity = new Vector2(rb.velocity.x, maxJumpForce);
+            jumpCount = 1;
         }
     }
 

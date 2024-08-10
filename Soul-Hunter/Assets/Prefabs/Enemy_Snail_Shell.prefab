@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8827382285552338568}
   - component: {fileID: 3765094008335469067}
   - component: {fileID: 6583681150037509861}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_Snail_Shell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

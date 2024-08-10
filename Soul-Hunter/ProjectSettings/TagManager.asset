@@ -8,7 +8,6 @@ TagManager:
   - Enemy
   - PlayerFoot
   - JumpAbilities
-  - AttackAbilities
   layers:
   - Default
   - TransparentFX
