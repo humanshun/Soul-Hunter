@@ -1267,7 +1267,7 @@ MonoBehaviour:
   currentHP: 0
   invincibilityDuration: 1
   isInvincible: 0
-  hpText: {fileID: 1739138356}
+  lifeText: {fileID: 1739138356}
   damageImages:
   - {fileID: 1039048684}
   - {fileID: 1916983426}
