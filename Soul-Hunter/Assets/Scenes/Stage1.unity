@@ -1089,6 +1089,10 @@ PrefabInstance:
       propertyPath: wormPrefab
       value: 
       objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
+    - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1230,6 +1234,8 @@ MonoBehaviour:
   groundTag: Ground
   groundCheck: {fileID: 2003089605}
   groundCheckRadius: 0.86
+  doubleJump: 0
+  jumpCount: 0
 --- !u!95 &231834480
 Animator:
   serializedVersion: 5
@@ -1561,6 +1567,10 @@ PrefabInstance:
       objectReference: {fileID: 612588781}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: wormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
+    - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
       value: 
       objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     m_RemovedComponents: []
@@ -1986,6 +1996,10 @@ PrefabInstance:
       propertyPath: wormPrefab
       value: 
       objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
+    - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2245,6 +2259,10 @@ PrefabInstance:
       objectReference: {fileID: 764457364}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: wormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
+    - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
       value: 
       objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     m_RemovedComponents: []
@@ -2600,6 +2618,10 @@ PrefabInstance:
       propertyPath: wormPrefab
       value: 
       objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
+    - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2672,6 +2694,10 @@ PrefabInstance:
       objectReference: {fileID: 1093782916}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: wormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
+    - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
       value: 
       objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     m_RemovedComponents: []
@@ -5843,6 +5869,10 @@ PrefabInstance:
       propertyPath: wormPrefab
       value: 
       objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
+    - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6513,7 +6543,7 @@ Transform:
   m_GameObject: {fileID: 1659234385}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 426.54, y: -21.6, z: 0}
+  m_LocalPosition: {x: 426.54, y: -20.9, z: 0}
   m_LocalScale: {x: 46.8, y: 52.13, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7248,6 +7278,10 @@ PrefabInstance:
       objectReference: {fileID: 1358186599}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: wormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
+    - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
       value: 
       objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     m_RemovedComponents: []
@@ -8116,6 +8150,10 @@ PrefabInstance:
       objectReference: {fileID: 1407355033}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: wormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
+    - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
       value: 
       objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     m_RemovedComponents: []

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WormDeathMovement : MonoBehaviour
+public class EnemyDeathMovement : MonoBehaviour
 {
     void Start()
     {
@@ -10,7 +10,7 @@ public class WormDeathMovement : MonoBehaviour
     }
     IEnumerator DestroyTime()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         Destroy(gameObject);
     }
 }

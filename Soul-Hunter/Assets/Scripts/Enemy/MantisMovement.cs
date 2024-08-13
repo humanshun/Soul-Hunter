@@ -5,9 +5,15 @@ using UnityEngine;
 public class MantisMovement : BaseEnemyMovement
 {
     public Animator animator;
-    public Collider2D targetArea;
+    public float minJumpInterval = 3.0f; // 間隔の最小値
+    public float maxJumpInterval = 6.0f; // 間隔の最大値
     private bool isAttacking = false; // フラグを追加
 
+    protected override void Start()
+    {
+        StartCoroutine(RandomCoroutine());
+        base.Start();
+    }
     protected override void Move()
     {
         if (isAttacking) // 攻撃中は移動しない
@@ -19,12 +25,11 @@ public class MantisMovement : BaseEnemyMovement
         base.Move(); // 通常の移動処理を行う
     }
     
-    void OnTriggerStay2D(Collider2D other)
+    private IEnumerator RandomCoroutine()
     {
-        if (!isAttacking && targetArea != null && targetArea.IsTouching(other) && other.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine(Attack());
-        }
+        float randomInterval = Random.Range(minJumpInterval, maxJumpInterval);
+        yield return new WaitForSeconds(randomInterval);
+        StartCoroutine(Attack());
     }
 
     private IEnumerator Attack()
@@ -45,5 +50,6 @@ public class MantisMovement : BaseEnemyMovement
         animator.SetBool("IsWark", true);
 
         isAttacking = false; // コルーチンの終了時にフラグを解除
+        StartCoroutine(RandomCoroutine());
     }
 }
