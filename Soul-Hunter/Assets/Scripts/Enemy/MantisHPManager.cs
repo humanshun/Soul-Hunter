@@ -8,10 +8,6 @@ public class MantisHPManager : BaseEnemyHP
     {
         base.Start();
     }
-    void Update()
-    {
-        Debug.Log(currentHP);
-    }
 
     public override void TakeDamage(int damage)
     {

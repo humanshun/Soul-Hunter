@@ -5,8 +5,8 @@ using UnityEngine;
 public class MantisMovement : BaseEnemyMovement
 {
     public Animator animator;
-    public float minJumpInterval = 3.0f; // 間隔の最小値
-    public float maxJumpInterval = 6.0f; // 間隔の最大値
+    public float minAttackInterval = 3.0f; // 攻撃間隔の最小値
+    public float maxAttackInterval = 6.0f; // 攻撃間隔の最大値
     private bool isAttacking = false; // フラグを追加
 
     protected override void Start()
@@ -27,7 +27,7 @@ public class MantisMovement : BaseEnemyMovement
     
     private IEnumerator RandomCoroutine()
     {
-        float randomInterval = Random.Range(minJumpInterval, maxJumpInterval);
+        float randomInterval = Random.Range(minAttackInterval, maxAttackInterval);
         yield return new WaitForSeconds(randomInterval);
         StartCoroutine(Attack());
     }

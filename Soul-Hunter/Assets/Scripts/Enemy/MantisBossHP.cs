@@ -21,11 +21,6 @@ public class MantisBossHP : BaseEnemyHP
         }
     }
 
-    // void Update()
-    // {
-    //     Debug.Log(currentHP);
-    // }
-
     public override void OnTriggerEnter2D(Collider2D other)
     {
         //何かしら修正が必要。攻撃したときもダメージを受けてしまう。

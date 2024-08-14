@@ -1685,6 +1685,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7768641690013193559, guid: 58774e9b7877d614388551744e28193a, type: 3}
+      propertyPath: hpSlider
+      value: 
+      objectReference: {fileID: 1964235196}
+    - target: {fileID: 7768641690013193559, guid: 58774e9b7877d614388551744e28193a, type: 3}
+      propertyPath: clearJugeManager
+      value: 
+      objectReference: {fileID: 1803672259}
     - target: {fileID: 8432217436916679094, guid: 58774e9b7877d614388551744e28193a, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -1701,38 +1709,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8587508526738592912, guid: 58774e9b7877d614388551744e28193a, type: 3}
-    m_RemovedGameObjects:
-    - {fileID: 3275557161249479543, guid: 58774e9b7877d614388551744e28193a, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8714145288552778976, guid: 58774e9b7877d614388551744e28193a, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 713957611}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58774e9b7877d614388551744e28193a, type: 3}
---- !u!1 &713957606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8714145288552778976, guid: 58774e9b7877d614388551744e28193a, type: 3}
-  m_PrefabInstance: {fileID: 710296111}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &713957611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713957606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 145fd2a10f22c784c917621e7fed7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 5
-  invincibilityDuration: 3
-  hpSlider: {fileID: 1964235196}
-  clearJugeManager: {fileID: 1803672259}
-  DeathMantisPrefab: {fileID: 1224809063037472378, guid: 4d6992df3e448ce4888fa52830433b83, type: 3}
 --- !u!4 &755740830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 379225308834141406, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
