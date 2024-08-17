@@ -477,6 +477,7 @@ MonoBehaviour:
   groundTag: Ground
   groundCheck: {fileID: 1769467775}
   groundCheckRadius: 0.86
+  doubleJump: 0
   jumpCount: 0
 --- !u!4 &226744938
 Transform:
@@ -1857,10 +1858,14 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 7.68
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3396286082559764497, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6498525600271232282, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1476329206}
   m_SourcePrefab: {fileID: 100100000, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
 --- !u!1 &953537721
 GameObject:
@@ -2678,6 +2683,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1476329200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6498525600271232282, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
+  m_PrefabInstance: {fileID: 908515366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1476329206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476329200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d055a95b18b6fe4e99b8fa5dd942ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 5
+  invincibilityDuration: 5
+  hpSlider: {fileID: 1964235196}
+  clearJugeManager: {fileID: 1803672259}
+  DeathGrasshopperPrefab: {fileID: 1224809063037472378, guid: 4d6992df3e448ce4888fa52830433b83, type: 3}
 --- !u!1 &1522639075
 GameObject:
   m_ObjectHideFlags: 0

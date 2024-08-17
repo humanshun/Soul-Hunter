@@ -534,7 +534,7 @@ MonoBehaviour:
   groundTag: Ground
   groundCheck: {fileID: 1769467775}
   groundCheckRadius: 0.86
-  doubleJump: 0
+  doubleJump: 1
   jumpCount: 0
 --- !u!4 &226744938
 Transform:
