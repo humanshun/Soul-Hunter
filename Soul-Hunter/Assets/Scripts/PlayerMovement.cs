@@ -101,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
                 isCharging = false;
                 animator.SetBool("IsFall", false);
                 animator.SetBool("IsJumping",true);
+                rb.velocity = new Vector2(0, 0);
                 Jump();
                 jumpCount++;
             }
