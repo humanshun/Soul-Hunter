@@ -56,9 +56,29 @@ public class PlayerHPManager : MonoBehaviour
     IEnumerator BecomeInvincible()
     {
         isInvincible = true;
-        yield return new WaitForSeconds(invincibilityDuration);
+
+        // プレイヤーのスプライトレンダラーを取得
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        float blinkDuration = 0.1f;  // 点滅の間隔
+        float elapsedTime = 0f;
+
+        while (elapsedTime < invincibilityDuration)
+        {
+            // スプライトの透明度を変更
+            spriteRenderer.color = new Color(1f, 1f, 1f, 0f); // 透明にする
+            yield return new WaitForSeconds(blinkDuration);
+            
+            spriteRenderer.color = new Color(1f, 1f, 1f, 1f); // 元に戻す
+            yield return new WaitForSeconds(blinkDuration);
+            
+            elapsedTime += blinkDuration * 2;
+        }
+
+        // 無敵状態が終了したらスプライトの透明度を元に戻す
+        spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
         isInvincible = false;
-    }
+}
     void UpdateHPText()
     {
         if (lifeText != null)

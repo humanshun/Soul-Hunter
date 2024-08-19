@@ -50,7 +50,7 @@ public class ParallaxBackground_0 : MonoBehaviour
         for (int i = 0; i < Layer_Objects.Length; i++)
         {
             // カメラの位置に基づくオフセットを計算
-            float temp = (_camera.position.x * (1 - Layer_Speed[i]));
+            float temp = _camera.position.x * (1 - Layer_Speed[i]);
             // レイヤーの移動量を計算
             float distance = _camera.position.x * Layer_Speed[i];
 

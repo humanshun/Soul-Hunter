@@ -1165,6 +1165,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851492744570606287, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: pointA
       value: 
@@ -1274,7 +1278,6 @@ Transform:
   m_Children:
   - {fileID: 89767250}
   - {fileID: 2003089605}
-  - {fileID: 1058465894}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &231834478
@@ -1730,6 +1733,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851492744570606287, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: pointA
       value: 
@@ -1916,7 +1923,8 @@ Transform:
   m_LocalPosition: {x: 1.9, y: -0.1, z: 0}
   m_LocalScale: {x: 2.0010002, y: 2.0010002, z: 2.0010002}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1058465894}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &441794057
@@ -2172,6 +2180,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851492744570606287, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: pointA
       value: 
@@ -2437,6 +2449,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851492744570606287, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: pointA
       value: 
@@ -2795,6 +2811,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851492744570606287, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: pointA
       value: 
@@ -2873,6 +2893,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851492744570606287, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: pointA
       value: 
@@ -4591,11 +4615,11 @@ Transform:
   m_GameObject: {fileID: 1058465891}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 58.3, y: 20.933332, z: -10}
-  m_LocalScale: {x: 3.333333, y: 3.333333, z: 1}
+  m_LocalPosition: {x: 1.1344328, y: 0.04997501, z: -4.997501}
+  m_LocalScale: {x: 0.49975008, y: 0.49975008, z: 0.4997501}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 231834476}
+  m_Father: {fileID: 441794056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1059495162 stripped
 Transform:
@@ -6293,6 +6317,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851492744570606287, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: pointA
       value: 
@@ -8004,6 +8032,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851492744570606287, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: pointA
       value: 
@@ -8958,6 +8990,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851492744570606287, guid: f2879f47e57922b418051659a9855c3a, type: 3}
+      propertyPath: destoryWormPrefab
+      value: 
+      objectReference: {fileID: 2691607387995323075, guid: 762c34e161c24ab4686d0c5766bcf053, type: 3}
     - target: {fileID: 6230656785647795226, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: pointA
       value: 

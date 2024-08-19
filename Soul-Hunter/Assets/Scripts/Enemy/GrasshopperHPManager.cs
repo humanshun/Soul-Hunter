@@ -14,10 +14,7 @@ public class GrasshopperHPManager : BaseEnemyHP
 
     protected override void Die()
     {
-        base.Die();
-    }
-    private void OnDestroy()
-    {
         Instantiate(DeathGrasshopperPrefab, transform.position, Quaternion.identity);
+        base.Die();
     }
 }

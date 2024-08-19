@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class WormHPManager : BaseEnemyHP
 {
+    [SerializeField] public GameObject destoryWormPrefab;
     protected override void Start()
     {
         base.Start();
     }
-    // void Update()
-    // {
-    //     Debug.Log(currentHP);
-    // }
 
     public override void TakeDamage(int damage)
     {
@@ -20,6 +17,7 @@ public class WormHPManager : BaseEnemyHP
 
     protected override void Die()
     {
+        Instantiate(destoryWormPrefab, transform.position, Quaternion.identity);
         base.Die();
     }
 }

@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class WarmMovement : BaseEnemyMovement
 {
-    [SerializeField] public GameObject destoryWormPrefab;
-    void OnDestroy()
-    {
-        Instantiate(destoryWormPrefab, transform.position, Quaternion.identity);
-    }
+    
 }
