@@ -282,8 +282,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8795175378826193936}
-  - component: {fileID: 2949219814342719847}
   - component: {fileID: 2997978143150268147}
+  - component: {fileID: 2949219814342719847}
   - component: {fileID: 9164149593392803011}
   m_Layer: 0
   m_Name: Enemy_Pheropsophus
@@ -309,20 +309,6 @@ Transform:
   - {fileID: 306403623794337589}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2949219814342719847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3040027525786922101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc83be027fa7f8b40a689d7a5cb13406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 0
-  invincibilityDuration: 5
 --- !u!114 &2997978143150268147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +324,20 @@ MonoBehaviour:
   speed: 4
   pointA: {fileID: 0}
   pointB: {fileID: 0}
+--- !u!114 &2949219814342719847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040027525786922101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc83be027fa7f8b40a689d7a5cb13406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 0
+  invincibilityDuration: 5
 --- !u!50 &9164149593392803011
 Rigidbody2D:
   serializedVersion: 4
