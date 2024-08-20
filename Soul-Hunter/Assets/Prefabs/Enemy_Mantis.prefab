@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 72.94703, y: -2.7022836, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3691222589490340764}
@@ -52,8 +52,8 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   animator: {fileID: 7598755282049599962}
-  minJumpInterval: 3
-  maxJumpInterval: 6
+  minAttackInterval: 1
+  maxAttackInterval: 3
 --- !u!114 &9153424457556679346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc2cd3191f71e442a5201ea1ce22c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
+  maxHP: 2
+  spriteRenderer: {fileID: 2920910282285584518}
   invincibilityDuration: 5
 --- !u!50 &1982886459093828981
 Rigidbody2D:

@@ -21,7 +21,17 @@ public class GrasshopperMovement : BaseEnemyMovement
         // ジャンプ中のみ移動
         if (isJumping)
         {
-            // 基底クラスのMoveメソッドを呼び出す
+            // 向きを変更するかチェック
+            if (movingLeft && isFacingRight)
+            {
+                isFacingRight = !isFacingRight;
+                transform.localScale = new Vector3(0.5f, 0.5f, 1); // 反転して左を向く
+            }
+            else if (!movingLeft && !isFacingRight)
+            {
+                isFacingRight = !isFacingRight;
+                transform.localScale = new Vector3(-0.5f, 0.5f, 1); // 右を向く
+            }
             base.Move();
         }
     }

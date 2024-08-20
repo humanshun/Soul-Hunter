@@ -25,7 +25,7 @@ public class PlayerHPManager : MonoBehaviour
     // }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Thorn"))
         {
             TakeDamage(1);
         }
@@ -78,7 +78,7 @@ public class PlayerHPManager : MonoBehaviour
         // 無敵状態が終了したらスプライトの透明度を元に戻す
         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
         isInvincible = false;
-}
+    }
     void UpdateHPText()
     {
         if (lifeText != null)

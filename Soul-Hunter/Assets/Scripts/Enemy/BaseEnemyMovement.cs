@@ -8,8 +8,8 @@ public class BaseEnemyMovement : MonoBehaviour
 
     protected Rigidbody2D rb;
     protected Vector2 direction; //移動方向
-    private bool movingLeft = true; // 現在の移動方向を示すフラグ
-    private bool isFacingRight = false; // 現在の向きを示すフラグ
+    public bool movingLeft = true; // 現在の移動方向を示すフラグ
+    public bool isFacingRight = false; // 現在の向きを示すフラグ
 
     protected virtual void Start()
     {
@@ -38,11 +38,13 @@ public class BaseEnemyMovement : MonoBehaviour
         // 向きを変更するかチェック
         if (movingLeft && isFacingRight)
         {
-            Flip();
+            isFacingRight = !isFacingRight;
+            transform.localScale = new Vector3(1, 1, 1); // 反転して左を向く
         }
         else if (!movingLeft && !isFacingRight)
         {
-            Flip();
+            isFacingRight = !isFacingRight;
+            transform.localScale = new Vector3(-1, 1, 1); // 右を向く
         }
     }
 
@@ -60,13 +62,5 @@ public class BaseEnemyMovement : MonoBehaviour
             // 移動方向を左に変更
             movingLeft = true;
         }
-    }
-
-    protected void Flip() //向きを反転させるメソッド
-    {
-        isFacingRight = !isFacingRight;
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1f;
-        transform.localScale = localScale;
     }
 }

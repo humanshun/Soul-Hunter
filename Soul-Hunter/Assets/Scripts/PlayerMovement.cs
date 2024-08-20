@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxJumpForce = 0f;       //最大ジャンプ力
     [SerializeField] private float chargeTime = 0f;         //最大ジャンプ力に達するまでの時間
     [SerializeField] private float minJumpForce = 0f;       //最小ジャンプ力
-    [SerializeField] private string groundTag = "Ground";   //地面のタグ
     [SerializeField] private Transform groundCheck;         //地面判定用の子オブジェクト
     [SerializeField] private float groundCheckRadius = 0f;  //地面判定用の半径
 
@@ -50,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     void HandleJump()
     {
         //地面にいるかどうかを判定
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask(groundTag));
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Ground"));
 
         //スペースキーが押され始めた
         if (Input.GetKeyDown(KeyCode.Space))
@@ -132,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
     //着地
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(groundTag))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Thorn"))
         {
             isGrounded = true;
             isJumping = false;
@@ -140,12 +139,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsFall", true);
             StartCoroutine(StopAnimationCoroutine());
         }
-
-        // if (Input.GetKeyDown(KeyCode.S))
-        // {
-        //     Destroy(collision.gameObject);
-        //     doubleJump = true;
-        // }
     }
     void OnCollisionStay2D(Collision2D collision)
     {
@@ -168,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
     //地面から離れた
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(groundTag))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Thorn"))
         {
             isGrounded = false;
         }
