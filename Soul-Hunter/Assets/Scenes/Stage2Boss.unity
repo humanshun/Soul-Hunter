@@ -446,7 +446,6 @@ MonoBehaviour:
   maxJumpForce: 15
   chargeTime: 1
   minJumpForce: 10
-  groundTag: Ground
   groundCheck: {fileID: 1769467775}
   groundCheckRadius: 0.86
   doubleJump: 1
@@ -571,7 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
       propertyPath: nextStage
-      value: Stage2
+      value: Stage3
       objectReference: {fileID: 0}
     - target: {fileID: 7314469364852126361, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
       propertyPath: m_Name
@@ -1325,7 +1324,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 681534133}
-  - component: {fileID: 681534134}
   m_Layer: 0
   m_Name: ----------GameManager
   m_TagString: Untagged
@@ -1348,20 +1346,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &681534134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681534132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2860f02606dd17147bd15973089a5912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverScene: GameOver
-  currentStage: Stage2Boss
 --- !u!1001 &710296111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1439,6 +1423,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1964235196}
     - target: {fileID: 7768641690013193559, guid: 58774e9b7877d614388551744e28193a, type: 3}
+      propertyPath: damageSprite
+      value: 
+      objectReference: {fileID: 710296112}
+    - target: {fileID: 7768641690013193559, guid: 58774e9b7877d614388551744e28193a, type: 3}
       propertyPath: clearJugeManager
       value: 
       objectReference: {fileID: 1803672259}
@@ -1463,6 +1451,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58774e9b7877d614388551744e28193a, type: 3}
+--- !u!212 &710296112 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5464025266188088453, guid: 58774e9b7877d614388551744e28193a, type: 3}
+  m_PrefabInstance: {fileID: 710296111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &760174729
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,6 +2192,52 @@ MonoBehaviour:
   - {fileID: 1780273978}
   player: {fileID: 226744938}
   cameraOffsetX: 0
+--- !u!1 &1246035684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1246035686}
+  - component: {fileID: 1246035685}
+  m_Layer: 0
+  m_Name: GM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1246035685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246035684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2860f02606dd17147bd15973089a5912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverScene: GameOver
+  currentStage: Stage2Boss
+--- !u!4 &1246035686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246035684}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1246603375
 GameObject:
   m_ObjectHideFlags: 0
@@ -3738,6 +3777,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 681534133}
+  - {fileID: 1246035686}
   - {fileID: 1803672260}
   - {fileID: 1837328878}
   - {fileID: 1428240108}

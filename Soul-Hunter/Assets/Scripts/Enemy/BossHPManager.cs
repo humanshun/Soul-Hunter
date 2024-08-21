@@ -39,15 +39,13 @@ public class BossHPManager : BaseEnemyHP
 
     protected override void Die()
     {
-        base.Die();
-    }
-    private void OnDestroy()
-    {
         if (clearJugeManager != null)
         {
             clearJugeManager.OnBossDefeated();
-
-            Instantiate(DeathGrasshopperPrefab, transform.position, Quaternion.identity);
         }
+
+        Instantiate(DeathGrasshopperPrefab, transform.position, Quaternion.identity);
+
+        base.Die();
     }
 }

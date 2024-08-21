@@ -9,6 +9,7 @@ TagManager:
   - PlayerFoot
   - JumpAbilities
   - Thorn
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

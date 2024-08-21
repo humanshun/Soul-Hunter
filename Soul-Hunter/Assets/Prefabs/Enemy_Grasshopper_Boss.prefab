@@ -176,8 +176,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 999483833062795550}
-  - component: {fileID: 994875213584545570}
-  - component: {fileID: 3396286082559764497}
+  - component: {fileID: 6956406656568309112}
+  - component: {fileID: 6090275656567444390}
   - component: {fileID: 6604914363086686190}
   - component: {fileID: 5833482792949385438}
   - component: {fileID: 8959619320647538974}
@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6498525600271232282}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.13, y: -2.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -204,7 +204,7 @@ Transform:
   - {fileID: 5957940025042226432}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &994875213584545570
+--- !u!114 &6956406656568309112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,16 +213,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6498525600271232282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0170633edd90674c816a821433b3231, type: 3}
+  m_Script: {fileID: 11500000, guid: beeff985c379026479c35c9ed629bc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
   pointA: {fileID: 0}
   pointB: {fileID: 0}
-  jumpForce: 15
-  minJumpInterval: 3
-  maxJumpInterval: 6
---- !u!114 &3396286082559764497
+  movingLeft: 1
+  isFacingRight: 0
+  jumpForce: 11.5
+  minJumpInterval: 0.1
+  maxJumpInterval: 3
+--- !u!114 &6090275656567444390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,14 +233,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6498525600271232282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f12aa7a6fd08c4995b9682510350b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d055a95b18b6fe4e99b8fa5dd942ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 3
+  maxHP: 5
+  spriteRenderer: {fileID: 0}
   invincibilityDuration: 5
   hpSlider: {fileID: 0}
   clearJugeManager: {fileID: 0}
-  DeathGrasshopperPrefab: {fileID: 0}
+  DeathGrasshopperPrefab: {fileID: 1224809063037472378, guid: 4d6992df3e448ce4888fa52830433b83, type: 3}
 --- !u!212 &6604914363086686190
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -285,7 +288,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 3.84}
+  m_Size: {x: 10.24, y: 7.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

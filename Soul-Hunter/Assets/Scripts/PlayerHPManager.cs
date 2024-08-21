@@ -29,6 +29,12 @@ public class PlayerHPManager : MonoBehaviour
         {
             TakeDamage(1);
         }
+        
+        if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            Destroy(collision.gameObject);
+            TakeDamage(1);
+        }
     }
     public void TakeDamage(int damage)
     {

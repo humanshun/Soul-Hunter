@@ -7,6 +7,9 @@ public class PheropsophusMovement : BaseEnemyMovement
     public Animator animator;
     private bool isAttacking = false;
     public Transform playerTransform;
+    public Transform attackPoint;
+    public GameObject BulletPrefab;
+    public float bulletSpeed = 20f;
     public float detectionRange = 5f; // プレイヤーを検出する距離(威嚇の距離)
     public float attackRange = 2f; // プレイヤーを検出する距離(攻撃の距離)
 
@@ -65,7 +68,19 @@ public class PheropsophusMovement : BaseEnemyMovement
         animator.SetBool("Attack", true);
 
         // アニメーションが終了するまで待つ
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        // yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        yield return new WaitForSeconds(1.5f);
+
+        GameObject bullet = Instantiate(BulletPrefab, attackPoint.position, Quaternion.identity);
+
+        // プレイヤーの方向を計算する
+        Vector2 direction = (playerTransform.position - attackPoint.position).normalized;
+
+        // 弾のRigidbodyに発射方向と速度を適用
+        Rigidbody2D rbody = bullet.GetComponent<Rigidbody2D>();
+        rbody.velocity = direction * bulletSpeed;
+
+        yield return new WaitForSeconds(0.3f);
 
         animator.SetBool("Attack", false);
 
@@ -81,11 +96,13 @@ public class PheropsophusMovement : BaseEnemyMovement
             {
                 // プレイヤーが左側にいる場合
                 transform.localScale = new Vector3(1, 1, 1); // 左を向く
+                movingLeft = true;
             }
             else
             {
                 // プレイヤーが右側にいる場合
                 transform.localScale = new Vector3(-1, 1, 1); // 右を向く
+                movingLeft = false;
             }
         }
     }
