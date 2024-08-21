@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI; // ボタンにアクセスするために必要
 
 public class GM : MonoBehaviour
 {
@@ -8,9 +9,10 @@ public class GM : MonoBehaviour
     [SerializeField] private string gameOverScene = "GameOver";
     [SerializeField] private string currentStage;
     [SerializeField] private GameObject pauseMenu; // ポーズメニューのUI
-    [SerializeField] private GameObject backButton;
-    [SerializeField] private GameObject restartButton;
-    [SerializeField] private GameObject titleButton;
+    [SerializeField] private Button resumeButton;  // Buttonコンポーネントに変更
+    [SerializeField] private Button restartButton; // Buttonコンポーネントに変更
+    [SerializeField] private Button exitButton;    // Buttonコンポーネントに変更
+    [SerializeField] private GameObject[] imageObjects;
 
     // シングルトンインスタンス
     public static GM Instance { get; private set; }
@@ -34,9 +36,19 @@ public class GM : MonoBehaviour
     private void Start()
     {
         pauseMenu.SetActive(false);
-        backButton.SetActive(false);
-        restartButton.SetActive(false);
-        titleButton.SetActive(false);
+        resumeButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
+
+        foreach (GameObject image in imageObjects)
+        {
+            image.SetActive(false);
+        }
+
+        // ボタンにリスナーを登録
+        resumeButton.onClick.AddListener(OnResumeButtonClicked);
+        restartButton.onClick.AddListener(OnRestartButtonClicked);
+        exitButton.onClick.AddListener(OnExitButtonClicked);
     }
 
     private void Update()
@@ -73,17 +85,42 @@ public class GM : MonoBehaviour
         {
             bool isPaused = pauseMenu.activeSelf;
             pauseMenu.SetActive(!isPaused);
-            backButton.SetActive(!isPaused);
-            restartButton.SetActive(!isPaused);
-            titleButton.SetActive(!isPaused);
+            resumeButton.gameObject.SetActive(!isPaused);
+            restartButton.gameObject.SetActive(!isPaused);
+            exitButton.gameObject.SetActive(!isPaused);
+
+            foreach (GameObject image in imageObjects)
+            {
+                image.SetActive(!isPaused);
+            }
             
             Time.timeScale = isPaused ? 1f : 0f; // ゲームを一時停止または再開
 
             if (!isPaused && EventSystem.current != null)
             {
                 // ポーズメニューが表示されたときに最初に選択するボタンを設定
-                EventSystem.current.SetSelectedGameObject(backButton);
+                EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
             }
         }
+    }
+
+    // 「再開」ボタンが押されたときの処理
+    private void OnResumeButtonClicked()
+    {
+        TogglePause();
+    }
+
+    // 「再スタート」ボタンが押されたときの処理
+    private void OnRestartButtonClicked()
+    {
+        TogglePause();
+        SceneManager.LoadScene(currentStage); // 現在のステージを再ロード
+    }
+
+    // 「終了」ボタンが押されたときの処理
+    private void OnExitButtonClicked()
+    {
+        TogglePause();
+        SceneManager.LoadScene("Title"); // メインメニューに戻る
     }
 }
