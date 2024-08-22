@@ -4779,6 +4779,7 @@ MonoBehaviour:
   - {fileID: 713687912}
   player: {fileID: 2033840404}
   cameraOffsetX: 15
+  cameraOffsetY: 6.3
 --- !u!1 &1192271753
 GameObject:
   m_ObjectHideFlags: 0

@@ -8350,6 +8350,7 @@ MonoBehaviour:
   - {fileID: 762308199}
   player: {fileID: 2033840404}
   cameraOffsetX: 15
+  cameraOffsetY: 6.3
 --- !u!4 &1387460934
 Transform:
   m_ObjectHideFlags: 0

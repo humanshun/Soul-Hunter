@@ -22,6 +22,7 @@ public class ParallaxBackground_0 : MonoBehaviour
     private float sizeX;
     // プレイヤーとカメラのオフセット
     public float cameraOffsetX = 5.0f;
+    public float cameraOffsetY = 0f;
 
     void Start()
     {
@@ -44,6 +45,7 @@ public class ParallaxBackground_0 : MonoBehaviour
         // カメラをプレイヤーの位置に連動させる（オフセットを追加）
         Vector3 cameraPosition = _camera.position;
         cameraPosition.x = player.position.x + cameraOffsetX;
+        cameraPosition.y = player.position.y + cameraOffsetY;
         _camera.position = cameraPosition;
 
         // 各レイヤーに対してパララックス効果を適用
