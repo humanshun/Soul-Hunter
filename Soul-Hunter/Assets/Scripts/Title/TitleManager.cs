@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class TitleScreen : MonoBehaviour
     public float blinkInterval = 1.0f;      // フェードイン・フェードアウトの時間
     public Button newGameButton;
     public Button continueButton;
+    public Image fadeOutImage;               // フェードアウト用のイメージ
+    public float fadeOutDuration = 1.0f;    // フェードアウト時間
 
     private bool canStartGame = false;      // ゲーム開始可能かどうかのフラグ
     private bool isMenuVisible = false;     // メニューが表示されているかどうかのフラグ
@@ -23,6 +26,9 @@ public class TitleScreen : MonoBehaviour
         newGameButton.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(false);
 
+        // フェードアウトイメージを初期設定で非表示に
+        fadeOutImage.gameObject.SetActive(false);
+
         // タイトルテキストのアルファ値を0に設定（透明）
         Color titleColor = titleText.color;
         titleColor.a = 0;
@@ -30,6 +36,10 @@ public class TitleScreen : MonoBehaviour
 
         // コルーチンを開始してフェードインと「push space to start」を表示
         StartCoroutine(FadeInTitle());
+
+        // ボタンのクリックイベントにメソッドを追加
+        newGameButton.onClick.AddListener(() => StartCoroutine(FadeOutAndLoadScene("StageSelect")));
+        continueButton.onClick.AddListener(() => StartCoroutine(FadeOutAndLoadScene("StageSelect")));
     }
 
     void Update()
@@ -133,5 +143,27 @@ public class TitleScreen : MonoBehaviour
         }
         color.a = 0;
         text.color = color;
+    }
+
+    IEnumerator FadeOutAndLoadScene(string sceneName)
+    {
+        // フェードアウトイメージを表示
+        fadeOutImage.gameObject.SetActive(true);
+
+        // フェードアウトを実行
+        Color imageColor = fadeOutImage.color;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeOutDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(0, 1, elapsedTime / fadeOutDuration);
+            imageColor.a = alpha;
+            fadeOutImage.color = imageColor;
+            yield return null;
+        }
+
+        // 完全にフェードアウトした後にシーン遷移
+        SceneManager.LoadScene(sceneName);
     }
 }
