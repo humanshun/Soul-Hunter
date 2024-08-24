@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // Image のための名前空間
 
 public class ChangeSceneObject : MonoBehaviour
 {
     [SerializeField] private FadeOutSceneChange fadeOutSceneChange;
-    [SerializeField] private string sceneName; // SceneName -> sceneNameに変更
+    [SerializeField] private string sceneName;
     [SerializeField] private GameObject wText;
 
     [SerializeField] private int stageIndex;
     [SerializeField] private Color clearedColor = Color.green;
     [SerializeField] private Color notClearedColor = Color.gray;
+    [SerializeField] private Image targetObject; // 追加: 色を変更する対象オブジェクト
     private bool playerInTrigger = false;
 
     void Start()
@@ -19,6 +21,7 @@ public class ChangeSceneObject : MonoBehaviour
         wText.SetActive(false);
         UpdateStageColor();
     }
+
     void Update()
     {
         if (playerInTrigger && Input.GetKeyDown("w"))
@@ -48,7 +51,6 @@ public class ChangeSceneObject : MonoBehaviour
         }
     }
 
-    
     private void UpdateStageColor()
     {
         // ステージのクリア状況を確認
@@ -59,6 +61,7 @@ public class ChangeSceneObject : MonoBehaviour
         if (renderer != null)
         {
             renderer.material.color = isCleared ? clearedColor : notClearedColor;
+            targetObject.color = isCleared ? Color.white : Color.black; // クリアされている場合は白、そうでなければ灰色
         }
     }
 }
