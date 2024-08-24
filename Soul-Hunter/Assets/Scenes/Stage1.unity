@@ -1536,7 +1536,6 @@ MonoBehaviour:
   groundCheck: {fileID: 2003089605}
   groundCheckRadius: 0.86
   doubleJump: 0
-  jumpCount: 0
 --- !u!95 &231834480
 Animator:
   serializedVersion: 5
@@ -1571,9 +1570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
-  currentHP: 0
   invincibilityDuration: 1
-  isInvincible: 0
   lifeText: {fileID: 1739138356}
   damageImages:
   - {fileID: 1039048684}
@@ -4138,6 +4135,7 @@ MonoBehaviour:
   - {fileID: 1596309069}
   - {fileID: 405316395}
   - {fileID: 1530270735}
+  currentStageIndex: 11
 --- !u!4 &715371680
 Transform:
   m_ObjectHideFlags: 0
@@ -10980,6 +10978,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
+      propertyPath: gM
+      value: 
+      objectReference: {fileID: 715371679}
     - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
       propertyPath: nextStage
       value: Stage1Boss

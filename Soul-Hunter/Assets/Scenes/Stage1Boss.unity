@@ -594,6 +594,7 @@ GameObject:
   - component: {fileID: 226744938}
   - component: {fileID: 226744939}
   - component: {fileID: 226744937}
+  - component: {fileID: 226744940}
   - component: {fileID: 226744936}
   - component: {fileID: 226744935}
   - component: {fileID: 226744934}
@@ -723,7 +724,6 @@ MonoBehaviour:
   groundCheck: {fileID: 1769467775}
   groundCheckRadius: 0.86
   doubleJump: 0
-  jumpCount: 0
 --- !u!4 &226744938
 Transform:
   m_ObjectHideFlags: 0
@@ -755,14 +755,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
-  currentHP: 0
   invincibilityDuration: 2
-  isInvincible: 0
   lifeText: {fileID: 2094597196}
   damageImages:
   - {fileID: 462490199}
   - {fileID: 877406615}
   - {fileID: 953537723}
+--- !u!114 &226744940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226744933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa43269d5afea3947b13c99927724c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &252689300
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +987,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -1.33
       objectReference: {fileID: 0}
+    - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
+      propertyPath: gM
+      value: 
+      objectReference: {fileID: 931598090}
     - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
       propertyPath: nextStage
       value: Stage2
@@ -2306,6 +2320,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6090275656567444390, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
+      propertyPath: maxHP
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090275656567444390, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 1964235196}
@@ -2557,6 +2575,7 @@ MonoBehaviour:
   - {fileID: 1340203371}
   - {fileID: 1027620428}
   - {fileID: 1445287217}
+  currentStageIndex: 110
 --- !u!4 &931598091
 Transform:
   m_ObjectHideFlags: 0

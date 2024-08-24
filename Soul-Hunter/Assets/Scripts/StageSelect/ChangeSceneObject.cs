@@ -8,11 +8,26 @@ public class ChangeSceneObject : MonoBehaviour
     [SerializeField] private FadeOutSceneChange fadeOutSceneChange;
     [SerializeField] private string sceneName; // SceneName -> sceneNameに変更
     [SerializeField] private GameObject wText;
+
+    [SerializeField] private int stageIndex;
+    [SerializeField] private Color clearedColor = Color.green;
+    [SerializeField] private Color notClearedColor = Color.gray;
     private bool playerInTrigger = false;
 
     void Start()
     {
         wText.SetActive(false);
+        UpdateStageColor();
+    }
+    void Update()
+    {
+        if (playerInTrigger && Input.GetKeyDown("w"))
+        {
+            if (fadeOutSceneChange != null)
+            {
+                fadeOutSceneChange.FadeOutAndChangeScene(sceneName);
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -33,14 +48,17 @@ public class ChangeSceneObject : MonoBehaviour
         }
     }
 
-    void Update()
+    
+    private void UpdateStageColor()
     {
-        if (playerInTrigger && Input.GetKeyDown("w"))
+        // ステージのクリア状況を確認
+        bool isCleared = PlayerPrefs.GetInt("Stage_" + stageIndex, 0) == 1;
+
+        // Rendererコンポーネントを取得して色を変更
+        Renderer renderer = GetComponent<Renderer>();
+        if (renderer != null)
         {
-            if (fadeOutSceneChange != null)
-            {
-                fadeOutSceneChange.FadeOutAndChangeScene(sceneName);
-            }
+            renderer.material.color = isCleared ? clearedColor : notClearedColor;
         }
     }
 }

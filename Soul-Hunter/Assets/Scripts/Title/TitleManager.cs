@@ -38,7 +38,7 @@ public class TitleScreen : MonoBehaviour
         StartCoroutine(FadeInTitle());
 
         // ボタンのクリックイベントにメソッドを追加
-        newGameButton.onClick.AddListener(() => StartCoroutine(FadeOutAndLoadScene("StageSelect")));
+        newGameButton.onClick.AddListener(() => StartCoroutine(NewGame()));
         continueButton.onClick.AddListener(() => StartCoroutine(FadeOutAndLoadScene("StageSelect")));
     }
 
@@ -165,5 +165,23 @@ public class TitleScreen : MonoBehaviour
 
         // 完全にフェードアウトした後にシーン遷移
         SceneManager.LoadScene(sceneName);
+    }
+
+    IEnumerator NewGame()
+    {
+        // ステージ状況をリセット
+        ResetAllStages();
+
+        // シーン遷移
+        yield return StartCoroutine(FadeOutAndLoadScene("StageSelect"));
+    }
+
+    void ResetAllStages()
+    {
+        // すべてのステージクリア状況をリセット
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        Debug.Log("All stage clear statuses have been reset.");
     }
 }

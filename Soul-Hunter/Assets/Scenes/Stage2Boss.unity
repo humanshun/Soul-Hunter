@@ -720,7 +720,6 @@ MonoBehaviour:
   groundCheck: {fileID: 1769467775}
   groundCheckRadius: 0.86
   doubleJump: 1
-  jumpCount: 0
 --- !u!4 &226744938
 Transform:
   m_ObjectHideFlags: 0
@@ -752,9 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
-  currentHP: 0
   invincibilityDuration: 2
-  isInvincible: 0
   lifeText: {fileID: 2094597196}
   damageImages:
   - {fileID: 462490199}
@@ -840,6 +837,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -1.33
       objectReference: {fileID: 0}
+    - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
+      propertyPath: gM
+      value: 
+      objectReference: {fileID: 445879582}
     - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
       propertyPath: nextStage
       value: Stage3
@@ -1187,6 +1188,7 @@ MonoBehaviour:
   - {fileID: 626563830}
   - {fileID: 533987271}
   - {fileID: 1227278700}
+  currentStageIndex: 120
 --- !u!4 &445879583
 Transform:
   m_ObjectHideFlags: 0

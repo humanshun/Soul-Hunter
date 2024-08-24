@@ -13,6 +13,7 @@ public class GM : MonoBehaviour
     [SerializeField] private Button restartButton; // Buttonコンポーネントに変更
     [SerializeField] private Button exitButton;    // Buttonコンポーネントに変更
     [SerializeField] private GameObject[] imageObjects;
+    [SerializeField] private int currentStageIndex;
 
     // シングルトンインスタンス
     public static GM Instance { get; private set; }
@@ -122,5 +123,13 @@ public class GM : MonoBehaviour
     {
         TogglePause();
         SceneManager.LoadScene("Title"); // メインメニューに戻る
+    }
+
+    // ステージクリア時に呼び出すメソッド
+    public void OnStageCleared()
+    {
+        // 現在のステージ番号を使ってクリア状況を保存
+        PlayerPrefs.SetInt("Stage_" + currentStageIndex, 1); // クリア済みとして保存
+        PlayerPrefs.Save();
     }
 }

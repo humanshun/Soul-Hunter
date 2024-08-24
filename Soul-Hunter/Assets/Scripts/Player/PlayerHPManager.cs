@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class PlayerHPManager : MonoBehaviour
 {
     [SerializeField] private int maxHP = 0;
-    [SerializeField] private int currentHP;
+    private int currentHP;
     [SerializeField] private float invincibilityDuration = 5f; // 無敵時間の長さ（秒）
-    [SerializeField] private bool isInvincible = false; // 無敵状態を管理するフラグ
+    private bool isInvincible = false; // 無敵状態を管理するフラグ
     [SerializeField] private TextMeshProUGUI lifeText; // HP表示用のTextMesh Proコンポーネント
     [SerializeField] private Image[] damageImages; // HPに応じて非表示にする画像の配列
     void Start()

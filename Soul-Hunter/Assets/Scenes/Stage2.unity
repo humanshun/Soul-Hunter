@@ -9284,6 +9284,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
+      propertyPath: gM
+      value: 
+      objectReference: {fileID: 1625844057}
+    - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
       propertyPath: nextStage
       value: Stage2Boss
       objectReference: {fileID: 0}
@@ -10474,6 +10478,7 @@ MonoBehaviour:
   - {fileID: 911670136}
   - {fileID: 211794329}
   - {fileID: 1711956193}
+  currentStageIndex: 12
 --- !u!4 &1625844058
 Transform:
   m_ObjectHideFlags: 0
@@ -12882,9 +12887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
-  currentHP: 0
   invincibilityDuration: 1
-  isInvincible: 0
   lifeText: {fileID: 893274368}
   damageImages:
   - {fileID: 1608666316}
@@ -12909,7 +12912,6 @@ MonoBehaviour:
   groundCheck: {fileID: 1204275440}
   groundCheckRadius: 0.86
   doubleJump: 1
-  jumpCount: 0
 --- !u!4 &2033840404
 Transform:
   m_ObjectHideFlags: 0

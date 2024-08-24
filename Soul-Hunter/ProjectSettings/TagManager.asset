@@ -10,6 +10,7 @@ TagManager:
   - JumpAbilities
   - Thorn
   - EnemyBullet
+  - ProjectileAbility
   layers:
   - Default
   - TransparentFX
