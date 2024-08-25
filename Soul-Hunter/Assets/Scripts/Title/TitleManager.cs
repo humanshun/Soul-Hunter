@@ -181,7 +181,5 @@ public class TitleScreen : MonoBehaviour
         // すべてのステージクリア状況をリセット
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-
-        Debug.Log("All stage clear statuses have been reset.");
     }
 }

@@ -11,6 +11,8 @@ public class GM : MonoBehaviour
     [SerializeField] private GameObject pauseMenu; // ポーズメニューのUI
     [SerializeField] private Button resumeButton;  // Buttonコンポーネントに変更
     [SerializeField] private Button restartButton; // Buttonコンポーネントに変更
+    [SerializeField] private Button optionButton;
+    [SerializeField] private Button stageSelectButton;
     [SerializeField] private Button exitButton;    // Buttonコンポーネントに変更
     [SerializeField] private GameObject[] imageObjects;
     [SerializeField] private int currentStageIndex;
@@ -39,6 +41,8 @@ public class GM : MonoBehaviour
         pauseMenu.SetActive(false);
         resumeButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+        optionButton.gameObject.SetActive(false);
+        stageSelectButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
 
         foreach (GameObject image in imageObjects)
@@ -49,6 +53,8 @@ public class GM : MonoBehaviour
         // ボタンにリスナーを登録
         resumeButton.onClick.AddListener(OnResumeButtonClicked);
         restartButton.onClick.AddListener(OnRestartButtonClicked);
+        optionButton.onClick.AddListener(OnOptionButtonClicked);
+        stageSelectButton.onClick.AddListener(OnStageSelectButtonClicked);
         exitButton.onClick.AddListener(OnExitButtonClicked);
     }
 
@@ -88,6 +94,8 @@ public class GM : MonoBehaviour
             pauseMenu.SetActive(!isPaused);
             resumeButton.gameObject.SetActive(!isPaused);
             restartButton.gameObject.SetActive(!isPaused);
+            optionButton.gameObject.SetActive(!isPaused);
+            stageSelectButton.gameObject.SetActive(!isPaused);
             exitButton.gameObject.SetActive(!isPaused);
 
             foreach (GameObject image in imageObjects)
@@ -116,6 +124,17 @@ public class GM : MonoBehaviour
     {
         TogglePause();
         SceneManager.LoadScene(currentStage); // 現在のステージを再ロード
+    }
+
+    private void OnOptionButtonClicked()
+    {
+        
+    }
+
+    private void OnStageSelectButtonClicked()
+    {
+        TogglePause();
+        SceneManager.LoadScene("StageSelect");
     }
 
     // 「終了」ボタンが押されたときの処理
