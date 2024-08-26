@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerAbilityManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class PlayerAbilityManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F)) // 'F'キーで弾を発射
         {
-            if (currentAbility != null && currentAbility is ProjectileAbility)
+            if (currentAbility is ProjectileAbility)
             {
                 currentAbility.Activate(GetComponent<PlayerMovement>());
             }
@@ -24,6 +25,6 @@ public class PlayerAbilityManager : MonoBehaviour
 
         currentAbility = newAbility;
         // ここでアビリティを即座に発動する場合
-        // currentAbility.Activate(GetComponent<PlayerMovement>());
+        currentAbility.Activate(GetComponent<PlayerMovement>());
     }
 }

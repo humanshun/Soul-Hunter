@@ -16,23 +16,19 @@ public class GM : MonoBehaviour
     [SerializeField] private Button exitButton;    // Buttonコンポーネントに変更
     [SerializeField] private GameObject[] imageObjects;
     [SerializeField] private int currentStageIndex;
+    [SerializeField] private GameObject optionMenu; // サブメニューのUIオブジェクト
 
     // シングルトンインスタンス
     public static GM Instance { get; private set; }
 
     private void Awake()
     {
-        // インスタンスがすでに存在する場合は、破棄する
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-
-        // インスタンスが存在しない場合は、このインスタンスを設定する
         Instance = this;
-        
-        // シーン間でオブジェクトを破棄しない
         DontDestroyOnLoad(gameObject);
     }
 
@@ -44,13 +40,13 @@ public class GM : MonoBehaviour
         optionButton.gameObject.SetActive(false);
         stageSelectButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
+        optionMenu.SetActive(false); // サブメニューを初期状態で非表示にする
 
         foreach (GameObject image in imageObjects)
         {
             image.SetActive(false);
         }
 
-        // ボタンにリスナーを登録
         resumeButton.onClick.AddListener(OnResumeButtonClicked);
         restartButton.onClick.AddListener(OnRestartButtonClicked);
         optionButton.onClick.AddListener(OnOptionButtonClicked);
@@ -60,7 +56,6 @@ public class GM : MonoBehaviour
 
     private void Update()
     {
-        // ESCキーが押されたらポーズ画面をトグル
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
@@ -85,7 +80,6 @@ public class GM : MonoBehaviour
         }
     }
 
-    // ポーズ画面のトグル処理
     private void TogglePause()
     {
         if (pauseMenu != null)
@@ -97,38 +91,43 @@ public class GM : MonoBehaviour
             optionButton.gameObject.SetActive(!isPaused);
             stageSelectButton.gameObject.SetActive(!isPaused);
             exitButton.gameObject.SetActive(!isPaused);
+            // optionMenu.SetActive(false); // ポーズを解除したときにはサブメニューを非表示にする
 
             foreach (GameObject image in imageObjects)
             {
                 image.SetActive(!isPaused);
             }
-            
-            Time.timeScale = isPaused ? 1f : 0f; // ゲームを一時停止または再開
+
+            Time.timeScale = isPaused ? 1f : 0f;
 
             if (!isPaused && EventSystem.current != null)
             {
-                // ポーズメニューが表示されたときに最初に選択するボタンを設定
                 EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
             }
         }
     }
 
-    // 「再開」ボタンが押されたときの処理
     private void OnResumeButtonClicked()
     {
         TogglePause();
     }
 
-    // 「再スタート」ボタンが押されたときの処理
     private void OnRestartButtonClicked()
     {
         TogglePause();
-        SceneManager.LoadScene(currentStage); // 現在のステージを再ロード
+        SceneManager.LoadScene(currentStage);
     }
 
+    // 「オプション」ボタンが押されたときの処理
     private void OnOptionButtonClicked()
     {
-        
+        TogglePause();
+        if (optionMenu != null)
+        {
+            bool isOptionMenuActive = optionMenu.activeSelf;
+            optionMenu.SetActive(!isOptionMenuActive); // サブメニューをトグル表示
+            Time.timeScale = isOptionMenuActive ? 1f : 0f;
+        }
     }
 
     private void OnStageSelectButtonClicked()
@@ -137,18 +136,16 @@ public class GM : MonoBehaviour
         SceneManager.LoadScene("StageSelect");
     }
 
-    // 「終了」ボタンが押されたときの処理
     private void OnExitButtonClicked()
     {
         TogglePause();
-        SceneManager.LoadScene("Title"); // メインメニューに戻る
+        SceneManager.LoadScene("Title");
     }
 
-    // ステージクリア時に呼び出すメソッド
     public void OnStageCleared()
     {
-        // 現在のステージ番号を使ってクリア状況を保存
-        PlayerPrefs.SetInt("Stage_" + currentStageIndex, 1); // クリア済みとして保存
+        PlayerPrefs.SetInt("Stage_" + currentStageIndex, 1);
         PlayerPrefs.Save();
     }
 }
+
