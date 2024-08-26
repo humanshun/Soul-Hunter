@@ -4802,7 +4802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScene: GameOver
-  currentStage: Stage3Boss
+  currentStage: Stage1
   pauseMenu: {fileID: 255845079}
   resumeButton: {fileID: 1721617342}
   restartButton: {fileID: 2020291841}
@@ -4817,7 +4817,7 @@ MonoBehaviour:
   - {fileID: 554235608}
   - {fileID: 700463169}
   - {fileID: 1024882201}
-  currentStageIndex: 13
+  currentStageIndex: 0
   optionMenu: {fileID: 349131416}
 --- !u!4 &941169322
 Transform:
@@ -5136,7 +5136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 0.01
+  m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -5166,7 +5166,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &959297972
 RectTransform:
@@ -11095,7 +11095,7 @@ PrefabInstance:
     - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
       propertyPath: gM
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 941169321}
     - target: {fileID: 4900236874816356246, guid: 24fb3d33ae45c0e4fb41b5542274ceb6, type: 3}
       propertyPath: nextStage
       value: Stage1Boss

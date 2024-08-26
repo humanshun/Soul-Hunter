@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         HandleJump();
         Move();
         Flip();
-        // Shot();
     }
 
     void HandleJump()
@@ -86,21 +85,6 @@ public class PlayerMovement : MonoBehaviour
         isJumping = true;
     }
 
-    void Shot()
-    {
-        // if (Input.GetKeyDown(KeyCode.F))
-        // {
-        //     // キャラクターの向きを取得
-        //     float direction = transform.localScale.x;
-
-        //     // 発射する角度を設定（右向きの場合は0度、左向きの場合は180度）
-        //     float shotAngle = direction > 0 ? 0f : 180f;
-
-        //     // アビリティの発射を処理（角度を使用）
-        //     currentAbility.Activate(GetComponent<PlayerMovement>(), shotAngle);
-        // }
-    }
-
     void Flip()
     {
         float moveInput = Input.GetAxis("Horizontal");
@@ -135,6 +119,16 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("ProjectileAbility"))
         {
             Ability ability = collision.gameObject.GetComponent<ProjectileAbility>();
+
+            if (ability != null)
+            {
+                abilityManager.SetAbility(ability);
+                Destroy(collision.gameObject);
+            }
+        }
+        else if (collision.gameObject.CompareTag("SlashAbility"))
+        {
+            Ability ability = collision.gameObject.GetComponent<SlashAbility>();
 
             if (ability != null)
             {

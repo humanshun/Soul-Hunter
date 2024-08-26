@@ -11,6 +11,7 @@ TagManager:
   - Thorn
   - EnemyBullet
   - ProjectileAbility
+  - SlashAbility
   layers:
   - Default
   - TransparentFX

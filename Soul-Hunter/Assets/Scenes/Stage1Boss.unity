@@ -2311,7 +2311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6090275656567444390, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
       propertyPath: maxHP
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6090275656567444390, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
       propertyPath: hpSlider
@@ -3328,6 +3328,10 @@ PrefabInstance:
       value: '1-1
 
         Boss'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653334366125338529, guid: 3d4f97b9f9636aa498b75e4b0452a99f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7882309777689796061, guid: 3d4f97b9f9636aa498b75e4b0452a99f, type: 3}
       propertyPath: m_Name
@@ -5532,7 +5536,7 @@ MonoBehaviour:
   - {fileID: 696222479}
   - {fileID: 656458580}
   - {fileID: 204273352}
-  currentStageIndex: 13
+  currentStageIndex: 11
   optionMenu: {fileID: 1314027447}
 --- !u!4 &2025804404
 Transform:
