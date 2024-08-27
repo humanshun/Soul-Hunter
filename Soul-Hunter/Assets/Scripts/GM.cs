@@ -1,30 +1,31 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using UnityEngine.UI; // ボタンにアクセスするために必要
+using UnityEngine.UI;
 
 public class GM : MonoBehaviour
 {
     [SerializeField] private static int life = 3;
     [SerializeField] private string gameOverScene = "GameOver";
     [SerializeField] private string currentStage;
-    [SerializeField] private bool isPaused;
-    [SerializeField] private bool isOptionMenuActive;
-    [SerializeField] private GameObject pauseMenu; // ポーズメニューのUI
-    [SerializeField] private Button resumeButton;  // Buttonコンポーネントに変更
-    [SerializeField] private Button restartButton; // Buttonコンポーネントに変更
+    [SerializeField] private int currentStageIndex;
+    private bool isPaused;
+    private bool isOptionMenuActive;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private Button resumeButton;
+    [SerializeField] private Button restartButton;
     [SerializeField] private Button optionButton;
     [SerializeField] private Button stageSelectButton;
-    [SerializeField] private Button exitButton;    // Buttonコンポーネントに変更
-    [SerializeField] private GameObject[] mainImageObjects;
-    [SerializeField] private int currentStageIndex;
-    [SerializeField] private GameObject optionMenu; // サブメニューのUIオブジェクト
+    [SerializeField] private Button exitButton;
+    [SerializeField] private GameObject[] pauseImageObject;
+    [SerializeField] private GameObject optionMenu;
     [SerializeField] private Button backPauseButton;
     [SerializeField] private Button soundButton;
     [SerializeField] private Button operateButton;
-    [SerializeField] private GameObject[] SubImageObjects;
+    [SerializeField] private GameObject[] opsionImageObjects;
 
-    // シングルトンインスタンス
+    private GameObject lastSelected;
+
     public static GM Instance { get; private set; }
 
     private void Awake()
@@ -49,17 +50,17 @@ public class GM : MonoBehaviour
         stageSelectButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
 
-        foreach (GameObject image in mainImageObjects)
+        foreach (GameObject image in pauseImageObject)
         {
             image.SetActive(false);
         }
 
-        optionMenu.SetActive(false); // サブメニューを初期状態で非表示にする
+        optionMenu.SetActive(false);
         backPauseButton.gameObject.SetActive(false);
         soundButton.gameObject.SetActive(false);
         operateButton.gameObject.SetActive(false);
 
-        foreach (GameObject image in SubImageObjects)
+        foreach (GameObject image in opsionImageObjects)
         {
             image.SetActive(false);
         }
@@ -77,15 +78,22 @@ public class GM : MonoBehaviour
 
     private void Update()
     {
+        HandlePauseToggle();
+
+        HandleButtonSelectionChange();
+    }
+
+    private void HandlePauseToggle()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused)
             {
-
+                // ゲームがポーズされていない場合の処理
             }
             else if (!isOptionMenuActive)
             {
-
+                // オプションメニューがアクティブではない場合の処理
             }
             else
             {
@@ -94,6 +102,20 @@ public class GM : MonoBehaviour
         }
         Debug.Log("ポーズ" + isPaused);
         Debug.Log("オプション" + isOptionMenuActive);
+    }
+
+    private void HandleButtonSelectionChange()
+    {
+        GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
+
+        if (currentSelected != null && currentSelected != lastSelected)
+        {
+            if (currentSelected.GetComponent<Button>() != null)
+            {
+                AudioM.Instance.PlayButtonSelectSound();
+                lastSelected = currentSelected;
+            }
+        }
     }
 
     public int Life
@@ -125,9 +147,9 @@ public class GM : MonoBehaviour
             optionButton.gameObject.SetActive(!isPaused);
             stageSelectButton.gameObject.SetActive(!isPaused);
             exitButton.gameObject.SetActive(!isPaused);
-            optionMenu.SetActive(false); // ポーズを解除したときにはサブメニューを非表示にする
+            optionMenu.SetActive(false);
 
-            foreach (GameObject image in mainImageObjects)
+            foreach (GameObject image in pauseImageObject)
             {
                 image.SetActive(!isPaused);
             }
@@ -152,28 +174,27 @@ public class GM : MonoBehaviour
         SceneManager.LoadScene(currentStage);
     }
 
-    // 「オプション」ボタンが押されたときの処理
     private void OnOptionButtonClicked()
     {
-        // isOptionMenuActive = true;
         TogglePause();
-        OpenOpsion();
+        Opsion();
     }
-    private void OpenOpsion()
+
+    private void Opsion()
     {
         if (optionMenu != null)
         {
             bool isOptionMenuActive = optionMenu.activeSelf;
-            optionMenu.SetActive(!isOptionMenuActive); // サブメニューをトグル表示
+            optionMenu.SetActive(!isOptionMenuActive);
             backPauseButton.gameObject.SetActive(!isOptionMenuActive);
             soundButton.gameObject.SetActive(!isOptionMenuActive);
             operateButton.gameObject.SetActive(!isOptionMenuActive);
 
-            foreach (GameObject image in SubImageObjects)
+            foreach (GameObject image in opsionImageObjects)
             {
                 image.SetActive(!isOptionMenuActive);
             }
-            
+
             Time.timeScale = isOptionMenuActive ? 0f : 0f;
 
             if (!isOptionMenuActive && EventSystem.current != null)
@@ -194,20 +215,21 @@ public class GM : MonoBehaviour
         TogglePause();
         SceneManager.LoadScene("Title");
     }
-    private void OnSoundButtonClicked()
-    {
-        
-    }
 
     private void OnBackPauseButtonClicked()
     {
-        OpenOpsion();
+        Opsion();
         TogglePause();
-        // OpenOpsion();
     }
+
+    private void OnSoundButtonClicked()
+    {
+        Opsion();
+    }
+
     private void OnOperateButtonClicked()
     {
-        
+
     }
 
     public void OnStageCleared()
@@ -216,4 +238,3 @@ public class GM : MonoBehaviour
         PlayerPrefs.Save();
     }
 }
-
