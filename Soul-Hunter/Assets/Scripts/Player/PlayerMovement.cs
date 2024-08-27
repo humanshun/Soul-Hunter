@@ -27,7 +27,16 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        abilityManager = GetComponent<PlayerAbilityManager>(); // アビリティマネージャーを取得
+        abilityManager = GetComponent<PlayerAbilityManager>();
+
+        if (currentAbility is DoubleJumpAbility)
+        {
+            animator.SetTrigger("ChangeGrasshopper");
+        }
+        else
+        {
+            animator.SetTrigger("ChangeSlime");
+        }
     }
 
     void Update()
@@ -35,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
         HandleJump();
         Move();
         Flip();
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            animator.SetTrigger("ChangeSlime");
+        }
+        Debug.Log(currentAbility);
     }
 
     void HandleJump()
@@ -45,20 +59,44 @@ public class PlayerMovement : MonoBehaviour
         {
             isCharging = true;
             jumpCharge = 0f;
-            animator.SetBool("IsFall", true);
+
+            if (currentAbility is DoubleJumpAbility)
+            {
+                animator.SetBool("GrasshopperIsFall", true);
+            }
+            else
+            {
+                animator.SetBool("IsFall", true);
+            }
         }
 
         if (Input.GetKey(KeyCode.Space) && isCharging)
         {
-            animator.SetBool("IsFall", true);
+            if (currentAbility is DoubleJumpAbility)
+            {
+                animator.SetBool("GrasshopperIsFall", true);
+            }
+            else
+            {
+                animator.SetBool("IsFall", true);
+            }
+            
             jumpCharge += Time.deltaTime;
         }
 
         if (Input.GetKeyUp(KeyCode.Space) && isCharging)
         {
             isCharging = false;
-            animator.SetBool("IsFall", false);
-            animator.SetBool("IsJumping", true);
+            if (currentAbility is DoubleJumpAbility)
+            {
+                animator.SetBool("GrasshopperIsFall", false);
+                animator.SetBool("GrasshopperIsJumping", true);
+            }
+            else
+            {
+                animator.SetBool("IsFall", false);
+                animator.SetBool("IsJumping", true);
+            }
 
             if (isGrounded || (doubleJump && jumpCount < 2)) // ダブルジャンプの処理を追加
             {
@@ -97,46 +135,58 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Thorn"))
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Thorn"))
+        isGrounded = true;
+        isJumping = false;
+        jumpCount = 0;
+        if (currentAbility is DoubleJumpAbility)
         {
-            isGrounded = true;
-            isJumping = false;
-            jumpCount = 0;
-            animator.SetBool("IsFall", true);
-            StartCoroutine(StopAnimationCoroutine());
+            animator.SetBool("GrasshopperIsJumping", false);
+            animator.SetBool("GrasshopperIsFall", false);
         }
-        else if (collision.gameObject.CompareTag("JumpAbilities")) // アビリティ取得の処理
+        else
         {
-            Ability ability = collision.gameObject.GetComponent<DoubleJumpAbility>();
-
-            if (ability != null)
-            {
-                abilityManager.SetAbility(ability);
-                Destroy(collision.gameObject);
-            }
-        }
-        else if (collision.gameObject.CompareTag("ProjectileAbility"))
-        {
-            Ability ability = collision.gameObject.GetComponent<ProjectileAbility>();
-
-            if (ability != null)
-            {
-                abilityManager.SetAbility(ability);
-                Destroy(collision.gameObject);
-            }
-        }
-        else if (collision.gameObject.CompareTag("SlashAbility"))
-        {
-            Ability ability = collision.gameObject.GetComponent<SlashAbility>();
-
-            if (ability != null)
-            {
-                abilityManager.SetAbility(ability);
-                Destroy(collision.gameObject);
-            }
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFall", false);
         }
     }
+    else if (collision.gameObject.CompareTag("JumpAbilities")) // アビリティ取得の処理
+    {
+        Ability ability = collision.gameObject.GetComponent<DoubleJumpAbility>();
+
+        if (ability != null)
+        {
+            abilityManager.SetAbility(ability);
+            currentAbility = ability; // currentAbilityに設定
+            Destroy(collision.gameObject);
+        }
+        animator.SetTrigger("ChangeGrasshopper");
+    }
+    else if (collision.gameObject.CompareTag("ProjectileAbility"))
+    {
+        Ability ability = collision.gameObject.GetComponent<ProjectileAbility>();
+
+        if (ability != null)
+        {
+            abilityManager.SetAbility(ability);
+            currentAbility = ability; // currentAbilityに設定
+            Destroy(collision.gameObject);
+        }
+    }
+    else if (collision.gameObject.CompareTag("SlashAbility"))
+    {
+        Ability ability = collision.gameObject.GetComponent<SlashAbility>();
+
+        if (ability != null)
+        {
+            abilityManager.SetAbility(ability);
+            currentAbility = ability; // currentAbilityに設定
+            Destroy(collision.gameObject);
+        }
+    }
+}
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -145,13 +195,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, maxJumpForce);
             jumpCount = 1;
         }
-    }
-
-    IEnumerator StopAnimationCoroutine()
-    {
-        yield return new WaitForSeconds(0.2f);
-        animator.SetBool("IsJumping", false);
-        animator.SetBool("IsFall", false);
     }
 }
 
