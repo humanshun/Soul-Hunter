@@ -54,10 +54,12 @@ public class GameM : MonoBehaviour
         // スライダーの初期値設定
         BGMSlider.value = AudioM.Instance.BGMVolume; // BGMの音量初期値
         SESlider.value = AudioM.Instance.EffectsVolume; // 効果音の音量初期値
-
-        //ポーズ
+        
         isPaused = true;
         isOptionMenu = true;
+        isSoundMenu = true;
+
+        //ポーズ
         pauseMenuText.SetActive(false);
         resumeButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
@@ -134,17 +136,10 @@ public class GameM : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused && !isOptionMenu)
-            {
-
-            }
-            else
-            {
-                TogglePause();
-            }
+            if (isPaused && !isOptionMenu){}
+            else if (isPaused && isOptionMenu && !isSoundMenu){}
+            else {TogglePause();}
         }
-        Debug.Log("ポーズ" + isPaused);
-        Debug.Log("オプション" + isOptionMenu);
     }
 
     private void HandleButtonSelectionChange()
