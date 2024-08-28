@@ -40,6 +40,7 @@ public class PlayerHPManager : MonoBehaviour
     {
         if (!isInvincible)
         {
+            AudioM.Instance.PlayDamageSound();
             currentHP -= damage;
 
             if (currentHP <= 0)
@@ -55,7 +56,7 @@ public class PlayerHPManager : MonoBehaviour
     }
     void Die()
     {
-        GM.Instance.Life--;
+        GameM.Instance.Life--;
         ResetDamageImages(); // 死亡時に画像をリセット
     }
 
@@ -90,7 +91,7 @@ public class PlayerHPManager : MonoBehaviour
         if (lifeText != null)
         {
             // HPを2桁の形式で表示（例: "03"）
-            lifeText.text = "x" + GM.Instance.Life.ToString("D2");
+            lifeText.text = "x" + GameM.Instance.Life.ToString("D2");
         }
     }
     void InitializeDamageImages()

@@ -117,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        AudioM.Instance.PlayJumpSound();
         rb.velocity = Vector3.zero;
         float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, jumpCharge / chargeTime);
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);

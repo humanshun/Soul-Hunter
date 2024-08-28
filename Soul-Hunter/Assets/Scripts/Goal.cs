@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class Goal : MonoBehaviour
 {
     [SerializeField] private string nextStage;
-    [SerializeField] private GM gM;
+    [SerializeField] private GameM gameM;
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            gM.OnStageCleared();
+            gameM.OnStageCleared();
             SceneManager.LoadScene(nextStage);
         }
     }

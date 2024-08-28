@@ -20,6 +20,7 @@ public class BaseEnemyHP : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerFoot"))
         {
+            AudioM.Instance.PlayAttackSound();
             TakeDamage(1);
         }
     }
