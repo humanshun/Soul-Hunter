@@ -24,7 +24,12 @@ public class PlayerAbilityManager : MonoBehaviour
         }
 
         currentAbility = newAbility;
-        // ここでアビリティを即座に発動する場合
-        currentAbility.Activate(GetComponent<PlayerMovement>());
+        
+
+        if (currentAbility is DoubleJumpAbility)
+        {
+            currentAbility.Activate(GetComponent<PlayerMovement>());
+        }
+        else{}
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5146658294562831161}
   - component: {fileID: 1525521242618523480}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 3938513629526355570}
   - component: {fileID: 5125679816459280066}
   - component: {fileID: 2442771077812690282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_DeathPheropsophus_Boss
   m_TagString: ProjectileAbility
   m_Icon: {fileID: 0}
@@ -195,4 +195,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8827029184796860748, guid: 97d76de4ecacd9545b4178e309870713, type: 3}
   firePoint: {fileID: 0}
-  projectileSpeed: 10
+  projectileSpeed: 50

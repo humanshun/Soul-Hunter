@@ -33,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("ChangeGrasshopper");
         }
+        else if (currentAbility is SlashAbility)
+        {
+            animator.SetTrigger("ChangeMantis");
+        }
         else
         {
             animator.SetTrigger("ChangeSlime");
@@ -44,11 +48,22 @@ public class PlayerMovement : MonoBehaviour
         HandleJump();
         Move();
         Flip();
+        ChangeSlime();
+    }
+    private void ChangeSlime()
+    {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             animator.SetTrigger("ChangeSlime");
         }
-        Debug.Log(currentAbility);
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            animator.SetTrigger("ChangeMantis");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            animator.SetTrigger("ChangeMantis");
+        }
     }
 
     void HandleJump()
@@ -64,6 +79,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("GrasshopperIsFall", true);
             }
+            else if (currentAbility is SlashAbility)
+            {
+                animator.SetBool("MantisIsFall", true);
+            }
             else
             {
                 animator.SetBool("IsFall", true);
@@ -75,6 +94,10 @@ public class PlayerMovement : MonoBehaviour
             if (currentAbility is DoubleJumpAbility)
             {
                 animator.SetBool("GrasshopperIsFall", true);
+            }
+            else if (currentAbility is SlashAbility)
+            {
+                animator.SetBool("MantisIsFall", true);
             }
             else
             {
@@ -92,13 +115,18 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("GrasshopperIsFall", false);
                 animator.SetBool("GrasshopperIsJumping", true);
             }
+            else if (currentAbility is SlashAbility)
+            {
+                animator.SetBool("MantisIsFall", false);
+                animator.SetBool("MantisIsJumping", true);
+            }
             else
             {
                 animator.SetBool("IsFall", false);
                 animator.SetBool("IsJumping", true);
             }
 
-            if (isGrounded || (doubleJump && jumpCount < 2)) // ダブルジャンプの処理を追加
+            if (isGrounded || (doubleJump && jumpCount < 2) && currentAbility is DoubleJumpAbility) // ダブルジャンプの処理を追加
             {
                 Jump();
                 jumpCount++;
@@ -122,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, jumpCharge / chargeTime);
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         isJumping = true;
+        jumpCharge = 0f;
     }
 
     void Flip()
@@ -147,6 +176,11 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("GrasshopperIsJumping", false);
             animator.SetBool("GrasshopperIsFall", false);
         }
+        else if (currentAbility is SlashAbility)
+        {
+            animator.SetBool("MantisIsJumping", false);
+            animator.SetBool("MantisIsFall", false);
+        }
         else
         {
             animator.SetBool("IsJumping", false);
@@ -165,9 +199,9 @@ public class PlayerMovement : MonoBehaviour
         }
         animator.SetTrigger("ChangeGrasshopper");
     }
-    else if (collision.gameObject.CompareTag("ProjectileAbility"))
+    else if (collision.gameObject.CompareTag("SlashAbility"))
     {
-        Ability ability = collision.gameObject.GetComponent<ProjectileAbility>();
+        Ability ability = collision.gameObject.GetComponent<SlashAbility>();
 
         if (ability != null)
         {
@@ -175,10 +209,11 @@ public class PlayerMovement : MonoBehaviour
             currentAbility = ability; // currentAbilityに設定
             Destroy(collision.gameObject);
         }
+        animator.SetTrigger("ChangeMantis");
     }
-    else if (collision.gameObject.CompareTag("SlashAbility"))
+    else if (collision.gameObject.CompareTag("ProjectileAbility"))
     {
-        Ability ability = collision.gameObject.GetComponent<SlashAbility>();
+        Ability ability = collision.gameObject.GetComponent<ProjectileAbility>();
 
         if (ability != null)
         {

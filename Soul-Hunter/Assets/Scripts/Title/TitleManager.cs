@@ -16,11 +16,24 @@ public class TitleScreen : MonoBehaviour
     public Image fadeOutImage;               // フェードアウト用のイメージ
     public float fadeOutDuration = 1.0f;    // フェードアウト時間
 
+    public AudioClip jumpSound;  // 効果音のクリップ
+    public AudioClip attackSound;
+
+    public AudioClip enemyJumpSound;
+    public AudioClip enemyDeathSound;
+    public AudioClip buttonSelectSound;  // ボタン選択時の音
+    private AudioSource audioSource;  // AudioSourceコンポーネントへの参照
+
+    private GameObject lastSelected;   // 最後に選択されたオブジェクトの参照
+
     private bool canStartGame = false;      // ゲーム開始可能かどうかのフラグ
     private bool isMenuVisible = false;     // メニューが表示されているかどうかのフラグ
 
     void Start()
     {
+        // AudioSourceコンポーネントを取得
+        audioSource = GetComponent<AudioSource>();
+
         // 初期設定で非表示に
         startText.gameObject.SetActive(false);
         newGameButton.gameObject.SetActive(false);
@@ -37,9 +50,15 @@ public class TitleScreen : MonoBehaviour
         // コルーチンを開始してフェードインと「push space to start」を表示
         StartCoroutine(FadeInTitle());
 
+        // コルーチンを開始して音を再生する
+        StartCoroutine(PlayerSound());
+        StartCoroutine(EnemySound());
+
         // ボタンのクリックイベントにメソッドを追加
         newGameButton.onClick.AddListener(() => StartCoroutine(NewGame()));
+        newGameButton.onClick.AddListener(AudioM.Instance.PlayButtonClickSound);
         continueButton.onClick.AddListener(() => StartCoroutine(FadeOutAndLoadScene("StageSelect")));
+        continueButton.onClick.AddListener(AudioM.Instance.PlayButtonClickSound);
     }
 
     void Update()
@@ -57,6 +76,9 @@ public class TitleScreen : MonoBehaviour
             // メニューが表示されたことを記録
             isMenuVisible = true;
         }
+
+        // ボタン選択変更時に音を再生
+        HandleButtonSelectionChange();
 
         // WSキーでもボタン間を移動可能に
         if (isMenuVisible && EventSystem.current.currentSelectedGameObject != null)
@@ -76,6 +98,20 @@ public class TitleScreen : MonoBehaviour
                 {
                     next.Select();
                 }
+            }
+        }
+    }
+
+    private void HandleButtonSelectionChange()
+    {
+        GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
+
+        if (currentSelected != null && currentSelected != lastSelected)
+        {
+            if (currentSelected.GetComponent<Button>() != null)
+            {
+                audioSource.PlayOneShot(buttonSelectSound);
+                lastSelected = currentSelected;
             }
         }
     }
@@ -102,6 +138,38 @@ public class TitleScreen : MonoBehaviour
 
         // ゲーム開始可能フラグをtrueに設定
         canStartGame = true;
+    }
+
+    IEnumerator PlayerSound()
+    {
+        JumpSound();
+        yield return new WaitForSeconds(1.25f);
+        JumpSound();
+        yield return new WaitForSeconds(1.20f);
+        JumpSound();
+        yield return new WaitForSeconds(0.55f);
+        AttackSound();
+    }
+    private void JumpSound()
+    {
+        audioSource.PlayOneShot(jumpSound);
+    }
+    private void AttackSound()
+    {
+        audioSource.PlayOneShot(attackSound);
+    }
+
+    IEnumerator EnemySound()
+    {
+        EnemyJumpSound();
+        yield return new WaitForSeconds(1.4f);
+        EnemyJumpSound();
+        yield return new WaitForSeconds(3f);
+        audioSource.PlayOneShot(enemyDeathSound);
+    }
+    private void EnemyJumpSound()
+    {
+        audioSource.PlayOneShot(enemyJumpSound);
     }
 
     IEnumerator BlinkStartText()

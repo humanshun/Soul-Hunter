@@ -12,6 +12,7 @@ public class GameM : MonoBehaviour
     private bool isPaused;
     private bool isOptionMenu;
     private bool isSoundMenu;
+    private bool isOperationMenu;
     [SerializeField] private GameObject pauseMenuText;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button restartButton;
@@ -29,10 +30,15 @@ public class GameM : MonoBehaviour
 
 
     [SerializeField] private GameObject soundMenuText;
-    [SerializeField] private Button backOpsionButton;
+    [SerializeField] private Button backOpsionButton_1;
     [SerializeField] private Slider BGMSlider;
     [SerializeField] private Slider SESlider;
     [SerializeField] private GameObject[] soundImageObjects;
+
+    [SerializeField] private GameObject operationMenuText;
+    [SerializeField] private Button backOpsionButton_2;
+    [SerializeField] private Image operationImage;
+    [SerializeField] private GameObject[] operateImageObject;
 
     private GameObject lastSelected;
 
@@ -54,10 +60,12 @@ public class GameM : MonoBehaviour
         // スライダーの初期値設定
         BGMSlider.value = AudioM.Instance.BGMVolume; // BGMの音量初期値
         SESlider.value = AudioM.Instance.EffectsVolume; // 効果音の音量初期値
-        
+
         isPaused = true;
         isOptionMenu = true;
         isSoundMenu = true;
+        isOperationMenu = true;
+
 
         //ポーズ
         pauseMenuText.SetActive(false);
@@ -85,7 +93,7 @@ public class GameM : MonoBehaviour
 
         //サウンド
         soundMenuText.SetActive(false);
-        backOpsionButton.gameObject.SetActive(false);
+        backOpsionButton_1.gameObject.SetActive(false);
         BGMSlider.gameObject.SetActive(false);
         SESlider.gameObject.SetActive(false);
 
@@ -94,7 +102,15 @@ public class GameM : MonoBehaviour
             image.SetActive(false);
         }
 
-        //操作設定
+        //操作方法
+        operationMenuText.SetActive(false);
+        backOpsionButton_2.gameObject.SetActive(false);
+        operationImage.gameObject.SetActive(false);
+
+        foreach (GameObject image in operateImageObject)
+        {
+            image.SetActive(false);
+        }
 
         //ポーズ
         resumeButton.onClick.AddListener(OnResumeButtonClicked);
@@ -117,12 +133,14 @@ public class GameM : MonoBehaviour
         operateButton.onClick.AddListener(AudioM.Instance.PlayButtonClickSound);
 
         //サウンド
-        backOpsionButton.onClick.AddListener(OnBackOpsionButtonClicked);
-        backOpsionButton.onClick.AddListener(AudioM.Instance.PlayButtonClickSound);
+        backOpsionButton_1.onClick.AddListener(OnBackOpsionButtonClicked);
+        backOpsionButton_1.onClick.AddListener(AudioM.Instance.PlayButtonClickSound);
         BGMSlider.onValueChanged.AddListener(value => AudioM.Instance.SetBackgroundMusicVolume(value));
         SESlider.onValueChanged.AddListener(value => AudioM.Instance.SetEffectsVolume(value));
 
         //操作設定
+        backOpsionButton_2.onClick.AddListener(OnBackOpsionButton2Clicked);
+        backOpsionButton_2.onClick.AddListener(AudioM.Instance.PlayButtonClickSound);
     }
 
     private void Update()
@@ -136,9 +154,10 @@ public class GameM : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused && !isOptionMenu){}
-            else if (isPaused && isOptionMenu && !isSoundMenu){}
-            else {TogglePause();}
+            if (isPaused && !isOptionMenu) { }
+            else if (isPaused && isOptionMenu && !isSoundMenu) { }
+            else if (isPaused && isOptionMenu && isSoundMenu && !isOperationMenu) { }
+            else { TogglePause(); }
         }
     }
 
@@ -271,8 +290,8 @@ public class GameM : MonoBehaviour
         {
             isSoundMenu = soundMenuText.activeSelf;
             soundMenuText.SetActive(!isSoundMenu);
-            
-            backOpsionButton.gameObject.SetActive(!isSoundMenu);
+
+            backOpsionButton_1.gameObject.SetActive(!isSoundMenu);
             BGMSlider.gameObject.SetActive(!isSoundMenu);
             SESlider.gameObject.SetActive(!isSoundMenu);
 
@@ -283,7 +302,7 @@ public class GameM : MonoBehaviour
 
             if (!isSoundMenu && EventSystem.current != null)
             {
-                EventSystem.current.SetSelectedGameObject(backOpsionButton.gameObject);
+                EventSystem.current.SetSelectedGameObject(backOpsionButton_1.gameObject);
             }
         }
     }
@@ -295,7 +314,30 @@ public class GameM : MonoBehaviour
 
     private void OnOperateButtonClicked()
     {
+        Operate();
+        Opsion();
+    }
+    private void Operate()
+    {
+        isOperationMenu = operationMenuText.activeSelf;
+        operationMenuText.SetActive(!isOperationMenu);
 
+        backOpsionButton_2.gameObject.SetActive(!isOperationMenu);
+
+        foreach (GameObject image in operateImageObject)
+        {
+            image.SetActive(!isOperationMenu);
+        }
+
+        if (!isOperationMenu && EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(backOpsionButton_2.gameObject);
+        }
+    }
+    private void OnBackOpsionButton2Clicked()
+    {
+        Operate();
+        Opsion();
     }
 
     public void OnStageCleared()

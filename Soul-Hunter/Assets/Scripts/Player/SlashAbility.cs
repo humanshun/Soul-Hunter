@@ -14,12 +14,12 @@ public class SlashAbility : Ability
         {
             return;
         }
-        
+
         Gizmos.color = Color.red;
 
         Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
         Vector2 startPosition = (Vector2)transform.position + direction * slashRange;
-        
+
         // 攻撃範囲を線で表示
         Gizmos.DrawLine(transform.position, startPosition);
     }
@@ -39,8 +39,10 @@ public class SlashAbility : Ability
 
     private void Slash(PlayerMovement player)
     {
-        // 攻撃アニメーションを再生
-        player.GetComponent<Animator>().SetTrigger("Slash");
+        Animator animator = player.GetComponent<Animator>();
+
+        // 攻撃アニメーションの再生
+        animator.SetBool("MantisIsAttack", true);
 
         // 攻撃方向を決定
         Vector2 direction = player.transform.localScale.x > 0 ? Vector2.right : Vector2.left;
@@ -59,9 +61,20 @@ public class SlashAbility : Ability
             }
         }
 
+        // アニメーション終了後にアニメーションを停止
+        player.StartCoroutine(StopAnimation(animator));
+        
         // 攻撃のクールダウンを開始
         canSlash = false;
         player.StartCoroutine(SlashCooldown());
+    }
+
+    private IEnumerator StopAnimation(Animator animator)
+    {
+        yield return new WaitForSeconds(0.15f);
+
+        // アニメーションを元に戻す
+        animator.SetBool("MantisIsAttack", false);
     }
 
     private IEnumerator SlashCooldown()
