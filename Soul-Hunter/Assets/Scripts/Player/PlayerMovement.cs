@@ -11,6 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float minJumpForce = 0f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0f;
+
+    public static bool jumpAbilityFlag = false;
+    public static bool slashAbilityFlag = false;
+    public static bool shootAbilityFlag = false;
+    
     
     private bool isCharging = false;
     private float jumpCharge = 0f;
@@ -54,15 +59,30 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            abilityManager.DeactivateAbility();
+            currentAbility = null;
             animator.SetTrigger("ChangeSlime");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            animator.SetTrigger("ChangeMantis");
+            if (jumpAbilityFlag == true)
+            {
+                Ability ability = GetComponent<DoubleJumpAbility>();
+                abilityManager.SetAbility(ability);
+                currentAbility = ability;
+                animator.SetTrigger("ChangeGrasshopper");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            animator.SetTrigger("ChangeMantis");
+            if (slashAbilityFlag == true)
+            {
+                Ability ability = GetComponent<SlashAbility>();
+                abilityManager.SetAbility(ability);
+                currentAbility = ability;
+                GetComponent<SlashAbility>();
+                animator.SetTrigger("ChangeMantis");
+            }
         }
     }
 
@@ -165,64 +185,68 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Thorn"))
     {
-        isGrounded = true;
-        isJumping = false;
-        jumpCount = 0;
-        if (currentAbility is DoubleJumpAbility)
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Thorn"))
         {
-            animator.SetBool("GrasshopperIsJumping", false);
-            animator.SetBool("GrasshopperIsFall", false);
+            isGrounded = true;
+            isJumping = false;
+            jumpCount = 0;
+            
+            if (currentAbility is DoubleJumpAbility)
+            {
+                animator.SetBool("GrasshopperIsJumping", false);
+                animator.SetBool("GrasshopperIsFall", false);
+            }
+            else if (currentAbility is SlashAbility)
+            {
+                animator.SetBool("MantisIsJumping", false);
+                animator.SetBool("MantisIsFall", false);
+            }
+            else
+            {
+                animator.SetBool("IsJumping", false);
+                animator.SetBool("IsFall", false);
+            }
         }
-        else if (currentAbility is SlashAbility)
+        else if (collision.gameObject.CompareTag("JumpAbilities")) // アビリティ取得の処理
         {
-            animator.SetBool("MantisIsJumping", false);
-            animator.SetBool("MantisIsFall", false);
-        }
-        else
-        {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFall", false);
-        }
-    }
-    else if (collision.gameObject.CompareTag("JumpAbilities")) // アビリティ取得の処理
-    {
-        Ability ability = collision.gameObject.GetComponent<DoubleJumpAbility>();
+            jumpAbilityFlag = true;
+            Ability ability = GetComponent<DoubleJumpAbility>();
 
-        if (ability != null)
-        {
-            abilityManager.SetAbility(ability);
-            currentAbility = ability; // currentAbilityに設定
-            Destroy(collision.gameObject);
+            if (ability != null)
+            {
+                abilityManager.SetAbility(ability);
+                currentAbility = ability; // currentAbilityに設定
+                Destroy(collision.gameObject);
+            }
+            animator.SetTrigger("ChangeGrasshopper");
         }
-        animator.SetTrigger("ChangeGrasshopper");
-    }
-    else if (collision.gameObject.CompareTag("SlashAbility"))
-    {
-        Ability ability = collision.gameObject.GetComponent<SlashAbility>();
+        else if (collision.gameObject.CompareTag("SlashAbility"))
+        {
+            slashAbilityFlag = true;
+            Ability ability = GetComponent<SlashAbility>();
 
-        if (ability != null)
-        {
-            abilityManager.SetAbility(ability);
-            currentAbility = ability; // currentAbilityに設定
-            Destroy(collision.gameObject);
+            if (ability != null)
+            {
+                abilityManager.SetAbility(ability);
+                currentAbility = ability; // currentAbilityに設定
+                Destroy(collision.gameObject);
+            }
+            animator.SetTrigger("ChangeMantis");
         }
-        animator.SetTrigger("ChangeMantis");
-    }
-    else if (collision.gameObject.CompareTag("ProjectileAbility"))
-    {
-        Ability ability = collision.gameObject.GetComponent<ProjectileAbility>();
+        else if (collision.gameObject.CompareTag("ProjectileAbility"))
+        {
+            shootAbilityFlag = true;
+            Ability ability = GetComponent<ProjectileAbility>();
 
-        if (ability != null)
-        {
-            abilityManager.SetAbility(ability);
-            currentAbility = ability; // currentAbilityに設定
-            Destroy(collision.gameObject);
+            if (ability != null)
+            {
+                abilityManager.SetAbility(ability);
+                currentAbility = ability; // currentAbilityに設定
+                Destroy(collision.gameObject);
+            }
         }
     }
-}
 
     void OnTriggerEnter2D(Collider2D other)
     {

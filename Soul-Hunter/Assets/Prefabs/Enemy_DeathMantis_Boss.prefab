@@ -77,7 +77,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4509164434719317035}
   - component: {fileID: 8351468231180345687}
-  - component: {fileID: 6072823319298370075}
   - component: {fileID: 2213131834660724378}
   m_Layer: 0
   m_Name: Enemy_DeathMantis_Boss
@@ -154,21 +153,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6072823319298370075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557267615434466420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ed390cda9398040a21b95b06c6d1c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slashRange: 1
-  slashCooldown: 1
-  damage: 1
 --- !u!50 &2213131834660724378
 Rigidbody2D:
   serializedVersion: 4

@@ -1204,7 +1204,7 @@ MonoBehaviour:
   continueButton: {fileID: 15307131}
   fadeOutImage: {fileID: 547899991}
   fadeOutDuration: 1
-  jumpSound: {fileID: 8300000, guid: 4c4ee3bb03b6e754aba4dd7de5059b6e, type: 3}
+  jumpSound: {fileID: 8300000, guid: 2a55f819575d7af47848e8440290383e, type: 3}
   attackSound: {fileID: 8300000, guid: 0517d69c499bb694db90d6bbc430bdce, type: 3}
   enemyJumpSound: {fileID: 8300000, guid: c52e6b04726dfaa4a8e06ed01ad16717, type: 3}
   enemyDeathSound: {fileID: 8300000, guid: 11090dede4ce7df4d9e57358593c7cf4, type: 3}

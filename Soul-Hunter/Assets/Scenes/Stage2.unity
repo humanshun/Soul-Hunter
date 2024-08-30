@@ -7719,7 +7719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSelectSound: {fileID: 8300000, guid: a6cc31bd715435444a4fe357cb3c8077, type: 3}
   buttonClickSound: {fileID: 8300000, guid: f2c0533dcab8f684c871b25c86881d17, type: 3}
-  jumpSound: {fileID: 8300000, guid: 4c4ee3bb03b6e754aba4dd7de5059b6e, type: 3}
+  jumpSound: {fileID: 8300000, guid: 2a55f819575d7af47848e8440290383e, type: 3}
   attackSound: {fileID: 8300000, guid: 0517d69c499bb694db90d6bbc430bdce, type: 3}
   damageSound: {fileID: 8300000, guid: bb063a4fd19fe644ea01c14877e9c741, type: 3}
   backgroundMusic: {fileID: 8300000, guid: a4dd0aa58b6ce6643b12e510ef08e9c7, type: 3}

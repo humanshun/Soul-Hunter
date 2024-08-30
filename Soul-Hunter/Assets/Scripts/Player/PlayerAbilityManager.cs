@@ -16,6 +16,14 @@ public class PlayerAbilityManager : MonoBehaviour
         }
     }
 
+    public void DeactivateAbility()
+    {
+        if (currentAbility != null)
+        {
+            currentAbility.Deactivate(GetComponent<PlayerMovement>());
+        }
+    }
+    
     public void SetAbility(Ability newAbility)
     {
         if (currentAbility != null)

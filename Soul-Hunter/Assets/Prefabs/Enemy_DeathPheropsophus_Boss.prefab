@@ -78,7 +78,6 @@ GameObject:
   - component: {fileID: 2481606603131061376}
   - component: {fileID: 3938513629526355570}
   - component: {fileID: 5125679816459280066}
-  - component: {fileID: 2442771077812690282}
   m_Layer: 6
   m_Name: Enemy_DeathPheropsophus_Boss
   m_TagString: ProjectileAbility
@@ -181,18 +180,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2442771077812690282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5339573752316877418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7667ef77ce613b44fa4ffb2f05151cd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8827029184796860748, guid: 97d76de4ecacd9545b4178e309870713, type: 3}
-  firePoint: {fileID: 0}
-  projectileSpeed: 50
