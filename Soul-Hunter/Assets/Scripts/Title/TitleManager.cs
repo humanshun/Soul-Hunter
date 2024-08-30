@@ -240,6 +240,12 @@ public class TitleScreen : MonoBehaviour
         // ステージ状況をリセット
         ResetAllStages();
 
+        //キャラクター能力をリセット
+        PlayerMovement.jumpAbilityFlag = false;
+        PlayerMovement.slashAbilityFlag = false;
+        PlayerMovement.shootAbilityFlag = false;
+
+
         // シーン遷移
         yield return StartCoroutine(FadeOutAndLoadScene("StageSelect"));
     }
