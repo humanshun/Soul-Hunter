@@ -12,9 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0f;
 
-    public static bool jumpAbilityFlag = false;
-    public static bool slashAbilityFlag = false;
-    public static bool shootAbilityFlag = false;
+    public static bool jumpAbilityFlag = false; //能力を取得したかどうかのグラフ
+    public static bool slashAbilityFlag = false; //能力を取得したかどうかのフラグ
+    public static bool shootAbilityFlag = false; //能力を取得したかどうかのフラグ
     
     
     private bool isCharging = false;
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public bool doubleJump = false;
     private int jumpCount = 0;
     private PlayerAbilityManager abilityManager; // アビリティマネージャーを追加
+    private Ability ability;
     private Ability currentAbility;
 
     void Start()
@@ -33,6 +34,19 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         abilityManager = GetComponent<PlayerAbilityManager>();
+
+        if (jumpAbilityFlag)
+        {
+            ability = GetComponent<DoubleJumpAbility>();
+        }
+        if (slashAbilityFlag)
+        {
+            ability = GetComponent<SlashAbility>();
+        }
+        if (shootAbilityFlag)
+        {
+            ability = GetComponent<ProjectileAbility>();
+        }
 
         if (currentAbility is DoubleJumpAbility)
         {
@@ -65,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (jumpAbilityFlag == true)
+            if (jumpAbilityFlag)
             {
                 Ability ability = GetComponent<DoubleJumpAbility>();
                 abilityManager.SetAbility(ability);
@@ -75,15 +89,24 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (slashAbilityFlag == true)
+            if (slashAbilityFlag)
             {
                 Ability ability = GetComponent<SlashAbility>();
                 abilityManager.SetAbility(ability);
                 currentAbility = ability;
-                GetComponent<SlashAbility>();
                 animator.SetTrigger("ChangeMantis");
             }
         }
+        // else if (Input.GetKeyDown(KeyCode.Alpha4))
+        // {
+        //     if (shootAbilityFlag)
+        //     {
+        //         Ability ability = GetComponent<ProjectileAbility>();
+        //         abilityManager.SetAbility(ability);
+        //         currentAbility = ability;
+        //         animator.SetTrigger("ChangeMantis");
+        //     }
+        // }
     }
 
     void HandleJump()
