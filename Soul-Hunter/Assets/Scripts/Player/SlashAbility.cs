@@ -5,7 +5,7 @@ public class SlashAbility : Ability
 {
     [SerializeField] private float slashRange = 1.0f; // 斬る攻撃の範囲
     [SerializeField] private float slashCooldown = 1.0f; // 攻撃のクールダウン時間
-    [SerializeField] private int damage = 1; // 攻撃のダメージ量
+    [SerializeField] private int damage = 2; // 攻撃のダメージ量
     private bool canSlash = true; // 攻撃可能かどうか
 
     private void OnDrawGizmosSelected()
@@ -51,15 +51,53 @@ public class SlashAbility : Ability
         Vector2 startPosition = (Vector2)player.transform.position + direction * slashRange;
 
         // 攻撃範囲内の敵を検出してダメージを与える
-        RaycastHit2D[] hits = Physics2D.RaycastAll(startPosition, direction, slashRange);
-        foreach (RaycastHit2D hit in hits)
+        Collider2D[] hits = Physics2D.OverlapCircleAll(startPosition, slashRange);
+        foreach (Collider2D hit in hits)
         {
-            if (hit.collider.CompareTag("Enemy"))
+            if (hit.CompareTag("Enemy"))
             {
-                // 敵にダメージを与える処理
-                hit.collider.GetComponent<BaseEnemyHP>().TakeDamage(damage);
+                // SnailHPManagerを持っているかどうかをチェック
+                SnailHPManager snail = hit.GetComponentInParent<SnailHPManager>();
+                if (snail != null)
+                {
+                    snail.TakeDamage(damage);
+                    continue;
+                }
+                // GrasshopperHPManagerを持っているかどうかをチェック
+                GrasshopperHPManager grasshopper = hit.GetComponentInParent<GrasshopperHPManager>();
+                if (grasshopper != null)
+                {
+                    grasshopper.TakeDamage(damage);
+                    continue;
+                }
+
+                // MantisHPManagerを持っているかどうかをチェック
+                MantisHPManager mantis = hit.GetComponentInParent<MantisHPManager>();
+                if (mantis != null)
+                {
+                    mantis.TakeDamage(damage);
+                    continue;
+                }
+                // BossHPManagerを持っているかどうかをチェック
+                BossHPManager Boss = hit.GetComponentInParent<BossHPManager>();
+                if (Boss != null)
+                {
+                    Boss.TakeDamage(damage);
+                    continue;
+                }
+                // BossHPManagerを持っているかどうかをチェック
+                MantisBossHP MBoss = hit.GetComponentInParent<MantisBossHP>();
+                if (MBoss != null)
+                {
+                    MBoss.TakeDamage(damage);
+                    continue;
+                }
+                // 認識されないHPマネージャーの警告
+                Debug.LogWarning("Enemy does not have a recognized HP Manager: " + hit.name);
             }
         }
+
+
 
         // アニメーション終了後にアニメーションを停止
         player.StartCoroutine(StopAnimation(animator));

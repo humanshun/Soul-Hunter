@@ -8,6 +8,7 @@ public class GrasshopperMovement : BaseEnemyMovement
     public float minJumpInterval = 3.0f; // ジャンプ間隔の最小値
     public float maxJumpInterval = 6.0f; // ジャンプ間隔の最大値
     private bool isJumping = false; // ジャンプ中かどうかのフラグ
+    private bool isCoroutineRunning = false; // コルーチンが実行中かどうかのフラグ
 
     protected override void Start()
     {
@@ -44,6 +45,7 @@ public class GrasshopperMovement : BaseEnemyMovement
 
     private IEnumerator JumpRoutine()
     {
+        isCoroutineRunning = true; // コルーチン開始
         float randomInterval = Random.Range(minJumpInterval, maxJumpInterval); // ランダムなジャンプ間隔を生成
         yield return new WaitForSeconds(randomInterval); // ジャンプ間隔待つ
         anim.SetBool("IsIdle", false);
@@ -54,11 +56,12 @@ public class GrasshopperMovement : BaseEnemyMovement
         Jump(); // ジャンプ
         yield return new WaitForSeconds(1.0f);
         Jump(); // ジャンプ
+        isCoroutineRunning = false; // コルーチン終了
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if ((collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Thorn")) && !isCoroutineRunning)
         {
             isJumping = false; // 地面に接触したらジャンプ終了
             anim.SetBool("IsJump", false);
