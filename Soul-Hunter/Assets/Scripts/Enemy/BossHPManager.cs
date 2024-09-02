@@ -8,7 +8,8 @@ public class BossHPManager : BaseEnemyHP
 {
     [SerializeField] private Slider hpSlider;  // スライダーの参照を追加
     [SerializeField] private ClearJugeManager clearJugeManager;
-    [SerializeField] private GameObject DeathGrasshopperPrefab;
+    [SerializeField] private GameObject DeathPrefab;
+    [SerializeField] private float quaternionZOffset = 0f;
     protected override void Start()
     {
         base.Start();
@@ -44,7 +45,7 @@ public class BossHPManager : BaseEnemyHP
             clearJugeManager.OnBossDefeated();
         }
 
-        Instantiate(DeathGrasshopperPrefab, transform.position, Quaternion.Euler(0, 0, 180));
+        Instantiate(DeathPrefab, transform.position, Quaternion.Euler(0, 0, quaternionZOffset));
 
         base.Die();
     }

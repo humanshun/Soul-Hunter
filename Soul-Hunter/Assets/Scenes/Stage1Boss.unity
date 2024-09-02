@@ -4327,6 +4327,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1964235196}
     - target: {fileID: 6090275656567444390, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
+      propertyPath: DeathPrefab
+      value: 
+      objectReference: {fileID: 1224809063037472378, guid: 4d6992df3e448ce4888fa52830433b83, type: 3}
+    - target: {fileID: 6090275656567444390, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
       propertyPath: damageSprite
       value: 
       objectReference: {fileID: 908515367}
@@ -4334,6 +4338,10 @@ PrefabInstance:
       propertyPath: clearJugeManager
       value: 
       objectReference: {fileID: 1803672259}
+    - target: {fileID: 6090275656567444390, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
+      propertyPath: quaternionZOffset
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 6498525600271232282, guid: 9015aa9d8d59d9b4bb161bee719cf183, type: 3}
       propertyPath: m_Name
       value: Enemy_Grasshopper_Boss

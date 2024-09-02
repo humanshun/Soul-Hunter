@@ -78,9 +78,10 @@ GameObject:
   - component: {fileID: 4509164434719317035}
   - component: {fileID: 8351468231180345687}
   - component: {fileID: 2213131834660724378}
+  - component: {fileID: 6891578174483600368}
   m_Layer: 0
   m_Name: Enemy_DeathMantis_Boss
-  m_TagString: SlashAbility
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,3 +181,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6891578174483600368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557267615434466420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f2150693e7b244fa24bb21f0f979b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayInSeconds: 0.3
+  newTag: SlashAbility

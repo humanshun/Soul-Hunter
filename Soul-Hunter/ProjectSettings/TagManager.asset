@@ -7,11 +7,12 @@ TagManager:
   - Ground
   - Enemy
   - PlayerFoot
-  - JumpAbilities
   - Thorn
   - EnemyBullet
-  - ProjectileAbility
   - SlashAbility
+  - JumpAbility
+  - ShootAbility
+  - JumpAbilities
   layers:
   - Default
   - TransparentFX

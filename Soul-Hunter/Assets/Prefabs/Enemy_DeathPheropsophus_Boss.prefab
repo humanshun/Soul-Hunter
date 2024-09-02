@@ -78,9 +78,10 @@ GameObject:
   - component: {fileID: 2481606603131061376}
   - component: {fileID: 3938513629526355570}
   - component: {fileID: 5125679816459280066}
+  - component: {fileID: 2241351724599594150}
   m_Layer: 6
   m_Name: Enemy_DeathPheropsophus_Boss
-  m_TagString: ProjectileAbility
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,3 +181,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2241351724599594150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5339573752316877418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f2150693e7b244fa24bb21f0f979b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayInSeconds: 0.3
+  newTag: ShootAbility

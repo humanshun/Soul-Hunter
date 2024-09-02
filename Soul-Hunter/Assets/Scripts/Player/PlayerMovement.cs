@@ -236,7 +236,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsFall", false);
             }
         }
-        else if (collision.gameObject.CompareTag("JumpAbilities")) // アビリティ取得の処理
+        else if (collision.gameObject.CompareTag("JumpAbility")) // アビリティ取得の処理
         {
             jumpAbilityFlag = true;
             Ability ability = GetComponent<DoubleJumpAbility>();
@@ -262,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
             }
             animator.SetTrigger("ChangeMantis");
         }
-        else if (collision.gameObject.CompareTag("ProjectileAbility"))
+        else if (collision.gameObject.CompareTag("ShootAbility"))
         {
             shootAbilityFlag = true;
             Ability ability = GetComponent<ProjectileAbility>();
@@ -282,6 +282,14 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, maxJumpForce);
             jumpCount = 1;
+        }
+    }
+    void OnDrawGizmos()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = Color.red; // Gizmosの色を設定
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius); // GroundCheckの位置と範囲を描画
         }
     }
 }

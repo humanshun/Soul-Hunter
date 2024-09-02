@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 129063170189394277}
   - component: {fileID: 1695603188176737865}
   - component: {fileID: 8819769090813200834}
+  - component: {fileID: 2310453165760560505}
   m_Layer: 6
   m_Name: Enemy_DeathGrasshopper_Boss
-  m_TagString: JumpAbilities
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +114,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2310453165760560505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224809063037472378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f2150693e7b244fa24bb21f0f979b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayInSeconds: 0.3
+  newTag: JumpAbility
 --- !u!1 &7114387331485239957
 GameObject:
   m_ObjectHideFlags: 0
