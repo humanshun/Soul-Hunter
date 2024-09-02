@@ -44,7 +44,7 @@ public class BossHPManager : BaseEnemyHP
             clearJugeManager.OnBossDefeated();
         }
 
-        Instantiate(DeathGrasshopperPrefab, transform.position, Quaternion.identity);
+        Instantiate(DeathGrasshopperPrefab, transform.position, Quaternion.Euler(0, 0, 180));
 
         base.Die();
     }

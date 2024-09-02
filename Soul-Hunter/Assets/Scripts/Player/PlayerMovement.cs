@@ -35,31 +35,34 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         abilityManager = GetComponent<PlayerAbilityManager>();
 
-        if (jumpAbilityFlag)
-        {
-            ability = GetComponent<DoubleJumpAbility>();
-        }
-        if (slashAbilityFlag)
-        {
-            ability = GetComponent<SlashAbility>();
-        }
-        if (shootAbilityFlag)
-        {
-            ability = GetComponent<ProjectileAbility>();
-        }
+        // if (jumpAbilityFlag)
+        // {
+        //     Debug.Log("ダブルジャンプアビリティを取得");
+        //     ability = GetComponent<DoubleJumpAbility>();
+        // }
+        // if (slashAbilityFlag)
+        // {
+        //     Debug.Log("スラッシュアビリティを取得");
+        //     ability = GetComponent<SlashAbility>();
+        // }
+        // if (shootAbilityFlag)
+        // {
+        //     Debug.Log("ショットアビリティを取得");
+        //     ability = GetComponent<ProjectileAbility>();
+        // }
 
-        if (currentAbility is DoubleJumpAbility)
-        {
-            animator.SetTrigger("ChangeGrasshopper");
-        }
-        else if (currentAbility is SlashAbility)
-        {
-            animator.SetTrigger("ChangeMantis");
-        }
-        else
-        {
-            animator.SetTrigger("ChangeSlime");
-        }
+        // if (currentAbility is DoubleJumpAbility)
+        // {
+        //     animator.SetTrigger("ChangeGrasshopper");
+        // }
+        // else if (currentAbility is SlashAbility)
+        // {
+        //     animator.SetTrigger("ChangeMantis");
+        // }
+        // else
+        // {
+        //     animator.SetTrigger("ChangeSlime");
+        // }
     }
 
     void Update()
@@ -81,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (jumpAbilityFlag)
             {
+                Debug.Log("ダブルジャンプアビリティを取得");
                 Ability ability = GetComponent<DoubleJumpAbility>();
                 abilityManager.SetAbility(ability);
                 currentAbility = ability;
@@ -91,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (slashAbilityFlag)
             {
+                Debug.Log("スラッシュアビリティを取得");
                 Ability ability = GetComponent<SlashAbility>();
                 abilityManager.SetAbility(ability);
                 currentAbility = ability;
