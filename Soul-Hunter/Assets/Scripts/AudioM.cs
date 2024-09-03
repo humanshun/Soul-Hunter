@@ -9,7 +9,9 @@ public class AudioM : MonoBehaviour
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip attackSound;
     [SerializeField] private AudioClip damageSound;
-    [SerializeField] private AudioClip backgroundMusic; // BGMを追加
+    [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private AudioClip mantisAttackSound;
+    [SerializeField] private AudioClip pheropsophusAttackSound;
 
     private AudioSource audioSource;
     private AudioSource bgmSource; // BGM用のAudioSource
@@ -72,6 +74,14 @@ public class AudioM : MonoBehaviour
     public void PlayDamageSound()
     {
         audioSource.PlayOneShot(damageSound);
+    }
+    public void PlayMantisAttackSound()
+    {
+        audioSource.PlayOneShot(mantisAttackSound);
+    }
+    public void PlayPheropsophusAttackSound()
+    {
+        audioSource.PlayOneShot(pheropsophusAttackSound);
     }
 
     public void PlayBackgroundMusic()

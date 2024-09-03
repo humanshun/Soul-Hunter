@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Shoot : MonoBehaviour
 {
     [SerializeField] private float lifetime = 5f;  // 弾の寿命
 

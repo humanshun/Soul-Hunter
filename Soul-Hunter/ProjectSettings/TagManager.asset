@@ -13,6 +13,7 @@ TagManager:
   - JumpAbility
   - ShootAbility
   - JumpAbilities
+  - Shell
   layers:
   - Default
   - TransparentFX

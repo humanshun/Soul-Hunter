@@ -17,8 +17,8 @@ public class BaseEnemyMovement : MonoBehaviour
     }
     void Update()
     {
-        Move();
         CheckDirection();
+        Move();
     }
 
     protected virtual void Move()

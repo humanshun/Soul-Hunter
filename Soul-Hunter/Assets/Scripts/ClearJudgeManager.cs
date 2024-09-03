@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ClearJugeManager : MonoBehaviour
+public class ClearJudgeManager : MonoBehaviour
 {
     [SerializeField] private GameObject WinText;
     [SerializeField] private GameObject Goal;
@@ -15,7 +15,10 @@ public class ClearJugeManager : MonoBehaviour
     }
     public void OnBossDefeated()
     {
-        WinText.SetActive(true);
-        Goal.SetActive(true);
+        if (WinText != null && Goal != null)
+        {
+            WinText.SetActive(true);
+            Goal.SetActive(true);
+        }
     }
 }

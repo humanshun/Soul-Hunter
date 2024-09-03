@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using UnityEngine;
-using UnityEngine.UI; // スライダーを使用するために必要
+using UnityEngine.UI;
 
 public class BossHPManager : BaseEnemyHP
 {
-    [SerializeField] private Slider hpSlider;  // スライダーの参照を追加
-    [SerializeField] private ClearJugeManager clearJugeManager;
-    [SerializeField] private GameObject DeathPrefab;
+    [SerializeField] private Slider hpSlider;
+    [SerializeField] private ClearJudgeManager clearJudgeManager; // スペル修正
+    [SerializeField] private GameObject deathPrefab; // プレハブ名を小文字に修正
     [SerializeField] private float quaternionZOffset = 0f;
+
     protected override void Start()
     {
         base.Start();
 
-        // スライダーの初期設定
         if (hpSlider != null)
         {
             hpSlider.maxValue = maxHP;
@@ -22,16 +22,10 @@ public class BossHPManager : BaseEnemyHP
         }
     }
 
-    // void Update()
-    // {
-    //     Debug.Log(currentHP);
-    // }
-
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
 
-        // HPの変更をスライダーに反映
         if (hpSlider != null)
         {
             hpSlider.value = currentHP;
@@ -40,12 +34,15 @@ public class BossHPManager : BaseEnemyHP
 
     protected override void Die()
     {
-        if (clearJugeManager != null)
+        if (clearJudgeManager != null)
         {
-            clearJugeManager.OnBossDefeated();
+            clearJudgeManager.OnBossDefeated();
         }
 
-        Instantiate(DeathPrefab, transform.position, Quaternion.Euler(0, 0, quaternionZOffset));
+        if (deathPrefab != null) // null チェック追加
+        {
+            Instantiate(deathPrefab, transform.position, Quaternion.Euler(0, 0, quaternionZOffset));
+        }
 
         base.Die();
     }

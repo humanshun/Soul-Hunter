@@ -5,24 +5,27 @@ using UnityEngine;
 public class MantisMovement : BaseEnemyMovement
 {
     public Animator animator;
-    public float minAttackInterval = 3.0f; // 攻撃間隔の最小値
-    public float maxAttackInterval = 6.0f; // 攻撃間隔の最大値
-    private bool isAttacking = false; // フラグを追加
+    public float minAttackInterval = 3.0f;
+    public float maxAttackInterval = 6.0f;
+    private bool isAttacking = false;
+
+    public bool IsAttacking => isAttacking; // isAttackingのプロパティを公開
 
     protected override void Start()
     {
         StartCoroutine(RandomCoroutine());
         base.Start();
     }
+
     protected override void Move()
     {
-        if (isAttacking) // 攻撃中は移動しない
+        if (isAttacking)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y); // 速度を0に設定
+            rb.velocity = new Vector2(0, rb.velocity.y);
             return;
         }
 
-        base.Move(); // 通常の移動処理を行う
+        base.Move();
     }
     
     private IEnumerator RandomCoroutine()
@@ -34,22 +37,23 @@ public class MantisMovement : BaseEnemyMovement
 
     private IEnumerator Attack()
     {
-        isAttacking = true; // コルーチンの開始時にフラグを設定
+        isAttacking = true;
 
-        animator.SetBool("IsWark", false);
+        animator.SetBool("IsWalk", false);
         animator.SetBool("IsPreliminaryAttack", true);
 
         yield return new WaitForSeconds(1.0f);
 
         animator.SetBool("IsPreliminaryAttack", false);
         animator.SetBool("IsAttack", true);
+        AudioM.Instance.PlayMantisAttackSound();
 
         yield return new WaitForSeconds(1.3f);
         
         animator.SetBool("IsAttack", false);
-        animator.SetBool("IsWark", true);
+        animator.SetBool("IsWalk", true);
 
-        isAttacking = false; // コルーチンの終了時にフラグを解除
+        isAttacking = false;
         StartCoroutine(RandomCoroutine());
     }
 }

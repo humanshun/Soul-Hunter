@@ -9,7 +9,7 @@ public class PlayerAbilityManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F)) // 'F'キーで弾を発射
         {
-            if (currentAbility is ProjectileAbility || currentAbility is SlashAbility)
+            if (currentAbility is ShootAbility || currentAbility is SlashAbility)
             {
                 currentAbility.Activate(GetComponent<PlayerMovement>());
             }

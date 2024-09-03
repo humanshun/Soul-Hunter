@@ -34,35 +34,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         abilityManager = GetComponent<PlayerAbilityManager>();
-
-        // if (jumpAbilityFlag)
-        // {
-        //     Debug.Log("ダブルジャンプアビリティを取得");
-        //     ability = GetComponent<DoubleJumpAbility>();
-        // }
-        // if (slashAbilityFlag)
-        // {
-        //     Debug.Log("スラッシュアビリティを取得");
-        //     ability = GetComponent<SlashAbility>();
-        // }
-        // if (shootAbilityFlag)
-        // {
-        //     Debug.Log("ショットアビリティを取得");
-        //     ability = GetComponent<ProjectileAbility>();
-        // }
-
-        // if (currentAbility is DoubleJumpAbility)
-        // {
-        //     animator.SetTrigger("ChangeGrasshopper");
-        // }
-        // else if (currentAbility is SlashAbility)
-        // {
-        //     animator.SetTrigger("ChangeMantis");
-        // }
-        // else
-        // {
-        //     animator.SetTrigger("ChangeSlime");
-        // }
     }
 
     void Update()
@@ -102,16 +73,16 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetTrigger("ChangeMantis");
             }
         }
-        // else if (Input.GetKeyDown(KeyCode.Alpha4))
-        // {
-        //     if (shootAbilityFlag)
-        //     {
-        //         Ability ability = GetComponent<ProjectileAbility>();
-        //         abilityManager.SetAbility(ability);
-        //         currentAbility = ability;
-        //         animator.SetTrigger("ChangeMantis");
-        //     }
-        // }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if (shootAbilityFlag)
+            {
+                Ability ability = GetComponent<ShootAbility>();
+                abilityManager.SetAbility(ability);
+                currentAbility = ability;
+                animator.SetTrigger("ChangePheropsophus");
+            }
+        }
     }
 
     void HandleJump()
@@ -131,6 +102,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("MantisIsFall", true);
             }
+            else if (currentAbility is ShootAbility)
+            {
+                animator.SetBool("PheropsophusIsFall", true);
+            }
             else
             {
                 animator.SetBool("IsFall", true);
@@ -146,6 +121,10 @@ public class PlayerMovement : MonoBehaviour
             else if (currentAbility is SlashAbility)
             {
                 animator.SetBool("MantisIsFall", true);
+            }
+            else if (currentAbility is ShootAbility)
+            {
+                animator.SetBool("PheropsophusIsFall", true);
             }
             else
             {
@@ -167,6 +146,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("MantisIsFall", false);
                 animator.SetBool("MantisIsJumping", true);
+            }
+            else if (currentAbility is ShootAbility)
+            {
+                animator.SetBool("PheropsophusIsFall", false);
+                animator.SetBool("PheropsophusIsJumping", true);
             }
             else
             {
@@ -230,6 +214,11 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("MantisIsJumping", false);
                 animator.SetBool("MantisIsFall", false);
             }
+            else if (currentAbility is ShootAbility)
+            {
+                animator.SetBool("PheropsophusIsJumping", false);
+                animator.SetBool("PheropsophusIsFall", false);
+            }
             else
             {
                 animator.SetBool("IsJumping", false);
@@ -265,7 +254,7 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("ShootAbility"))
         {
             shootAbilityFlag = true;
-            Ability ability = GetComponent<ProjectileAbility>();
+            Ability ability = GetComponent<ShootAbility>();
 
             if (ability != null)
             {
@@ -273,6 +262,7 @@ public class PlayerMovement : MonoBehaviour
                 currentAbility = ability; // currentAbilityに設定
                 Destroy(collision.gameObject);
             }
+            animator.SetTrigger("ChangePheropsophus");
         }
     }
 

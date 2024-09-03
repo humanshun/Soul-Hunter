@@ -68,8 +68,9 @@ public class PheropsophusMovement : BaseEnemyMovement
         animator.SetBool("Attack", true);
 
         // アニメーションが終了するまで待つ
-        // yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
         yield return new WaitForSeconds(1.5f);
+
+        AudioM.Instance.PlayPheropsophusAttackSound();
 
         GameObject bullet = Instantiate(BulletPrefab, attackPoint.position, Quaternion.identity);
 

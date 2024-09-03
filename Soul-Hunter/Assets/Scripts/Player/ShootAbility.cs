@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileAbility : Ability
+public class ShootAbility : Ability
 {
     [SerializeField] private GameObject projectilePrefab;  // 弾のプレハブ
     [SerializeField] private Transform firePoint;           // 弾を発射する位置
@@ -23,9 +23,9 @@ public class ProjectileAbility : Ability
     {
         // 弾を削除するなどの処理
         // ここでは例として、アクティブな弾を全て削除する処理を示します。
-        Projectile[] projectiles = FindObjectsOfType<Projectile>(); // すべての弾を取得する
+        Shoot[] projectiles = FindObjectsOfType<Shoot>(); // すべての弾を取得する
 
-        foreach (Projectile projectile in projectiles)
+        foreach (Shoot projectile in projectiles)
         {
             Destroy(projectile.gameObject); // 弾を削除する
         }

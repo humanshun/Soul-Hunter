@@ -7,7 +7,7 @@ public class BaseEnemyHP : MonoBehaviour
     public int maxHP = 0;
     protected int currentHP;
 
-    public SpriteRenderer damageSprite;
+    public List<SpriteRenderer> damageSprites; // スプライトのリストに変更
 
     public float invincibilityDuration = 5f; // 無敵時間の長さ（秒）
     protected bool isInvincible = false; // 無敵状態を管理するフラグ
@@ -16,9 +16,10 @@ public class BaseEnemyHP : MonoBehaviour
     {
         currentHP = maxHP;
     }
+
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("PlayerFoot"))
+        if (other.gameObject.CompareTag("PlayerFoot") || other.gameObject.CompareTag("Shell"))
         {
             AudioM.Instance.PlayAttackSound();
             TakeDamage(1);
@@ -56,18 +57,27 @@ public class BaseEnemyHP : MonoBehaviour
 
         while (elapsedTime < invincibilityDuration)
         {
-            // スプライトの透明度を変更
-            damageSprite.color = new Color(1f, 1f, 1f, 0f); // 透明にする
+            foreach (var sprite in damageSprites)
+            {
+                // 各スプライトの透明度を変更
+                sprite.color = new Color(1f, 1f, 1f, 0f); // 透明にする
+            }
             yield return new WaitForSeconds(blinkDuration);
-            
-            damageSprite.color = new Color(1f, 1f, 1f, 1f); // 元に戻す
+
+            foreach (var sprite in damageSprites)
+            {
+                sprite.color = new Color(1f, 1f, 1f, 1f); // 元に戻す
+            }
             yield return new WaitForSeconds(blinkDuration);
-            
+
             elapsedTime += blinkDuration * 2;
         }
 
-        // 無敵状態が終了したらスプライトの透明度を元に戻す
-        damageSprite.color = new Color(1f, 1f, 1f, 1f);
+        // 無敵状態が終了したらすべてのスプライトの透明度を元に戻す
+        foreach (var sprite in damageSprites)
+        {
+            sprite.color = new Color(1f, 1f, 1f, 1f);
+        }
         isInvincible = false;
     }
 }

@@ -7,7 +7,6 @@ public class GameM : MonoBehaviour
 {
     [SerializeField] private static int life = 3;
     [SerializeField] private string gameOverScene = "GameOver";
-    [SerializeField] private string currentStage;
     [SerializeField] private int currentStageIndex;
     private bool isPaused;
     private bool isOptionMenu;
@@ -188,7 +187,7 @@ public class GameM : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(currentStage);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }
@@ -228,7 +227,7 @@ public class GameM : MonoBehaviour
     private void OnRestartButtonClicked()
     {
         TogglePause();
-        SceneManager.LoadScene(currentStage);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnOptionButtonClicked()

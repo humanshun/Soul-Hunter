@@ -18,10 +18,6 @@ public class SnailHPManager : BaseEnemyHP
     protected override void Die()
     {
         base.Die();
-        DestroyObject();
-    }
-    void DestroyObject()
-    {
         Instantiate(ShellPrefab, transform.position, transform.rotation);
     }
 }
