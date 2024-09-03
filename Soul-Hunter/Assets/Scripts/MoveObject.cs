@@ -14,6 +14,7 @@ public class MoveObject : MonoBehaviour
     [SerializeField] private Direction moveDirection = Direction.Horizontal; // 移動方向の選択
     [SerializeField] private float moveDistance = 5f; // 移動距離
     [SerializeField] private float moveDuration = 2f; // 移動にかかる時間
+    private Tween moveTween; // Tween変数を保持
 
     private void Start()
     {
@@ -39,8 +40,8 @@ public class MoveObject : MonoBehaviour
                 break;
         }
 
-        // 移動アニメーションを設定
-        transform.DOMove(targetPosition, moveDuration)
+        // 移動アニメーションを設定し、Tween変数に格納
+        moveTween = transform.DOMove(targetPosition, moveDuration)
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo);
     }
@@ -60,6 +61,15 @@ public class MoveObject : MonoBehaviour
         {
             // トリガーから外れたオブジェクトの親を解除する
             collision.transform.SetParent(null);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // オブジェクトが破棄されたときにTweenを停止
+        if (moveTween != null)
+        {
+            moveTween.Kill();
         }
     }
 }
