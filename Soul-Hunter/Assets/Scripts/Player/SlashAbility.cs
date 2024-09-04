@@ -56,6 +56,13 @@ public class SlashAbility : Ability
         {
             if (hit.CompareTag("Enemy"))
             {
+                // WormHPManagerを持っているかどうかをチェック
+                WormHPManager worm = hit.GetComponentInParent<WormHPManager>();
+                if (worm != null)
+                {
+                    worm.TakeDamage(damage);
+                    continue;
+                }
                 // SnailHPManagerを持っているかどうかをチェック
                 SnailHPManager snail = hit.GetComponentInParent<SnailHPManager>();
                 if (snail != null)
