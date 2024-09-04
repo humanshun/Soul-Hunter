@@ -19,7 +19,7 @@ public class BaseEnemyHP : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("PlayerFoot") || other.gameObject.CompareTag("Shell"))
+        if (other.gameObject.CompareTag("PlayerFoot") || other.gameObject.CompareTag("Shell") || other.gameObject.CompareTag("Bullet"))
         {
             AudioM.Instance.PlayAttackSound();
             TakeDamage(1);

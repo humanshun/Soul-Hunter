@@ -70,7 +70,7 @@ public class PheropsophusMovement : BaseEnemyMovement
         // アニメーションが終了するまで待つ
         yield return new WaitForSeconds(1.5f);
 
-        AudioM.Instance.PlayPheropsophusAttackSound();
+        AudioM.Instance.PlayShootAttackSound();
 
         GameObject bullet = Instantiate(BulletPrefab, attackPoint.position, Quaternion.identity);
 
