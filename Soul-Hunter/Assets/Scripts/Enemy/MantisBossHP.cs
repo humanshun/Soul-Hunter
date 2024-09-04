@@ -8,15 +8,14 @@ public class MantisBossHP : BaseEnemyHP
     [SerializeField] private Slider hpSlider;
     [SerializeField] private ClearJudgeManager clearJudgeManager;
     [SerializeField] private GameObject DeathMantisPrefab;
-    private MantisMovement mantisMovement; // MantisMovementの参照を追加
+    private MantisMovement mantisMovement;
+    private bool isDead = false; // 敵が既に死亡しているかどうかのフラグ
 
     protected override void Start()
     {
         base.Start();
+        mantisMovement = GetComponent<MantisMovement>();
 
-        mantisMovement = GetComponent<MantisMovement>(); // MantisMovementのコンポーネントを取得
-
-        // スライダーの初期設定
         if (hpSlider != null)
         {
             hpSlider.maxValue = maxHP;
@@ -35,7 +34,8 @@ public class MantisBossHP : BaseEnemyHP
 
     public override void TakeDamage(int damage)
     {
-        // 攻撃中でない場合のみダメージを受ける
+        if (isDead) return; // 既に死亡している場合、ダメージ処理をスキップ
+
         if (mantisMovement != null && mantisMovement.IsAttacking)
         {
             return;
@@ -43,7 +43,6 @@ public class MantisBossHP : BaseEnemyHP
 
         base.TakeDamage(damage);
 
-        // HPの変更をスライダーに反映
         if (hpSlider != null)
         {
             hpSlider.value = currentHP;
@@ -52,11 +51,20 @@ public class MantisBossHP : BaseEnemyHP
 
     protected override void Die()
     {
-        base.Die();
+        if (isDead) return; // 既に死亡している場合、メソッドを終了
+
+        isDead = true; // 死亡フラグを立てる
 
         if (clearJudgeManager != null)
         {
             clearJudgeManager.OnBossDefeated();
         }
+
+        if (DeathMantisPrefab != null)
+        {
+            Instantiate(DeathMantisPrefab, transform.position, Quaternion.Euler(0, 0, 0));
+        }
+
+        base.Die();
     }
 }

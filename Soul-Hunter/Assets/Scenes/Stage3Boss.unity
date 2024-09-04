@@ -6245,7 +6245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d055a95b18b6fe4e99b8fa5dd942ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 1
+  maxHP: 10
   damageSprites:
   - {fileID: 1745871323}
   invincibilityDuration: 5
