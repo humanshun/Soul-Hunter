@@ -12,6 +12,7 @@ public class AudioM : MonoBehaviour
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private AudioClip mantisAttackSound;
     [SerializeField] private AudioClip shootAttackSound;
+    [SerializeField] private AudioClip slimeChangeSound;
 
     private AudioSource audioSource;
     private AudioSource bgmSource; // BGM用のAudioSource
@@ -82,6 +83,10 @@ public class AudioM : MonoBehaviour
     public void PlayShootAttackSound()
     {
         audioSource.PlayOneShot(shootAttackSound);
+    }
+    public void PlaySlimeChangeSound()
+    {
+        audioSource.PlayOneShot(slimeChangeSound);
     }
 
     public void PlayBackgroundMusic()

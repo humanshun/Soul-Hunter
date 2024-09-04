@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float minJumpForce = 0f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0f;
+    [SerializeField] private Animator thunderAnimator;
 
     public static bool jumpAbilityFlag = false; //能力を取得したかどうかのグラフ
     public static bool slashAbilityFlag = false; //能力を取得したかどうかのフラグ
@@ -47,15 +48,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            abilityManager.DeactivateAbility();
-            currentAbility = null;
-            animator.SetTrigger("ChangeSlime");
+            if (currentAbility != null)
+            {
+                AudioM.Instance.PlaySlimeChangeSound();
+                StartCoroutine(Thunder());
+                abilityManager.DeactivateAbility();
+                currentAbility = null;
+                animator.SetTrigger("ChangeSlime");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (jumpAbilityFlag)
+            if (jumpAbilityFlag && !(currentAbility is DoubleJumpAbility))
             {
-                Debug.Log("ダブルジャンプアビリティを取得");
+                AudioM.Instance.PlaySlimeChangeSound();
+                StartCoroutine(Thunder());
                 Ability ability = GetComponent<DoubleJumpAbility>();
                 abilityManager.SetAbility(ability);
                 currentAbility = ability;
@@ -64,9 +71,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (slashAbilityFlag)
+            if (slashAbilityFlag && !(currentAbility is SlashAbility))
             {
-                Debug.Log("スラッシュアビリティを取得");
+                AudioM.Instance.PlaySlimeChangeSound();
+                StartCoroutine(Thunder());
                 Ability ability = GetComponent<SlashAbility>();
                 abilityManager.SetAbility(ability);
                 currentAbility = ability;
@@ -75,8 +83,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if (shootAbilityFlag)
+            if (shootAbilityFlag && !(currentAbility is ShootAbility))
             {
+                AudioM.Instance.PlaySlimeChangeSound();
+                StartCoroutine(Thunder());
                 Ability ability = GetComponent<ShootAbility>();
                 abilityManager.SetAbility(ability);
                 currentAbility = ability;
@@ -232,6 +242,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (ability != null)
             {
+                AudioM.Instance.PlaySlimeChangeSound();
+                StartCoroutine(Thunder());
                 abilityManager.SetAbility(ability);
                 currentAbility = ability; // currentAbilityに設定
                 Destroy(collision.gameObject);
@@ -245,6 +257,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (ability != null)
             {
+                AudioM.Instance.PlaySlimeChangeSound();
+                StartCoroutine(Thunder());
                 abilityManager.SetAbility(ability);
                 currentAbility = ability; // currentAbilityに設定
                 Destroy(collision.gameObject);
@@ -258,6 +272,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (ability != null)
             {
+                AudioM.Instance.PlaySlimeChangeSound();
+                StartCoroutine(Thunder());
                 abilityManager.SetAbility(ability);
                 currentAbility = ability; // currentAbilityに設定
                 Destroy(collision.gameObject);
@@ -281,6 +297,12 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = Color.red; // Gizmosの色を設定
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius); // GroundCheckの位置と範囲を描画
         }
+    }
+    IEnumerator Thunder()
+    {
+        thunderAnimator.SetBool("Thunder", true);
+        yield return new WaitForSeconds(0.1f);
+        thunderAnimator.SetBool("Thunder", false);
     }
 }
 

@@ -52,5 +52,6 @@ MonoBehaviour:
   backgroundMusic: {fileID: 8300000, guid: a4dd0aa58b6ce6643b12e510ef08e9c7, type: 3}
   mantisAttackSound: {fileID: 8300000, guid: 9fa37ec127f1b0247a79b54798a49882, type: 3}
   shootAttackSound: {fileID: 8300000, guid: fbee603528b626c4a896d6f6be142486, type: 3}
+  slimeChangeSound: {fileID: 8300000, guid: 61a60ada0c353ae47a5ac546d5e6d4b1, type: 3}
   defaultBGMVolume: 0.1
   defaultEffectsVolume: 0.5
