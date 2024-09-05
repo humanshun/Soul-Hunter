@@ -3978,7 +3978,7 @@ PrefabInstance:
     - target: {fileID: 4013719079099346050, guid: 3d3847db64a8d75459638eaada1c7ee3, type: 3}
       propertyPath: backgroundMusic
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: a4dd0aa58b6ce6643b12e510ef08e9c7, type: 3}
     - target: {fileID: 5554834576721488831, guid: 3d3847db64a8d75459638eaada1c7ee3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8215,7 +8215,7 @@ GameObject:
   - component: {fileID: 1607764073}
   - component: {fileID: 1607764075}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8579,7 +8579,7 @@ GameObject:
   - component: {fileID: 1705350823}
   - component: {fileID: 1705350825}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8906,37 +8906,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1837328877
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1837328878}
-  m_Layer: 0
-  m_Name: ----------Block
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1837328878
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837328877}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1865728662
 GameObject:
   m_ObjectHideFlags: 0
@@ -10095,7 +10064,6 @@ SceneRoots:
   - {fileID: 1297130603}
   - {fileID: 881962664}
   - {fileID: 1803672260}
-  - {fileID: 1837328878}
   - {fileID: 1428240108}
   - {fileID: 763032332}
   - {fileID: 224659575}

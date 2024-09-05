@@ -28,6 +28,6 @@ public class ReturnToTitle : MonoBehaviour
     // タイトル画面に戻る処理
     void ReturnToTitleScreen()
     {
-        SceneManager.LoadScene("Title");
+        SceneManager.LoadScene("Title"); // 「Title」シーンを読み込む
     }
 }

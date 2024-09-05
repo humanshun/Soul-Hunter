@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class AudioM : MonoBehaviour
 {
+    // インスタンスを保持するためのプロパティ
     public static AudioM Instance { get; private set; }
 
+    // 各種効果音のオーディオクリップ
     [SerializeField] private AudioClip buttonSelectSound;
     [SerializeField] private AudioClip buttonClickSound;
     [SerializeField] private AudioClip jumpSound;
@@ -14,25 +16,32 @@ public class AudioM : MonoBehaviour
     [SerializeField] private AudioClip shootAttackSound;
     [SerializeField] private AudioClip slimeChangeSound;
 
+    // 効果音用のオーディオソース
     private AudioSource audioSource;
-    private AudioSource bgmSource; // BGM用のAudioSource
+    // BGM用のオーディオソース
+    private AudioSource bgmSource;
 
-    [SerializeField] private float defaultBGMVolume = 0.3f; // デフォルトのBGM音量
-    [SerializeField] private float defaultEffectsVolume = 0.2f; // デフォルトの効果音音量
+    // デフォルトのBGM音量
+    [SerializeField] private float defaultBGMVolume = 0.3f;
+    // デフォルトの効果音音量
+    [SerializeField] private float defaultEffectsVolume = 0.2f;
 
     private void Awake()
     {
+        // 既にインスタンスが存在する場合、現在のオブジェクトを破棄
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
+        // インスタンスを設定し、シーン間で破棄されないようにする
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        // 効果音用のオーディオソースを追加
         audioSource = gameObject.AddComponent<AudioSource>();
 
-        // BGM用のAudioSourceを追加
+        // BGM用のオーディオソースを追加
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.loop = true; // BGMをループ再生する設定
 
@@ -43,9 +52,11 @@ public class AudioM : MonoBehaviour
 
     private void Start()
     {
+        // ゲーム開始時にBGMを再生
         PlayBackgroundMusic();
     }
 
+    // ボタン選択時の効果音を再生
     public void PlayButtonSelectSound()
     {
         if (audioSource != null && buttonSelectSound != null)
@@ -54,6 +65,7 @@ public class AudioM : MonoBehaviour
         }
     }
 
+    // ボタンクリック時の効果音を再生
     public void PlayButtonClickSound()
     {
         if (audioSource != null && buttonClickSound != null)
@@ -62,33 +74,43 @@ public class AudioM : MonoBehaviour
         }
     }
 
+    // ジャンプ時の効果音を再生
     public void PlayJumpSound()
     {
         audioSource.PlayOneShot(jumpSound);
     }
 
+    // 攻撃時の効果音を再生
     public void PlayAttackSound()
     {
         audioSource.PlayOneShot(attackSound);
     }
 
+    // ダメージ時の効果音を再生
     public void PlayDamageSound()
     {
         audioSource.PlayOneShot(damageSound);
     }
+
+    // カマキリの攻撃音を再生
     public void PlayMantisAttackSound()
     {
         audioSource.PlayOneShot(mantisAttackSound);
     }
+
+    // シュート攻撃音を再生
     public void PlayShootAttackSound()
     {
         audioSource.PlayOneShot(shootAttackSound);
     }
+
+    // スライム変身時の音を再生
     public void PlaySlimeChangeSound()
     {
         audioSource.PlayOneShot(slimeChangeSound);
     }
 
+    // BGMを再生するメソッド
     public void PlayBackgroundMusic()
     {
         if (bgmSource != null && backgroundMusic != null)
@@ -98,6 +120,7 @@ public class AudioM : MonoBehaviour
         }
     }
 
+    // BGMを停止するメソッド
     public void StopBackgroundMusic()
     {
         if (bgmSource != null)
@@ -148,4 +171,3 @@ public class AudioM : MonoBehaviour
         }
     }
 }
-

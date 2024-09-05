@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public Transform player;
-    public Vector3 offset;
+    public Transform player; // プレイヤーのTransformを指定します
+    public Vector3 offset;   // プレイヤーからのオフセットを指定します
+
     void Update()
     {
         // オブジェクトの位置をプレイヤーの位置にオフセットを加えた位置に設定します

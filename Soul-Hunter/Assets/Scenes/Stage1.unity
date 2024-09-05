@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (3)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 25119973}
   - component: {fileID: 25119972}
   m_Layer: 6
-  m_Name: Square (16)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 52014878}
   - component: {fileID: 52014877}
   m_Layer: 6
-  m_Name: Square (13)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1531,7 +1531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (1)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1588,7 +1588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (4)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1607,7 +1607,7 @@ GameObject:
   - component: {fileID: 166254563}
   - component: {fileID: 166254562}
   m_Layer: 6
-  m_Name: Square (4)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1979,7 +1979,7 @@ GameObject:
   - component: {fileID: 220449108}
   - component: {fileID: 220449109}
   m_Layer: 0
-  m_Name: Layer_3x (2)
+  m_Name: Layer_3x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2062,7 +2062,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 912676780082926283, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_Name
-      value: Enemy_Worm (1)
+      value: Enemy_Worm
       objectReference: {fileID: 0}
     - target: {fileID: 1449967032863242551, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2431,7 +2431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (4)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2465,7 +2465,7 @@ GameObject:
   - component: {fileID: 380171078}
   - component: {fileID: 380171077}
   m_Layer: 6
-  m_Name: Square (3)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2865,7 +2865,7 @@ GameObject:
   - component: {fileID: 404954239}
   - component: {fileID: 404954240}
   m_Layer: 0
-  m_Name: Layer_1x (2)
+  m_Name: Layer_1x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2953,7 +2953,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 912676780082926283, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_Name
-      value: Enemy_Worm (1)
+      value: Enemy_Worm
       objectReference: {fileID: 0}
     - target: {fileID: 1449967032863242551, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3171,7 +3171,7 @@ GameObject:
   - component: {fileID: 433896214}
   - component: {fileID: 433896213}
   m_Layer: 6
-  m_Name: Square (12)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3613,7 +3613,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 912676780082926283, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_Name
-      value: Enemy_Worm (2)
+      value: Enemy_Worm
       objectReference: {fileID: 0}
     - target: {fileID: 1449967032863242551, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3692,7 +3692,7 @@ GameObject:
   - component: {fileID: 518148711}
   - component: {fileID: 518148710}
   m_Layer: 6
-  m_Name: Square (1)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3865,7 +3865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (1)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4003,7 +4003,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 912676780082926283, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_Name
-      value: Enemy_Worm (1)
+      value: Enemy_Worm
       objectReference: {fileID: 0}
     - target: {fileID: 1449967032863242551, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5135,7 +5135,7 @@ GameObject:
   - component: {fileID: 740728569}
   - component: {fileID: 740728570}
   m_Layer: 0
-  m_Name: Layer_3x (1)
+  m_Name: Layer_3x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5263,7 +5263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (5)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5291,7 +5291,7 @@ GameObject:
   - component: {fileID: 768523879}
   - component: {fileID: 768523880}
   m_Layer: 0
-  m_Name: Layer_1x (1)
+  m_Name: Layer_1x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5414,7 +5414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (2)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5483,7 +5483,7 @@ PrefabInstance:
       objectReference: {fileID: 818454900}
     - target: {fileID: 8538041510477444407, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
       propertyPath: m_Name
-      value: Enemy_Snail (2)
+      value: Enemy_Snail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5540,7 +5540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (2)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5648,7 +5648,7 @@ GameObject:
   - component: {fileID: 798006524}
   - component: {fileID: 798006525}
   m_Layer: 0
-  m_Name: Layer_4x (1)
+  m_Name: Layer_4x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6044,7 +6044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (3)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6176,7 +6176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (2)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6554,7 +6554,7 @@ GameObject:
   - component: {fileID: 946263242}
   - component: {fileID: 946263241}
   m_Layer: 6
-  m_Name: Square (2)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6986,7 +6986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (1)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7736,7 +7736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (2)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8007,7 +8007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (4)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8394,7 +8394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (3)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8602,7 +8602,7 @@ PrefabInstance:
       objectReference: {fileID: 545125702}
     - target: {fileID: 8538041510477444407, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
       propertyPath: m_Name
-      value: Enemy_Snail (1)
+      value: Enemy_Snail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8659,7 +8659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (3)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9080,7 +9080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (5)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9212,7 +9212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (1)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9444,7 +9444,7 @@ GameObject:
   - component: {fileID: 1363730874}
   - component: {fileID: 1363730873}
   m_Layer: 6
-  m_Name: Square (11)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9574,7 +9574,7 @@ GameObject:
   - component: {fileID: 1370663405}
   - component: {fileID: 1370663404}
   m_Layer: 6
-  m_Name: Square (9)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9766,7 +9766,7 @@ GameObject:
   - component: {fileID: 1424208843}
   - component: {fileID: 1424208842}
   m_Layer: 6
-  m_Name: Square (7)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11154,7 +11154,7 @@ GameObject:
   - component: {fileID: 1619374903}
   - component: {fileID: 1619374902}
   m_Layer: 6
-  m_Name: Square (15)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11299,7 +11299,7 @@ GameObject:
   - component: {fileID: 1620929020}
   - component: {fileID: 1620929019}
   m_Layer: 6
-  m_Name: Square (14)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11516,7 +11516,7 @@ GameObject:
   - component: {fileID: 1625339022}
   - component: {fileID: 1625339023}
   m_Layer: 0
-  m_Name: Layer_4x (2)
+  m_Name: Layer_4x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11600,7 +11600,7 @@ GameObject:
   - component: {fileID: 1627216287}
   - component: {fileID: 1627216288}
   m_Layer: 0
-  m_Name: Layer_2x (2)
+  m_Name: Layer_2x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11775,7 +11775,7 @@ PrefabInstance:
       objectReference: {fileID: 8739832933168337572, guid: 7d8056b2f9f80f042a08e9f6256af6af, type: 3}
     - target: {fileID: 8538041510477444407, guid: ed2e1cd7e7b94704bbea39e1064c8989, type: 3}
       propertyPath: m_Name
-      value: Enemy_Snail (1)
+      value: Enemy_Snail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11794,7 +11794,7 @@ GameObject:
   - component: {fileID: 1657799508}
   - component: {fileID: 1657799507}
   m_Layer: 6
-  m_Name: Square (19)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11924,7 +11924,7 @@ GameObject:
   - component: {fileID: 1659234388}
   - component: {fileID: 1659234387}
   m_Layer: 6
-  m_Name: Square (20)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12097,7 +12097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (5)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12457,7 +12457,7 @@ GameObject:
   - component: {fileID: 1764924237}
   - component: {fileID: 1764924236}
   m_Layer: 6
-  m_Name: Square (5)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12625,7 +12625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (5)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12817,7 +12817,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 912676780082926283, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_Name
-      value: Enemy_Worm (3)
+      value: Enemy_Worm
       objectReference: {fileID: 0}
     - target: {fileID: 1449967032863242551, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13289,7 +13289,7 @@ GameObject:
   - component: {fileID: 1897283261}
   - component: {fileID: 1897283262}
   m_Layer: 0
-  m_Name: Layer_2x (1)
+  m_Name: Layer_2x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13458,7 +13458,7 @@ GameObject:
   - component: {fileID: 1909749157}
   - component: {fileID: 1909749156}
   m_Layer: 6
-  m_Name: Square (10)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14365,7 +14365,7 @@ GameObject:
   - component: {fileID: 2043996553}
   - component: {fileID: 2043996552}
   m_Layer: 6
-  m_Name: Square (6)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14608,7 +14608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (1)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14706,7 +14706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983334268091322813, guid: 86be50ff98ff4334fb1f597fe3dd942d, type: 3}
       propertyPath: m_Name
-      value: PointA (1)
+      value: PointA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14763,7 +14763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997738424241503981, guid: e71eba475003c8e4297c522624b3f6ad, type: 3}
       propertyPath: m_Name
-      value: PointB (4)
+      value: PointB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14780,7 +14780,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 912676780082926283, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_Name
-      value: Enemy_Worm (2)
+      value: Enemy_Worm
       objectReference: {fileID: 0}
     - target: {fileID: 1449967032863242551, guid: f2879f47e57922b418051659a9855c3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14921,7 +14921,7 @@ GameObject:
   - component: {fileID: 2137098315}
   - component: {fileID: 2137098314}
   m_Layer: 6
-  m_Name: Square (8)
+  m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
