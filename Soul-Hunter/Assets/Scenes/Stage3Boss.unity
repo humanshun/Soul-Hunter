@@ -4439,11 +4439,7 @@ PrefabInstance:
       objectReference: {fileID: 953537723}
     - target: {fileID: 2455122092221469726, guid: 3d4f97b9f9636aa498b75e4b0452a99f, type: 3}
       propertyPath: m_text
-      value: 'STAGE
-
-        1   -   3
-
-        Boss'
+      value: "\u30B9\u30C6\u30FC\u30B8\n1   -   3\nBoss"
       objectReference: {fileID: 0}
     - target: {fileID: 7882309777689796061, guid: 3d4f97b9f9636aa498b75e4b0452a99f, type: 3}
       propertyPath: m_Name

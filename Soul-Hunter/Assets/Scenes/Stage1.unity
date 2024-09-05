@@ -2349,9 +2349,7 @@ PrefabInstance:
       objectReference: {fileID: 1930543739}
     - target: {fileID: 2455122092221469726, guid: 3d4f97b9f9636aa498b75e4b0452a99f, type: 3}
       propertyPath: m_text
-      value: 'STAGE
-
-        1   -   1'
+      value: "\u30B9\u30C6\u30FC\u30B8\n1   -   1"
       objectReference: {fileID: 0}
     - target: {fileID: 2455122092221469726, guid: 3d4f97b9f9636aa498b75e4b0452a99f, type: 3}
       propertyPath: m_characterSpacing
@@ -5732,10 +5730,6 @@ PrefabInstance:
     - target: {fileID: 3962114547008168883, guid: 3d3847db64a8d75459638eaada1c7ee3, type: 3}
       propertyPath: m_Name
       value: AudioM
-      objectReference: {fileID: 0}
-    - target: {fileID: 4013719079099346050, guid: 3d3847db64a8d75459638eaada1c7ee3, type: 3}
-      propertyPath: backgroundMusic
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5554834576721488831, guid: 3d3847db64a8d75459638eaada1c7ee3, type: 3}
       propertyPath: m_LocalPosition.x
