@@ -44,6 +44,9 @@ public class SlashAbility : Ability
         // 攻撃アニメーションの再生
         animator.SetBool("MantisIsAttack", true);
 
+        //音を再生
+        AudioM.Instance.PlayMantisAttackSound();
+
         // 攻撃方向を決定
         Vector2 direction = player.transform.localScale.x > 0 ? Vector2.right : Vector2.left;
 

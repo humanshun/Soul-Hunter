@@ -2952,7 +2952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7768641690013193559, guid: 58774e9b7877d614388551744e28193a, type: 3}
       propertyPath: maxHP
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7768641690013193559, guid: 58774e9b7877d614388551744e28193a, type: 3}
       propertyPath: hpSlider
