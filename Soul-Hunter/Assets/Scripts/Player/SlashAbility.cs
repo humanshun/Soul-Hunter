@@ -17,6 +17,7 @@ public class SlashAbility : Ability
 
         Gizmos.color = Color.red;
 
+        // 攻撃の方向を決定
         Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
         Vector2 startPosition = (Vector2)transform.position + direction * slashRange;
 
@@ -44,7 +45,7 @@ public class SlashAbility : Ability
         // 攻撃アニメーションの再生
         animator.SetBool("MantisIsAttack", true);
 
-        //音を再生
+        // 音を再生
         AudioM.Instance.PlayMantisAttackSound();
 
         // 攻撃方向を決定
@@ -80,7 +81,6 @@ public class SlashAbility : Ability
                     grasshopper.TakeDamage(damage);
                     continue;
                 }
-
                 // MantisHPManagerを持っているかどうかをチェック
                 MantisHPManager mantis = hit.GetComponentInParent<MantisHPManager>();
                 if (mantis != null)
@@ -89,25 +89,23 @@ public class SlashAbility : Ability
                     continue;
                 }
                 // BossHPManagerを持っているかどうかをチェック
-                BossHPManager Boss = hit.GetComponentInParent<BossHPManager>();
-                if (Boss != null)
+                BossHPManager boss = hit.GetComponentInParent<BossHPManager>();
+                if (boss != null)
                 {
-                    Boss.TakeDamage(damage);
+                    boss.TakeDamage(damage);
                     continue;
                 }
-                // BossHPManagerを持っているかどうかをチェック
-                MantisBossHP MBoss = hit.GetComponentInParent<MantisBossHP>();
-                if (MBoss != null)
+                // MantisBossHPを持っているかどうかをチェック
+                MantisBossHP mBoss = hit.GetComponentInParent<MantisBossHP>();
+                if (mBoss != null)
                 {
-                    MBoss.TakeDamage(damage);
+                    mBoss.TakeDamage(damage);
                     continue;
                 }
                 // 認識されないHPマネージャーの警告
                 Debug.LogWarning("Enemy does not have a recognized HP Manager: " + hit.name);
             }
         }
-
-
 
         // アニメーション終了後にアニメーションを停止
         player.StartCoroutine(StopAnimation(animator));
@@ -128,6 +126,6 @@ public class SlashAbility : Ability
     private IEnumerator SlashCooldown()
     {
         yield return new WaitForSeconds(slashCooldown);
-        canSlash = true;
+        canSlash = true; // 攻撃再開可能にする
     }
 }

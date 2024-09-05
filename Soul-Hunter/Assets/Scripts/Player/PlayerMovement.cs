@@ -5,30 +5,29 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // パラメータやコンポーネントの宣言
-    [SerializeField] private float moveSpeed = 0f;
-    [SerializeField] private float maxJumpForce = 0f;
-    [SerializeField] private float chargeTime = 0f;
-    [SerializeField] private float minJumpForce = 0f;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckRadius = 0f;
-    [SerializeField] private Animator thunderAnimator;
+    [SerializeField] private float moveSpeed = 0f; // 移動速度
+    [SerializeField] private float maxJumpForce = 0f; // 最大ジャンプ力
+    [SerializeField] private float chargeTime = 0f; // チャージ時間
+    [SerializeField] private float minJumpForce = 0f; // 最小ジャンプ力
+    [SerializeField] private Transform groundCheck; // 地面チェック用のトランスフォーム
+    [SerializeField] private float groundCheckRadius = 0f; // 地面チェックの半径
+    [SerializeField] private Animator thunderAnimator; // 雷のアニメーター
 
-    public static bool jumpAbilityFlag = false; //能力を取得したかどうかのグラフ
-    public static bool slashAbilityFlag = false; //能力を取得したかどうかのフラグ
-    public static bool shootAbilityFlag = false; //能力を取得したかどうかのフラグ
+    public static bool jumpAbilityFlag = false; // ダブルジャンプのアビリティ取得フラグ
+    public static bool slashAbilityFlag = false; // スラッシュのアビリティ取得フラグ
+    public static bool shootAbilityFlag = false; // シュートのアビリティ取得フラグ
     
-    
-    private bool isCharging = false;
-    private float jumpCharge = 0f;
-    private Rigidbody2D rb;
-    private bool isGrounded = false;
-    private bool isJumping = false;
-    private Animator animator;
-    public bool doubleJump = false;
-    private int jumpCount = 0;
-    private PlayerAbilityManager abilityManager; // アビリティマネージャーを追加
-    private Ability ability;
-    private Ability currentAbility;
+    private bool isCharging = false; // ジャンプチャージ中かどうかのフラグ
+    private float jumpCharge = 0f; // ジャンプチャージの量
+    private Rigidbody2D rb; // Rigidbody2Dコンポーネント
+    private bool isGrounded = false; // プレイヤーが地面に接触しているかどうかのフラグ
+    private bool isJumping = false; // ジャンプ中かどうかのフラグ
+    private Animator animator; // Animatorコンポーネント
+    public bool doubleJump = false; // ダブルジャンプの有無
+    private int jumpCount = 0; // 現在のジャンプ回数
+    private PlayerAbilityManager abilityManager; // アビリティマネージャー
+    private Ability ability; // 現在のアビリティ
+    private Ability currentAbility; // 現在のアビリティ
 
     void Start()
     {
@@ -39,71 +38,73 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        HandleJump();
-        Move();
-        Flip();
-        ChangeSlime();
+        HandleJump(); // ジャンプ処理
+        Move(); // 移動処理
+        Flip(); // 向きの反転処理
+        ChangeSlime(); // スライムの変更処理
     }
+
     private void ChangeSlime()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (currentAbility != null)
             {
-                AudioM.Instance.PlaySlimeChangeSound();
-                StartCoroutine(Thunder());
-                abilityManager.DeactivateAbility();
+                AudioM.Instance.PlaySlimeChangeSound(); // スライム変更の音を再生
+                StartCoroutine(Thunder()); // 雷のエフェクトを再生
+                abilityManager.DeactivateAbility(); // 現在のアビリティを無効にする
                 currentAbility = null;
-                animator.SetTrigger("ChangeSlime");
+                animator.SetTrigger("ChangeSlime"); // スライム変更アニメーションを再生
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (jumpAbilityFlag && !(currentAbility is DoubleJumpAbility))
             {
-                AudioM.Instance.PlaySlimeChangeSound();
-                StartCoroutine(Thunder());
-                Ability ability = GetComponent<DoubleJumpAbility>();
-                abilityManager.SetAbility(ability);
+                AudioM.Instance.PlaySlimeChangeSound(); // スライム変更の音を再生
+                StartCoroutine(Thunder()); // 雷のエフェクトを再生
+                Ability ability = GetComponent<DoubleJumpAbility>(); // ダブルジャンプアビリティを取得
+                abilityManager.SetAbility(ability); // アビリティを設定
                 currentAbility = ability;
-                animator.SetTrigger("ChangeGrasshopper");
+                animator.SetTrigger("ChangeGrasshopper"); // スライム変更アニメーションを再生
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             if (slashAbilityFlag && !(currentAbility is SlashAbility))
             {
-                AudioM.Instance.PlaySlimeChangeSound();
-                StartCoroutine(Thunder());
-                Ability ability = GetComponent<SlashAbility>();
-                abilityManager.SetAbility(ability);
+                AudioM.Instance.PlaySlimeChangeSound(); // スライム変更の音を再生
+                StartCoroutine(Thunder()); // 雷のエフェクトを再生
+                Ability ability = GetComponent<SlashAbility>(); // スラッシュアビリティを取得
+                abilityManager.SetAbility(ability); // アビリティを設定
                 currentAbility = ability;
-                animator.SetTrigger("ChangeMantis");
+                animator.SetTrigger("ChangeMantis"); // スライム変更アニメーションを再生
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             if (shootAbilityFlag && !(currentAbility is ShootAbility))
             {
-                AudioM.Instance.PlaySlimeChangeSound();
-                StartCoroutine(Thunder());
-                Ability ability = GetComponent<ShootAbility>();
-                abilityManager.SetAbility(ability);
+                AudioM.Instance.PlaySlimeChangeSound(); // スライム変更の音を再生
+                StartCoroutine(Thunder()); // 雷のエフェクトを再生
+                Ability ability = GetComponent<ShootAbility>(); // シュートアビリティを取得
+                abilityManager.SetAbility(ability); // アビリティを設定
                 currentAbility = ability;
-                animator.SetTrigger("ChangePheropsophus");
+                animator.SetTrigger("ChangePheropsophus"); // スライム変更アニメーションを再生
             }
         }
     }
 
     void HandleJump()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Ground"));
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Ground")); // 地面チェック
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isCharging = true;
             jumpCharge = 0f;
 
+            // 現在のアビリティに応じてアニメーションを設定
             if (currentAbility is DoubleJumpAbility)
             {
                 animator.SetBool("GrasshopperIsFall", true);
@@ -124,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && isCharging)
         {
+            // 現在のアビリティに応じてアニメーションを設定
             if (currentAbility is DoubleJumpAbility)
             {
                 animator.SetBool("GrasshopperIsFall", true);
@@ -141,12 +143,14 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsFall", true);
             }
             
-            jumpCharge += Time.deltaTime;
+            jumpCharge += Time.deltaTime; // チャージ時間の更新
         }
 
         if (Input.GetKeyUp(KeyCode.Space) && isCharging)
         {
             isCharging = false;
+
+            // 現在のアビリティに応じてアニメーションを設定
             if (currentAbility is DoubleJumpAbility)
             {
                 animator.SetBool("GrasshopperIsFall", false);
@@ -168,7 +172,8 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsJumping", true);
             }
 
-            if (isGrounded || (doubleJump && jumpCount < 2) && currentAbility is DoubleJumpAbility) // ダブルジャンプの処理を追加
+            // ダブルジャンプの処理を追加
+            if (isGrounded || (doubleJump && jumpCount < 2) && currentAbility is DoubleJumpAbility)
             {
                 Jump();
                 jumpCount++;
@@ -180,28 +185,28 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isJumping)
         {
-            float moveInput = Input.GetAxis("Horizontal");
-            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+            float moveInput = Input.GetAxis("Horizontal"); // 水平方向の入力
+            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y); // 移動処理
         }
     }
 
     void Jump()
     {
-        AudioM.Instance.PlayJumpSound();
-        rb.velocity = Vector3.zero;
-        float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, jumpCharge / chargeTime);
-        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        AudioM.Instance.PlayJumpSound(); // ジャンプの音を再生
+        rb.velocity = Vector3.zero; // 現在の速度をリセット
+        float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, jumpCharge / chargeTime); // ジャンプ力を計算
+        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse); // ジャンプ力を適用
         isJumping = true;
         jumpCharge = 0f;
     }
 
     void Flip()
     {
-        float moveInput = Input.GetAxis("Horizontal");
+        float moveInput = Input.GetAxis("Horizontal"); // 水平方向の入力
         if (moveInput > 0 && transform.localScale.x < 0 || moveInput < 0 && transform.localScale.x > 0)
         {
             Vector3 localScale = transform.localScale;
-            localScale.x *= -1;
+            localScale.x *= -1; // 向きを反転
             transform.localScale = localScale;
         }
     }
@@ -213,7 +218,8 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
             isJumping = false;
             jumpCount = 0;
-            
+
+            // 現在のアビリティに応じてアニメーションを設定
             if (currentAbility is DoubleJumpAbility)
             {
                 animator.SetBool("GrasshopperIsJumping", false);
@@ -242,13 +248,13 @@ public class PlayerMovement : MonoBehaviour
 
             if (ability != null)
             {
-                AudioM.Instance.PlaySlimeChangeSound();
-                StartCoroutine(Thunder());
-                abilityManager.SetAbility(ability);
+                AudioM.Instance.PlaySlimeChangeSound(); // スライム変更の音を再生
+                StartCoroutine(Thunder()); // 雷のエフェクトを再生
+                abilityManager.SetAbility(ability); // アビリティを設定
                 currentAbility = ability; // currentAbilityに設定
-                Destroy(collision.gameObject);
+                Destroy(collision.gameObject); // コリジョン対象を破壊
             }
-            animator.SetTrigger("ChangeGrasshopper");
+            animator.SetTrigger("ChangeGrasshopper"); // スライム変更アニメーションを再生
         }
         else if (collision.gameObject.CompareTag("SlashAbility"))
         {
@@ -257,13 +263,13 @@ public class PlayerMovement : MonoBehaviour
 
             if (ability != null)
             {
-                AudioM.Instance.PlaySlimeChangeSound();
-                StartCoroutine(Thunder());
-                abilityManager.SetAbility(ability);
+                AudioM.Instance.PlaySlimeChangeSound(); // スライム変更の音を再生
+                StartCoroutine(Thunder()); // 雷のエフェクトを再生
+                abilityManager.SetAbility(ability); // アビリティを設定
                 currentAbility = ability; // currentAbilityに設定
-                Destroy(collision.gameObject);
+                Destroy(collision.gameObject); // コリジョン対象を破壊
             }
-            animator.SetTrigger("ChangeMantis");
+            animator.SetTrigger("ChangeMantis"); // スライム変更アニメーションを再生
         }
         else if (collision.gameObject.CompareTag("ShootAbility"))
         {
@@ -272,13 +278,13 @@ public class PlayerMovement : MonoBehaviour
 
             if (ability != null)
             {
-                AudioM.Instance.PlaySlimeChangeSound();
-                StartCoroutine(Thunder());
-                abilityManager.SetAbility(ability);
+                AudioM.Instance.PlaySlimeChangeSound(); // スライム変更の音を再生
+                StartCoroutine(Thunder()); // 雷のエフェクトを再生
+                abilityManager.SetAbility(ability); // アビリティを設定
                 currentAbility = ability; // currentAbilityに設定
-                Destroy(collision.gameObject);
+                Destroy(collision.gameObject); // コリジョン対象を破壊
             }
-            animator.SetTrigger("ChangePheropsophus");
+            animator.SetTrigger("ChangePheropsophus"); // スライム変更アニメーションを再生
         }
     }
 
@@ -286,10 +292,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            rb.velocity = new Vector2(rb.velocity.x, maxJumpForce);
-            jumpCount = 1;
+            rb.velocity = new Vector2(rb.velocity.x, maxJumpForce); // 敵と接触した際にジャンプ力を最大にする
+            jumpCount = 1; // ジャンプ回数をリセット
         }
     }
+
     void OnDrawGizmos()
     {
         if (groundCheck != null)
@@ -298,11 +305,11 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius); // GroundCheckの位置と範囲を描画
         }
     }
+
     IEnumerator Thunder()
     {
-        thunderAnimator.SetBool("Thunder", true);
-        yield return new WaitForSeconds(0.1f);
-        thunderAnimator.SetBool("Thunder", false);
+        thunderAnimator.SetBool("Thunder", true); // 雷アニメーションを開始
+        yield return new WaitForSeconds(0.1f); // 0.1秒待機
+        thunderAnimator.SetBool("Thunder", false); // 雷アニメーションを終了
     }
 }
-

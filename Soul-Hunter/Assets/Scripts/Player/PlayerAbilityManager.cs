@@ -8,14 +8,16 @@ public class PlayerAbilityManager : MonoBehaviour
 
     void Update()
     {
+        // 現在のアビリティがSlashAbilityの場合
         if (currentAbility is SlashAbility)
         {
-            if (Input.GetKeyDown(KeyCode.F))// 'F'キーで弾を発射
+            if (Input.GetKeyDown(KeyCode.F)) // 'F'キーでアビリティを発動
             {
                 currentAbility.Activate(GetComponent<PlayerMovement>());
             }
         }
 
+        // 現在のアビリティがShootAbilityの場合
         if (currentAbility is ShootAbility)
         {
             Animator animator = GetComponent<Animator>();
@@ -43,9 +45,9 @@ public class PlayerAbilityManager : MonoBehaviour
                 }
             }
         }
-
     }
 
+    // アビリティを無効にする
     public void DeactivateAbility()
     {
         if (currentAbility != null)
@@ -54,16 +56,18 @@ public class PlayerAbilityManager : MonoBehaviour
         }
     }
     
+    // 新しいアビリティを設定する
     public void SetAbility(Ability newAbility)
     {
+        // 現在のアビリティを無効にする
         if (currentAbility != null)
         {
             currentAbility.Deactivate(GetComponent<PlayerMovement>());
         }
 
         currentAbility = newAbility;
-        
 
+        // 新しいアビリティがDoubleJumpAbilityの場合は即座にアクティブにする
         if (currentAbility is DoubleJumpAbility)
         {
             currentAbility.Activate(GetComponent<PlayerMovement>());

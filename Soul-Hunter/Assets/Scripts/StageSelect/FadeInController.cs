@@ -5,22 +5,22 @@ using System.Collections;  // IEnumeratorのために追加
 
 public class FadeInController : MonoBehaviour
 {
-    public Image fadeImage;
-    public TextMeshProUGUI fadeText;  // TextMeshProUGUIを追加
-    public float fadeDuration = 2f;  // フェードインの時間
-    public float initialDelay = 1f;  // 最初の黒い画面の時間
+    public Image fadeImage;               // フェードインに使用する画像
+    public TextMeshProUGUI fadeText;      // フェードインに使用するTextMeshProUGUI
+    public float fadeDuration = 2f;       // フェードインにかかる時間
+    public float initialDelay = 1f;       // 最初の黒い画面を表示する時間
 
     private void Start()
     {
         // 最初に黒い画面に設定
         Color color = fadeImage.color;
-        color.a = 1f;
+        color.a = 1f;  // 画面を完全に黒にする
         fadeImage.color = color;
 
         if (fadeText != null)
         {
             Color textColor = fadeText.color;
-            textColor.a = 1f;  // 最初はテキストを表示させておく
+            textColor.a = 1f;  // テキストを最初に表示させておく
             fadeText.color = textColor;
         }
 
@@ -46,12 +46,12 @@ public class FadeInController : MonoBehaviour
             elapsedTime += Time.unscaledDeltaTime;  // フェードイン処理の進行をゲームの時間に依存しないようにする
             float alpha = Mathf.Clamp01(elapsedTime / fadeDuration);
 
-            imageColor.a = 1f - alpha;
+            imageColor.a = 1f - alpha;  // 画像の透明度を減少させる
             fadeImage.color = imageColor;
 
             if (fadeText != null)
             {
-                textColor.a = Mathf.Clamp01(1f - (elapsedTime / fadeDuration));  // テキストの透明度を変更
+                textColor.a = Mathf.Clamp01(1f - alpha);  // テキストの透明度を変更
                 fadeText.color = textColor;
             }
 
@@ -59,12 +59,12 @@ public class FadeInController : MonoBehaviour
         }
 
         // フェードインが終了
-        imageColor.a = 0f;
+        imageColor.a = 0f;  // 画像の透明度を完全に0にする
         fadeImage.color = imageColor;
 
         if (fadeText != null)
         {
-            textColor.a = 0f;
+            textColor.a = 0f;  // テキストの透明度を完全に0にする
             fadeText.color = textColor;
         }
 

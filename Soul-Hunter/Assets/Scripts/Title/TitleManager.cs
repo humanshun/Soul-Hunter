@@ -7,24 +7,23 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
-    public TMP_Text titleText;
-    public TMP_Text startText;
+    public TMP_Text titleText;              // タイトルのTextMeshProUGUI
+    public TMP_Text startText;              // 「push space to start」のTextMeshProUGUI
     public float titleFadeDuration = 2.0f;  // タイトルのフェードイン時間
-    public float blinkInterval = 1.0f;      // フェードイン・フェードアウトの時間
-    public Button newGameButton;
-    public Button continueButton;
-    public Image fadeOutImage;               // フェードアウト用のイメージ
+    public float blinkInterval = 1.0f;     // テキストの点滅間隔
+    public Button newGameButton;            // 新しいゲームボタン
+    public Button continueButton;           // 続行ボタン
+    public Image fadeOutImage;              // フェードアウト用のImage
     public float fadeOutDuration = 1.0f;    // フェードアウト時間
 
-    public AudioClip jumpSound;  // 効果音のクリップ
-    public AudioClip attackSound;
+    public AudioClip jumpSound;             // ジャンプの効果音
+    public AudioClip attackSound;           // 攻撃の効果音
+    public AudioClip enemyJumpSound;        // 敵ジャンプの効果音
+    public AudioClip enemyDeathSound;       // 敵死亡の効果音
+    public AudioClip buttonSelectSound;     // ボタン選択時の音
+    private AudioSource audioSource;        // AudioSourceコンポーネントへの参照
 
-    public AudioClip enemyJumpSound;
-    public AudioClip enemyDeathSound;
-    public AudioClip buttonSelectSound;  // ボタン選択時の音
-    private AudioSource audioSource;  // AudioSourceコンポーネントへの参照
-
-    private GameObject lastSelected;   // 最後に選択されたオブジェクトの参照
+    private GameObject lastSelected;        // 最後に選択されたオブジェクトの参照
 
     private bool canStartGame = false;      // ゲーム開始可能かどうかのフラグ
     private bool isMenuVisible = false;     // メニューが表示されているかどうかのフラグ
@@ -110,7 +109,7 @@ public class TitleScreen : MonoBehaviour
         {
             if (currentSelected.GetComponent<Button>() != null)
             {
-                audioSource.PlayOneShot(buttonSelectSound);
+                audioSource.PlayOneShot(buttonSelectSound); // ボタン選択時の音を再生
                 lastSelected = currentSelected;
             }
         }
@@ -118,7 +117,8 @@ public class TitleScreen : MonoBehaviour
 
     IEnumerator FadeInTitle()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5f); // 最初に5秒待機
+
         // タイトルテキストを徐々に表示
         float elapsedTime = 0f;
 
@@ -150,10 +150,12 @@ public class TitleScreen : MonoBehaviour
         yield return new WaitForSeconds(0.55f);
         AttackSound();
     }
+    
     private void JumpSound()
     {
         audioSource.PlayOneShot(jumpSound);
     }
+    
     private void AttackSound()
     {
         audioSource.PlayOneShot(attackSound);
@@ -167,6 +169,7 @@ public class TitleScreen : MonoBehaviour
         yield return new WaitForSeconds(3f);
         audioSource.PlayOneShot(enemyDeathSound);
     }
+    
     private void EnemyJumpSound()
     {
         audioSource.PlayOneShot(enemyJumpSound);
@@ -240,11 +243,10 @@ public class TitleScreen : MonoBehaviour
         // ステージ状況をリセット
         ResetAllStages();
 
-        //キャラクター能力をリセット
+        // キャラクター能力をリセット
         PlayerMovement.jumpAbilityFlag = false;
         PlayerMovement.slashAbilityFlag = false;
         PlayerMovement.shootAbilityFlag = false;
-
 
         // シーン遷移
         yield return StartCoroutine(FadeOutAndLoadScene("StageSelect"));

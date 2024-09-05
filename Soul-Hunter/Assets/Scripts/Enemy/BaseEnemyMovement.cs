@@ -2,23 +2,24 @@ using UnityEngine;
 
 public class BaseEnemyMovement : MonoBehaviour
 {
-    public float speed = 2.0f; //移動速度
-    public Transform pointA;   //折り返し地点A
-    public Transform pointB;   //折り返し地点B
+    public float speed = 2.0f; // 移動速度
+    public Transform pointA;   // 折り返し地点A
+    public Transform pointB;   // 折り返し地点B
 
-    protected Rigidbody2D rb;
-    protected Vector2 direction; //移動方向
+    protected Rigidbody2D rb; // Rigidbody2Dコンポーネント
+    protected Vector2 direction; // 移動方向
     public bool movingLeft = true; // 現在の移動方向を示すフラグ
     public bool isFacingRight = false; // 現在の向きを示すフラグ
 
     protected virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>(); // Rigidbody2Dコンポーネントの取得
     }
+
     void Update()
     {
-        CheckDirection();
-        Move();
+        CheckDirection(); // 移動方向をチェック
+        Move(); // 移動処理を実行
     }
 
     protected virtual void Move()
@@ -38,12 +39,14 @@ public class BaseEnemyMovement : MonoBehaviour
         // 向きを変更するかチェック
         if (movingLeft && isFacingRight)
         {
-            isFacingRight = !isFacingRight;
-            transform.localScale = new Vector3(1, 1, 1); // 反転して左を向く
+            // 左に移動しているが、右を向いている場合
+            isFacingRight = !isFacingRight; // 向きを反転
+            transform.localScale = new Vector3(1, 1, 1); // 左を向く
         }
         else if (!movingLeft && !isFacingRight)
         {
-            isFacingRight = !isFacingRight;
+            // 右に移動しているが、左を向いている場合
+            isFacingRight = !isFacingRight; // 向きを反転
             transform.localScale = new Vector3(-1, 1, 1); // 右を向く
         }
     }

@@ -7,22 +7,20 @@ using UnityEngine.UI;
 
 public class PlayerHPManager : MonoBehaviour
 {
-    [SerializeField] private int maxHP = 0;
-    private int currentHP;
+    [SerializeField] private int maxHP = 0; // 最大HP
+    private int currentHP; // 現在のHP
     [SerializeField] private float invincibilityDuration = 5f; // 無敵時間の長さ（秒）
     private bool isInvincible = false; // 無敵状態を管理するフラグ
     [SerializeField] private TextMeshProUGUI lifeText; // HP表示用のTextMesh Proコンポーネント
     [SerializeField] private Image[] damageImages; // HPに応じて非表示にする画像の配列
+
     void Start()
     {
         currentHP = maxHP;
         UpdateHPText(); // スタート時にHPテキストを更新
         InitializeDamageImages(); // スタート時に画像を表示
     }
-    // void Update()
-    // {
-    //     Debug.Log("現在のHP : " + currentHP);
-    // }
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Thorn"))
@@ -36,6 +34,7 @@ public class PlayerHPManager : MonoBehaviour
             TakeDamage(1);
         }
     }
+
     public void TakeDamage(int damage)
     {
         if (!isInvincible)
@@ -54,6 +53,7 @@ public class PlayerHPManager : MonoBehaviour
             }
         }
     }
+
     void Die()
     {
         GameM.Instance.Life--;
@@ -86,6 +86,7 @@ public class PlayerHPManager : MonoBehaviour
         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
         isInvincible = false;
     }
+
     void UpdateHPText()
     {
         if (lifeText != null)
@@ -94,6 +95,7 @@ public class PlayerHPManager : MonoBehaviour
             lifeText.text = "x" + GameM.Instance.Life.ToString("D2");
         }
     }
+
     void InitializeDamageImages()
     {
         // 全ての画像を表示
@@ -102,6 +104,7 @@ public class PlayerHPManager : MonoBehaviour
             img.enabled = true;
         }
     }
+
     void UpdateDamageImages()
     {
         // 現在のHPに基づいて画像を非表示にする
@@ -113,6 +116,7 @@ public class PlayerHPManager : MonoBehaviour
             }
         }
     }
+
     void ResetDamageImages()
     {
         // 死亡後に画像を再表示する

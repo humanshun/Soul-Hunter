@@ -30,7 +30,7 @@ public class ShootAbility : Ability
             Destroy(projectile.gameObject); // 弾を削除
         }
 
-        Debug.Log("Projectile ability deactivated.");
+        Debug.Log("Projectile ability deactivated."); // アビリティが無効化されたことをログに出力
     }
 
     public void Shoot(PlayerMovement player, float chargeTime)
@@ -61,7 +61,7 @@ public class ShootAbility : Ability
         // 弾を生成
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
-        //音を再生
+        // 音を再生
         AudioM.Instance.PlayShootAttackSound();
 
         // 弾に力を加えて発射
@@ -84,7 +84,7 @@ public class ShootAbility : Ability
 
     private IEnumerator ShootCooldown()
     {
-        yield return new WaitForSeconds(shootCooldown);
-        canShoot = true;
+        yield return new WaitForSeconds(shootCooldown); // クールダウン時間を待つ
+        canShoot = true; // 発射可能にする
     }
 }

@@ -4,73 +4,77 @@ using UnityEngine;
 
 public class BaseEnemyHP : MonoBehaviour
 {
-    public int maxHP = 0;
-    protected int currentHP;
+    public int maxHP = 0; // 最大HPを設定する変数
+    protected int currentHP; // 現在のHPを管理する変数
 
-    public List<SpriteRenderer> damageSprites; // スプライトのリストに変更
+    public List<SpriteRenderer> damageSprites; // 被ダメージ時に使用するスプライトのリスト
 
     public float invincibilityDuration = 5f; // 無敵時間の長さ（秒）
     protected bool isInvincible = false; // 無敵状態を管理するフラグ
 
     protected virtual void Start()
     {
-        currentHP = maxHP;
+        currentHP = maxHP; // 現在のHPを最大HPに設定
     }
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
+        // プレイヤーの攻撃に当たったときの処理
         if (other.gameObject.CompareTag("PlayerFoot") || other.gameObject.CompareTag("Shell") || other.gameObject.CompareTag("Bullet"))
         {
-            AudioM.Instance.PlayAttackSound();
-            TakeDamage(1);
+            AudioM.Instance.PlayAttackSound(); // 攻撃音を再生
+            TakeDamage(1); // ダメージを受ける
         }
     }
 
     public virtual void TakeDamage(int damage)
     {
+        // 無敵状態でない場合にダメージを受ける
         if (!isInvincible)
         {
-            currentHP -= damage;
+            currentHP -= damage; // ダメージを計算
 
+            // HPが0以下の場合は死亡処理を呼び出す
             if (currentHP <= 0)
             {
                 Die();
             }
             else
             {
-                StartCoroutine(BecomeInvincible());
+                StartCoroutine(BecomeInvincible()); // 一定時間無敵になるコルーチンを開始
             }
         }
     }
 
     protected virtual void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject); // 敵オブジェクトを削除
     }
 
     protected IEnumerator BecomeInvincible()
     {
-        isInvincible = true;
+        isInvincible = true; // 無敵状態を有効にする
 
-        float blinkDuration = 0.1f;  // 点滅の間隔
-        float elapsedTime = 0f;
+        float blinkDuration = 0.1f;  // 点滅の間隔（秒）
+        float elapsedTime = 0f; // 経過時間を初期化
 
         while (elapsedTime < invincibilityDuration)
         {
             foreach (var sprite in damageSprites)
             {
-                // 各スプライトの透明度を変更
-                sprite.color = new Color(1f, 1f, 1f, 0f); // 透明にする
+                // 各スプライトの透明度を0（透明）にする
+                sprite.color = new Color(1f, 1f, 1f, 0f);
             }
-            yield return new WaitForSeconds(blinkDuration);
+            yield return new WaitForSeconds(blinkDuration); // 点滅の間隔待機
 
             foreach (var sprite in damageSprites)
             {
-                sprite.color = new Color(1f, 1f, 1f, 1f); // 元に戻す
+                // 各スプライトの透明度を1（不透明）に戻す
+                sprite.color = new Color(1f, 1f, 1f, 1f);
             }
-            yield return new WaitForSeconds(blinkDuration);
+            yield return new WaitForSeconds(blinkDuration); // 点滅の間隔待機
 
-            elapsedTime += blinkDuration * 2;
+            elapsedTime += blinkDuration * 2; // 経過時間を更新
         }
 
         // 無敵状態が終了したらすべてのスプライトの透明度を元に戻す
@@ -78,6 +82,6 @@ public class BaseEnemyHP : MonoBehaviour
         {
             sprite.color = new Color(1f, 1f, 1f, 1f);
         }
-        isInvincible = false;
+        isInvincible = false; // 無敵状態を無効にする
     }
 }
