@@ -66,4 +66,13 @@ public class BaseEnemyMovement : MonoBehaviour
             movingLeft = true;
         }
     }
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 衝突相手がプレイヤーであるかチェック
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // 移動方向を反転
+            movingLeft = !movingLeft;
+        }
+    }
 }

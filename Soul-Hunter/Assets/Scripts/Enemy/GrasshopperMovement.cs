@@ -53,10 +53,11 @@ public class GrasshopperMovement : BaseEnemyMovement
         anim.SetBool("IsJump", true); // ジャンプアニメーション開始
         Jump(); // ジャンプを実行
         yield return new WaitForSeconds(1.0f); // ジャンプ後の待機時間
+        Jump(); // ジャンプを実行
         isCoroutineRunning = false; // コルーチンの終了フラグを設定
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
         // 地面またはトゲに接触し、コルーチンが実行されていない場合
         if ((collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Thorn")) && !isCoroutineRunning)
@@ -66,6 +67,7 @@ public class GrasshopperMovement : BaseEnemyMovement
             anim.SetBool("IsIdle", true); // アイドルアニメーション開始
             StartCoroutine(JumpRoutine()); // ジャンプのコルーチンを開始
         }
+        base.OnCollisionEnter2D(collision);
     }
 
     private void Jump()

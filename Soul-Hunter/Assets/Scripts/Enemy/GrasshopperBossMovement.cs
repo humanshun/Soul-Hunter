@@ -55,7 +55,7 @@ public class GrasshopperBossMovement : BaseEnemyMovement
         Jump(); // もう一度ジャンプを実行
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -64,6 +64,7 @@ public class GrasshopperBossMovement : BaseEnemyMovement
             anim.SetBool("IsIdle", true); // アイドル状態にする
             StartCoroutine(JumpRoutine()); // ジャンプのコルーチンを開始
         }
+        base.OnCollisionEnter2D(collision);
     }
 
     private void Jump()
