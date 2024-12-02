@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class BaseEnemyHP : MonoBehaviour
 {
-    public int maxHP = 0; // 最大HPを設定する変数
-    protected int currentHP; // 現在のHPを管理する変数
-
+    public int maxHP = 0;                      // 最大HP
+    protected int currentHP;                   // 現在のHP
     public List<SpriteRenderer> damageSprites; // 被ダメージ時に使用するスプライトのリスト
-
-    public float invincibilityDuration = 5f; // 無敵時間の長さ（秒）
-    protected bool isInvincible = false; // 無敵状態を管理するフラグ
+    public float invincibilityDuration = 5f;   // 無敵時間の長さ
+    protected bool isInvincible = false;       // 無敵状態フラグ
 
     protected virtual void Start()
     {
