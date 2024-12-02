@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DeathBoss : MonoBehaviour
 {
+    // ボスが死んだあと、タグをそれぞれの能力タグに変更し、プレイヤーが触れた時に能力を取得する設計
+    
     // タグを変更するまでの秒数
     [SerializeField] private float delayInSeconds = 0.3f;
 
