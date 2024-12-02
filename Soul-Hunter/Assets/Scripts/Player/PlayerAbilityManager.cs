@@ -11,7 +11,7 @@ public class PlayerAbilityManager : MonoBehaviour
         // 現在のアビリティがSlashAbilityの場合
         if (currentAbility is SlashAbility)
         {
-            if (Input.GetKeyDown(KeyCode.F)) // 'F'キーでアビリティを発動
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 currentAbility.Activate(GetComponent<PlayerMovement>());
             }
@@ -22,19 +22,19 @@ public class PlayerAbilityManager : MonoBehaviour
         {
             Animator animator = GetComponent<Animator>();
 
-            if (Input.GetKeyDown(KeyCode.F)) // 'F'キーを押したとき
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 animator.SetBool("PheropsophusIsCharge", true);
                 chargeTime = 0f; // チャージ時間をリセット
             }
 
-            if (Input.GetKey(KeyCode.F)) // 'F'キーを押し続けているとき
+            if (Input.GetKey(KeyCode.F))
             {
                 chargeTime += Time.deltaTime; // チャージ時間を増加
                 chargeTime = Mathf.Clamp(chargeTime, 0f, maxChargeTime); // チャージ時間を制限
             }
 
-            if (Input.GetKeyUp(KeyCode.F)) // 'F'キーを離したとき
+            if (Input.GetKeyUp(KeyCode.F))
             {
                 if (currentAbility is ShootAbility shootAbility)
                 {
